@@ -2,21 +2,44 @@ package cdac.in.gate.allocation;
 
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.List;
 import java.util.Set;
+
+class PaperCapacity{
+
+	int capacity;
+	int allocated;
+	
+	PaperCapacity(int capacity){
+		this.capacity = capacity;
+		this.allocated = 0;
+	}
+}
+
+
 
 public class Session{
 
 	String sessionId;
+
 	int capacity;
 	int allocated;
 
-	Map<String, Paper> paperMap;
+	int pwdCapacity;
+	int pwdAllocated;
+
+	Map<String, PaperCapacity> paperCapacities;
+	Map<String, List<Applicant>> paperApplicant;
 	
-	Session(String sessionId, int capacity){
+	Session(String sessionId, int capacity, int pwdCapacity){
+
 		this.sessionId = sessionId;
 		this.capacity = capacity;
+		this.pwdCapacity = pwdCapacity;
+		this.pwdAllocated = 0;
 		this.allocated = 0;
-		this.paperMap = new TreeMap<String, Paper>();
+		this.paperCapacities = new TreeMap<String, PaperCapacity>();
+		this.paperApplicant = new TreeMap<String, List<Applicant>>();
 	}
 
 	boolean isFull(){
@@ -25,12 +48,11 @@ public class Session{
 		return false;	
 	}
 	
-	void print(String zoneCode, String cityCode, String centreCode){
-		Set<String> papers = paperMap.keySet();
-		System.out.print(zoneCode+", "+cityCode+", "+centreCode+", "+sessionId+", ");
-		for(String paper: papers){
-			paperMap.get( paper ).print();	
+	void print(String zoneCode, String cityCode, String centreCode, String centreName){
+		System.out.print(zoneCode+", "+cityCode+", "+centreCode+", "+centreName+", "+sessionId+", "+capacity+", "+allocated+", "+pwdAllocated);
+		Set<String> paperCodes = paperCapacities.keySet();
+		for(String paperCode: paperCodes){
+				System.out.print(", ("+paperCode+"|"+paperCapacities.get( paperCode ).capacity+"|"+paperCapacities.get( paperCode ).allocated+")");
 		}
 	}
 } 
-
