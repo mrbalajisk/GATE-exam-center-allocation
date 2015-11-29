@@ -17,7 +17,6 @@ class PaperCapacity{
 }
 
 
-
 public class Session{
 
 	String sessionId;
@@ -51,7 +50,7 @@ public class Session{
 			return true;
 		return false;	
 	}
-	
+
 	void print(String zoneCode, String cityCode, String centreCode, String centreName){
 		System.out.print(zoneCode+", "+cityCode+", "+centreCode+", "+centreName+", "+sessionId+", "+capacity+", "+allocated+", "+pwdAllocated);
 		Set<String> paperCodes = paperCapacities.keySet();

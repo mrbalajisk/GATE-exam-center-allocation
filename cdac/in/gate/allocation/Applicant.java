@@ -44,7 +44,7 @@ public class Applicant{
 		this.choices[2] = choice3;
 		
 		this.registrationId = null;
-		this.isAllocated = true;
+		this.isAllocated = false;
 		this.centre = null;
 		this.session = null;	
 		this.allotedChoice = -1;	
@@ -63,11 +63,15 @@ public class Applicant{
 	}
 
 	static void header(){
-		System.out.println("Zone, Enrollment, PwD-Status, PaperCode, registrationId, City-Choice1, City-Choice2, City-Choice3, ChoiceNumber");
+		System.out.println("Zone, Enrollment, PwD-Status, PaperCode, CenterCode, registrationId, City-Choice1, City-Choice2, City-Choice3, Alloted-Session, ChoiceNumber");
 	}
 
 	void print(){
-		System.out.println("Zone"+zoneId+", "+enrollment+", "+isPwD+", "+paperCode+", "+registrationId+", "+choices[0]+", "+choices[1]+", "+choices[2]+", "+allotedChoice );
+		if( centre != null ){
+			System.out.println("Zone"+zoneId+", "+enrollment+", "+isPwD+", "+paperCode+", "+centre.centreCode+", "+registrationId+", "+choices[0]+", "+choices[1]+", "+choices[2]+", "+session.sessionId+", "+allotedChoice );
+		}else{
+			System.out.println("Zone"+zoneId+", "+enrollment+", "+isPwD+", "+paperCode+", null, "+registrationId+", "+choices[0]+", "+choices[1]+", "+choices[2]+",  nulll, -1" );
+		}	
 	}
 } 
 

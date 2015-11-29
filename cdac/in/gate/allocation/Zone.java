@@ -11,28 +11,38 @@ public class Zone{
 		String zoneId;
 
 		Map<String, City> cityMap;
+
 		List<Applicant> applicants;
+		List<Applicant> pwdApplicants;
+
 		Map<String, ArrayList<Applicant> > paperWiseApplicant; 
 		int allocated;
 
 		Zone(String zoneId){
 
-				this.zoneId = zoneId;
-				this.cityMap = new TreeMap<String, City>();
-				this.applicants = new ArrayList<Applicant>();	
-				this.paperWiseApplicant = new TreeMap<String, ArrayList<Applicant>>();
-				this.allocated = 0 ;
+			this.zoneId = zoneId;
+			this.cityMap = new TreeMap<String, City>();
+			this.applicants = new ArrayList<Applicant>();	
+			this.pwdApplicants = new ArrayList<Applicant>();	
+			this.paperWiseApplicant = new TreeMap<String, ArrayList<Applicant>>();
+			this.allocated = 0 ;
 		}
 
 		void add(Applicant applicant){
 
+				if( applicant.isPwD )
+					pwdApplicants.add( applicant );
+
 				applicants.add( applicant );
-				ArrayList<Applicant> pApplicants = this.paperWiseApplicant.get( applicant.paperCode );
+
+				ArrayList<Applicant> pApplicants = paperWiseApplicant.get( applicant.paperCode );
+
 				if( pApplicants == null ){
-						pApplicants = new ArrayList<Applicant>();
+					pApplicants = new ArrayList<Applicant>();
 				}
+
 				pApplicants.add( applicant );
-				this.paperWiseApplicant.put( applicant.paperCode,  pApplicants );
+				paperWiseApplicant.put( applicant.paperCode,  pApplicants );
 		}
 
 		void print(){

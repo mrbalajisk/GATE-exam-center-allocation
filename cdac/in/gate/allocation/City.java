@@ -12,21 +12,20 @@ public class City{
 	String cityCode;
 	String cityName;
 
-	Map<String, Centre> centres;
+	List<Centre> centres;
 	Map<String, Session> sessions;
 	
 	City(String code, String cityName){
+
 		this.cityCode = code;
 		this.cityName = cityName;
-		this.centres = new LinkedHashMap<String, Centre>();
+		this.centres = new ArrayList<Centre>();
 		this.sessions = new LinkedHashMap<String, Session>();
 	}
 
 	void print(String zone){
-
-		Set<String> centreCodes = centres.keySet();
-		for(String centreCode: centreCodes ){
-			centres.get( centreCode ).print( zone, cityCode );
+		for(Centre centre: centres ){
+			centre.print( zone, cityCode );
 		}
 	}
 } 
