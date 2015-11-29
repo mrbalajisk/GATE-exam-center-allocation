@@ -1,0 +1,90 @@
+Zone ID,Zone,City,TCS ID,Centre code,LISP,Add1,Add2,Add3,Pincode,City,State,Max,S1-EC1,S1-ME1,S2-ME2,"S2-BT, CH, GG, MN, PH",S3-ME3,S3-EC2,S4-EC3,"S4-AR, CY, IN, MA, PE",S5-CE1,S5-CS1,S6-CS2,S6-EE1,S7-CE2,"S7-AG, EY, MT, PI",S8-EE2,"S8-AE, TF, XL, XE"
+7,IIT MADRAS,Bapatla,280,7001,Bapatla Engineering College,Bapatla,Guntur District,,522101,Bapatla,Andhra Pradesh,220,117,42,82,57,40,117,117,28,71,104,63,157,110,56,156,24
+7,IIT MADRAS,Bapatla,1448,7002,Chirala Engineering College,Ramapuram Beach Road,Prakasham District,Chirala,523157,Bapatla,Andhra Pradesh,100,50,40,0,0,40,50,50,30,40,40,40,60,0,0,60,10
+7,IIT MADRAS,Chittoor,1317,7003,Sreenivasa Institute of Technology and Management Studies,Dr.Visweswaraiah Road Bangalore-Tirupathi By pass Road,Murukambattu,,517127,Chittoor,Andhra Pradesh,280,96,77,77,18,77,96,96,32,91,66,66,136,90,6,136,8
+7,IIT MADRAS,Gudur,1351,7004,Audisankara College of Engineering & Technology,NH-5 Bypass Road Aravanda Nagar,Nellore District Gudur,,524101,Gudur,Andhra Pradesh,360,121,42,42,7,40,121,119,5,109,52,51,154,108,2,153,2
+7,IIT MADRAS,Guntur,3456,7005,Jagarlamudi Kuppuswamy Choudary College,JKC Nagar,Choudary Pet Post,,522006,Guntur,Andhra Pradesh,150,120,20,0,0,30,120,0,0,70,78,62,88,0,0,0,0
+7,IIT MADRAS,Guntur,1260,7006,Malineni Lakshmaiah Womens Engineering College,Pulladigunta Village Kornepadu Post,Vatticherukuru Mandal,Prathipadu Road,522017,Guntur,Andhra Pradesh,250,120,106,0,0,95,120,150,20,100,72,95,154,234,12,250,0
+7,IIT MADRAS,Guntur,1304,7007,N.R.I Institute of Technology,Visadala Road Perecherla,Medikonduru Mandal,,522009,Guntur,Andhra Pradesh,250,120,100,125,35,100,120,150,20,100,98,82,168,235,11,250,0
+7,IIT MADRAS,Guntur,4082,7008,Universal College of Engineering and Technology,Perecharala Narasarao Pet Road,Doki Parru Post,Medikondur Mandal,522438,Guntur,Andhra Pradesh,200,120,70,125,36,70,120,150,19,100,93,77,123,0,0,0,0
+7,IIT MADRAS,Guntur,4350,7009,Vasireddy Venkatadri Institute of Technology,Nambur Village,Pedakakani Mandal,,522508,Guntur,Andhra Pradesh,220,120,80,126,70,80,120,150,20,100,98,82,138,0,0,171,34
+7,IIT MADRAS,Kadapa,1885,7010,Annamacharya Institute of Technology & Sciences,Utukur Post,Chinthakomma Dinne Village & Mandal,Y.S.R District Kadapa,516003,Kadapa,Andhra Pradesh,320,125,61,93,44,61,125,184,31,115,63,62,180,114,45,180,0
+7,IIT MADRAS,Kadapa,1278,7011,Annamacharya Institute of Technology and Sciences,Tallapaka,New Boyanapalli Post,Kadapa District Rajampet,516126,Kadapa,Andhra Pradesh,250,125,60,0,0,60,125,0,0,120,60,60,180,120,45,180,0
+7,IIT MADRAS,Kadapa,3477,7012,Chaitanya Bharathi Institute of Technology,Vidya Nagar,Pallvolu,Kadapa District Proddatur,516360,Kadapa,Andhra Pradesh,250,125,65,93,45,65,125,190,30,120,60,60,182,120,45,182,7
+7,IIT MADRAS,Nellore,1221,7013,Geethanjali Institute of Science and Technology,3rd Mile Nellore-Bombay Highway,Gangavaram Village,Kovur Mandal,524137,Nellore,Andhra Pradesh,250,170,57,0,0,55,170,170,0,133,88,38,211,232,5,210,0
+7,IIT MADRAS,Nellore,1816,7014,Narayana Engineering College,Narayana Avenue,Muthukur Road,A.K. Nagar Post Nellore,524004,Nellore,Andhra Pradesh,180,100,60,117,39,60,100,98,44,100,71,40,140,0,0,140,9
+7,IIT MADRAS,Ongole,2041,7015,RISE Krishna Sai Gandhi Group of Institutions,NH-5 Valluru Post,Prakasam District,,523272,Ongole,Andhra Pradesh,250,155,62,128,31,62,155,225,25,117,73,83,161,197,1,160,5
+7,IIT MADRAS,Ongole,2021,7016,RISE Krishna Sai Prakasam Group of Institutions,NH.5 Valluru Post,Prakasam District,,523272,Ongole,Andhra Pradesh,150,74,66,0,0,64,76,0,0,80,50,40,100,0,0,100,
+7,IIT MADRAS,Tirupathi,1862,7017,Annamacharya Institute of Technology & Sciences,Venkatapuram Village,Renigunta Mandal,Chittoor District,517520,Tirupathi,Andhra Pradesh,180,100,80,100,50,85,90,100,65,100,70,30,150,170,0,120,32
+7,IIT MADRAS,Tirupathi,1269,7018,K.M.M Institute of Technology and Science,Ramireddipalle,Chandragiri Mandal,Chittoor District,517102,Tirupathi,Andhra Pradesh,130,73,50,73,31,45,80,100,25,40,70,40,90,123,0,100,0
+7,IIT MADRAS,Tirupathi,4437,7019,SHREE Institute of Technical Education,Gopalapuram Vill & PO,Renigunta Mandal,Renigunta-Srikalahasthi Highway,517127,Tirupathi,Andhra Pradesh,130,100,30,74,36,45,80,0,0,44,70,40,90,90,22,70,30
+7,IIT MADRAS,Tirupathi,4081,7020,SV College of Engineering,Karakambadi Road,Chittoor District,,517507,Tirupathi,Andhra Pradesh,230,140,82,100,60,75,150,180,42,100,110,48,179,0,0,199,0
+7,IIT MADRAS,Tirupathi,1326,7021,Yogananda Institute of Technology & Science,Mohan Reddy Nagar,Elamandyam Village,Renigunta Mandal,517520,Tirupathi,Andhra Pradesh,250,140,105,0,0,95,153,171,84,100,118,60,190,0,0,210,0
+7,IIT MADRAS,Angamaly,810,7022,Adi Shankara Institute Of Engineering And Technology,Vidya Bharathi Nagar,Mattoor,Kalady,683574,Angamaly,Kerala,250,109,72,72,46,70,109,107,84,78,77,77,101,77,2,101,20
+7,IIT MADRAS,Ernakulam,314,7023,Rajagiri School of Engineering and Technology,Rajagiri Valley,Kakkanad,,682039,Ernakulam,Kerala,250,118,90,90,75,90,118,115,130,110,130,130,110,147,20,153,68
+7,IIT MADRAS,Ernakulam,318,7024,Sree Narayana Gurukulam College Of Engineering,Kadayiruppu P.O,Kolenchery,Cochin,682311,Ernakulam,Kerala,250,118,89,89,73,87,118,120,123,97,136,135,103,0,0,0,0
+7,IIT MADRAS,Ernakulam,1170,7025,Sree Narayana Mangalam Institute of Management and Technology,Maliankara P O,Moothakunnam,N Paravur,683516,Ernakulam,Kerala,200,100,80,80,70,80,100,100,100,80,100,100,80,140,0,140,30
+7,IIT MADRAS,Trivandrum,326,7026,John Cox Memorial CSI Institute of Technology,Kumarapuram,Kannammoola Rd,,695011,Trivandrum,Kerala,180,107,63,60,100,97,73,100,80,80,100,100,70,118,58,101,70
+7,IIT MADRAS,Trivandrum,322,7027,Mohandas College of Engineering and Technology,Anad,Nedumangad,,695544,Trivandrum,Kerala,220,107,85,108,103,100,100,100,100,92,108,107,93,0,0,50,124
+7,IIT MADRAS,Trivandrum,922,7028,TCS ILP,Peepul Park,Technopark Campus,Kazhakootam,695581,Trivandrum,Kerala,500,212,150,130,120,100,253,226,239,196,218,218,188,250,0,200,0
+7,IIT MADRAS,Puducherry,1640,7029,Manakula Vinayagar Institute of Technology,Kalitheerthalkuppam,Manaadipet Commune,,605107,Puducherry,Puducherry,240,90,110,110,90,121,89,90,105,90,130,100,120,90,10,140,60
+7,IIT MADRAS,Puducherry,1895,7030,Rajiv Gandhi College of Engineering and Technology,Puducherry-Cuddalore Main Road,Kirumambakkam,,607402,Puducherry,Puducherry,150,70,70,70,70,68,70,70,70,0,0,70,70,0,0,0,0
+7,IIT MADRAS,Puducherry,1438,7031,Sri Manakula Vinayagar Engineering College,Madagadipet,Puducherry,,605107,Puducherry,Puducherry,240,89,121,121,94,110,90,87,105,90,143,101,96,89,14,144,66
+7,IIT MADRAS,Chennai,2402,7032,Aalim Muhammed Salegh College of Engineering,Muthapudupet,Avadi IAF,Tiruvallur,600055,Chennai,Tamil Nadu,500,200,290,258,233,246,200,149,101,118,111,112,120,0,0,119,98
+7,IIT MADRAS,Chennai,816,7033,Agni College of Technology,Old Mahabalipuram Road,Thalambur,,600130,Chennai,Tamil Nadu,250,100,150,150,100,150,100,100,100,130,90,100,150,0,0,150,70
+7,IIT MADRAS,Chennai,1778,7034,Chennai Institute of Technology,Sarathy Nagar,Kundrathur,,600069,Chennai,Tamil Nadu,250,100,150,150,100,150,100,100,100,120,80,80,170,0,0,170,50
+7,IIT MADRAS,Chennai,555,7035,Dhanalakshmi College of Engineering,Dr. V. P. R Nagar,Off. Tambaram Sriperumbudur Road via Manimangalam,Manimangalam Post,601301,Chennai,Tamil Nadu,450,189,157,200,250,200,189,0,233,0,0,0,0,0,0,0,0
+7,IIT MADRAS,Chennai,4994,7036,"Edu Surge, chennai",Old No. 74 New No. 165 Chettiyar Hall 3rd Floor,TTK ROAD,ALWARPET,600018,Chennai,Tamil Nadu,250,100,150,150,100,150,100,100,140,140,80,100,150,240,0,150,70
+7,IIT MADRAS,Chennai,754,7037,G.K.M College of Engineering and Technology,G.K.M Nagar,Perungalathur,Near Tambaram,600063,Chennai,Tamil Nadu,400,200,200,200,200,200,200,200,200,140,200,200,180,240,0,180,150
+7,IIT MADRAS,Chennai,244,7038,KCG College of Technology,KCG nagar,Rajiv Gandhi Salai Karapakkam,Old Mahabalipuram Road,600097,Chennai,Tamil Nadu,250,100,150,150,100,150,100,100,150,120,100,100,150,240,0,150,70
+7,IIT MADRAS,Chennai,183,7039,Rajalakshmi Engineering College,Rajalakshmi Nagar,Thandalam,,602105,Chennai,Tamil Nadu,250,100,150,150,100,150,100,80,140,100,80,80,160,180,0,160,70
+7,IIT MADRAS,Chennai,779,7040,S.A. Engineering College,Poonnamalle Avadi Road,Veeraragavapuram,Thiruverkadu,600077,Chennai,Tamil Nadu,450,100,150,150,300,150,100,130,100,100,80,80,160,0,0,160,80
+7,IIT MADRAS,Chennai,766,7041,Saveetha Engineering College,Saveetha Nagar,Thandalam,,602105,Chennai,Tamil Nadu,250,100,150,150,100,150,100,80,120,100,80,80,150,0,0,150,70
+7,IIT MADRAS,Chennai,773,7042,SKR Engineering College,Nazarathpet,Poonamallee,,600123,Chennai,Tamil Nadu,230,100,120,120,110,120,100,80,120,100,80,80,140,0,0,140,80
+7,IIT MADRAS,Chennai,212,7043,SRM Easwari Engineering College,Bharathi Salai,Ramapuram,,600089,Chennai,Tamil Nadu,350,100,250,250,100,250,100,100,240,160,80,80,160,220,0,160,60
+7,IIT MADRAS,Chennai,2516,7044,Tata Consultancy Services - ILP Centre,No 16 MARG Square,Rajiv Gandhi Salai,Old Mahabalipuram Road Karapakkam,600097,Chennai,Tamil Nadu,950,300,650,650,330,650,300,500,450,500,450,450,500,587,362,500,450
+7,IIT MADRAS,Chennai,4487,7045,Zealous Services Head Office,New No 17 Old No 7 Ground & 1st Floor,Shafika Building Near Palmgrove Hotel,Kodambakkam high road Nungambakkam,600034,Chennai,Tamil Nadu,250,100,150,150,100,150,100,100,140,120,80,100,150,240,0,150,70
+7,IIT MADRAS,Coimbatore,2981,7046,Akshaya College of Engineering & Technology,Kinathukadavu,,,642109,Coimbatore,Tamil Nadu,250,0,0,0,0,0,0,0,0,123,82,82,125,120,32,125,120
+7,IIT MADRAS,Coimbatore,1761,7047,Dr. N.G.P. Educational Institutions,Dr. N.G.P Nagar,Kalapatti Road,,641048,Coimbatore,Tamil Nadu,450,164,266,287,135,287,184,182,166,245,163,163,250,245,62,250,200
+7,IIT MADRAS,Coimbatore,842,7048,Info Institute of Engineering,NH209 Sathy Road,Kovilpalayam,,641107,Coimbatore,Tamil Nadu,250,100,150,143,67,143,92,122,108,126,84,84,125,128,32,125,115
+7,IIT MADRAS,Coimbatore,870,7049,Kathir College of Engineering,Wisdom Tree,Neelambur Avinashi Road,,641062,Coimbatore,Tamil Nadu,400,100,150,143,67,143,92,123,112,120,80,80,128,120,32,127,115
+7,IIT MADRAS,Coimbatore,1233,7050,RVS College of Engineering and Technology,No.242B Kumaran Kottam Campus E Block,Trichy Road Kannampalayam Post,Sulur Via,641402,Coimbatore,Tamil Nadu,400,94,147,144,68,144,92,123,107,0,0,0,0,0,0,0,0
+7,IIT MADRAS,Coimbatore,2753,7051,Sri Eshwar College of Engineering,Kondampatti PO ,Vadasithur Via ,,641202,Coimbatore,Tamil Nadu,250,94,148,144,68,144,92,0,0,0,0,0,0,0,0,0,0
+7,IIT MADRAS,Cuddalore,1742,7052,Krishnasamy College Of Engineering & Technology,Nellikuppam Main Road,Kumarapuram,,607109,Cuddalore,Tamil Nadu,200,69,112,122,30,120,60,64,36,88,72,70,117,177,8,117,21
+7,IIT MADRAS,Cuddalore,4581,7053,Krishnasamy Institute of Post graduate Studies,Nellikuppam Main Road,Kumarapuram,,607110,Cuddalore,Tamil Nadu,200,60,120,110,30,112,69,64,42,89,76,77,118,0,0,117,0
+7,IIT MADRAS,Dindigul,222,7054,PSNA ENGINEERING COLLEGE,Kothandaraman nagar,NH-209,,624622,Dindigul,Tamil Nadu,450,101,101,101,31,101,101,99,49,138,68,68,86,138,1,86,14
+7,IIT MADRAS,Kanyakumari,1649,7055,Loyola Institute of Technology & Science,Loyola Nagar,Thovalai,,629302,Kanyakumari,Tamil Nadu,250,115,79,79,13,77,115,110,30,107,73,73,67,0,0,0,0
+7,IIT MADRAS,Kanyakumari,840,7056,St.Xavier's Catholic College of Engineering,Chunkankadai,Nagercoil,,629003,Kanyakumari,Tamil Nadu,250,116,78,78,13,77,116,118,31,107,73,72,68,213,2,134,48
+7,IIT MADRAS,Karur,226,7057,M. Kumaraswamy College of Engineering,National Highway,Thalavapalayam,Karur,639113,Karur,Tamil Nadu,230,36,76,76,26,76,36,36,34,52,21,20,46,52,0,45,20
+7,IIT MADRAS,Madurai,1232,7058,K L N COLLEGE OF INFORMATION TECHNOLOGY,Madurai Pottapalayam,Kusavapatti Road Pottapalayam village,Pottapalayam P.O Manamadurai Taluk Sivagangai District,630611,Madurai,Tamil Nadu,500,120,130,130,100,130,120,120,130,150,100,100,150,201,39,100,100
+7,IIT MADRAS,Madurai,331,7059,KLN COLLEGE OF ENGINEERING,Pottapalayam,Sivagangai District,,630611,Madurai,Tamil Nadu,500,197,171,171,103,169,197,195,147,285,170,170,246,233,0,295,34
+7,IIT MADRAS,Namakkal,236,7060,K.S. R College of Technology,KSR Kalvi Nagar,Thokkavadi,Tiruchengode Namakkal,637215,Namakkal,Tamil Nadu,550,185,285,285,144,282,185,181,137,291,123,122,204,290,12,202,66
+7,IIT MADRAS,Salem,2118,7061,AVS Engineering College,Military Road Near Sakthikailash Womens College,Ammapet,,636003,Salem,Tamil Nadu,250,90,150,180,0,150,90,90,40,162,88,70,150,0,0,0,0
+7,IIT MADRAS,Salem,1068,7062,Knowledge Institute of Technology,KIOT Campus,NH47 Kakapalayam post,,637504,Salem,Tamil Nadu,450,120,242,212,114,242,120,118,92,162,88,105,186,323,100,336,75
+7,IIT MADRAS,Thanjavur,1043,7063,Prist University,TrichyThanjavur Road,Vallam,,613403,Thanjavur,Tamil Nadu,500,134,179,299,190,177,134,232,174,111,100,100,130,111,23,130,40
+7,IIT MADRAS,Thanjavur,1032,7064,Sastra University,Tirumalaisamudram,Thanjavur,,613401,Thanjavur,Tamil Nadu,250,100,120,0,0,120,100,0,0,110,105,104,131,110,0,130,58
+7,IIT MADRAS,Thoothukudi,864,7065,Infant Jesus College of Engineering,Tirunelveli to Thoothukudi National Highway,Kamaraj Nagar,Keela Vallanadu Thoothukudi,628851,Thoothukudi,Tamil Nadu,250,70,87,87,28,87,70,68,37,62,52,52,117,62,4,117,14
+7,IIT MADRAS,Tiruchirappalli,239,7066,JJ College of Engineering and Technology,Ammapettai,Poolangulathupatti Post,,620009,Tiruchirappalli,Tamil Nadu,340,130,200,200,130,200,130,130,117,119,86,86,140,160,40,187,41
+7,IIT MADRAS,Tiruchirappalli,1986,7067,K.Ramakrishnan College of Engineering,Kariyamanikam Road,Samayapuram,,621112,Tiruchirappalli,Tamil Nadu,240,100,140,140,95,140,100,100,95,120,86,86,140,159,41,187,41
+7,IIT MADRAS,Tiruchirappalli,1363,7068,M.A.M College of Engineering,Trichy Chennai Trunk Road,Siruganur,,621105,Tiruchirappalli,Tamil Nadu,240,100,140,140,95,140,100,100,95,119,87,87,140,158,45,186,42
+7,IIT MADRAS,Tiruchirappalli,1381,7069,M.A.M College of Engineering and Technology,Trichy Chennai Trunk Road,Siruganur,,621105,Tiruchirappalli,Tamil Nadu,240,70,170,170,60,170,70,70,60,119,87,87,141,0,0,0,0
+7,IIT MADRAS,Tiruchirappalli,1759,7070,M.A.M School of Engineering,Trichy Chennai Trunk Road,Siruganur,,621105,Tiruchirappalli,Tamil Nadu,140,25,110,110,25,110,25,0,0,0,0,0,0,0,0,0,0
+7,IIT MADRAS,Tiruchirappalli,2935,7071,Pavendar Bharathidasan College of Engineering and Technology,Thanjai Natraj Nagar,Mathur,Pudukottai Road,620024,Tiruchirappalli,Tamil Nadu,140,25,102,102,25,102,25,50,50,0,0,0,0,0,0,0,0
+7,IIT MADRAS,Tirunelveli,2325,7072,PSN College of Engineering and Technology,PSN Nagar,Melathediyoor Post,Tharuvai via,627152,Tirunelveli,Tamil Nadu,500,184,202,202,72,202,184,184,86,235,156,155,217,234,4,217,48
+7,IIT MADRAS,Tiruvannamalai,4622,7073,SKP ENGINEERING COLLEGE,SKP ENGINEERING COLLEGE,Chinnakangiyanur,,606611,Tiruvannamalai,Tamil Nadu,200,44,52,52,18,50,44,44,33,43,39,38,62,43,2,62,10
+7,IIT MADRAS,Vellore,4628,7074,MARUDHAR KESARI JAIN COLLEGE FOR WOMEN,MARUDHAR NAGAR,CHINNAKALLUPALLI,VANIYAMABADI,635751,Vellore,Tamil Nadu,150,50,100,96,54,100,50,106,44,72,78,129,21,122,11,81,69
+7,IIT MADRAS,Vellore,2031,7075,Sree Krishna College of Engineering,Unai Village,Anaicut Post,,632101,Vellore,Tamil Nadu,100,50,50,46,54,50,50,56,44,43,57,6,94,65,0,100,0
+7,IIT MADRAS,Vellore,4508,7076,VOORHEES COLLEGE,No.1 Officers Line,,,632001,Vellore,Tamil Nadu,100,50,50,47,53,50,50,56,44,43,57,6,94,0,0,100,0
+7,IIT MADRAS,Virudhunagar,336,7077,SREE VIDYA COLLEGE OF ENGINEERING AND TECHNOLOGY,Sivakasi Main Road,P.Kumaralingapuram,Virudhunagar,626005,Virudhunagar,Tamil Nadu,250,71,81,81,49,79,71,71,47,96,61,60,89,96,2,88,23
+7,IIT MADRAS,Karimnagar,1445,7078,Sree Chaitanya College of Engineering,LMD Colony,Thimmapur,,505527,Karimnagar,Telangana,400,169,78,78,110,77,169,168,19,72,109,109,235,0,0,234,4
+7,IIT MADRAS,Karimnagar,1201,7079,Vaageswari College of Engineering,Beside LMD Police Station,Rama Krishna Colony,,505481,Karimnagar,Telangana,450,169,77,77,111,77,169,169,18,71,110,110,240,142,25,240,0
+7,IIT MADRAS,Khammam,269,7080,Bomma Institute of Technology and Sciences,Allipuram,,,507318,Khammam,Telangana,250,83,66,66,34,66,83,0,0,0,0,0,250,0,0,222,11
+7,IIT MADRAS,Khammam,1502,7081,Khammam Institute of Technology & Sciences,Ponnekal Village,Khammam - Hyd Road,,507170,Khammam,Telangana,250,100,80,80,80,80,100,144,16,100,80,0,250,197,24,250,0
+7,IIT MADRAS,Khammam,1253,7082,Laqshya Institute of Technology & Sciences,Wyra Road,Tanikella Village,Konijarla Mandal,507305,Khammam,Telangana,250,112,68,68,85,68,112,150,17,97,87,47,202,0,0,250,0
+7,IIT MADRAS,Nalgonda,1364,7083,Anurag Engineering College,Ananthagiri Village,Kodad Mandal,Nalgonda District Kodad,508206,Nalgonda,Telangana,150,57,30,61,25,30,57,114,9,84,47,23,90,83,5,90,3
+7,IIT MADRAS,Nalgonda,2752,7084,Kodada Institute of Technology and Science for Women,Near Rangani Gudi,Anantagiri Road,Nalgonda District Kodad,508206,Nalgonda,Telangana,150,57,31,0,0,30,57,0,0,0,0,23,91,0,0,90,0
+7,IIT MADRAS,Warangal,2686,7085,Chaitanya Degree College & PG College Autonomous,Kishanpura,Hanamkonda,,506001,Warangal,Telangana,180,100,70,80,70,70,100,100,66,80,80,52,128,130,30,175,0
+7,IIT MADRAS,Warangal,1276,7086,Ganapathi Engineering College,Rangasaipet,Hunter Road,Near Naidu Petrol Pump,506005,Warangal,Telangana,180,100,70,80,65,70,100,0,0,65,85,52,128,0,0,175,0
+7,IIT MADRAS,Warangal,7732,7087,Jaya Institute of Technology and Science for Women,Sy. No. 910 Ward No 7 Block 1,Near Padmakshema Temple,Hanmakonda,506011,Warangal,Telangana,200,100,60,0,0,60,100,120,65,0,0,70,127,0,0,0,0
+7,IIT MADRAS,Warangal,1564,7088,Kakatiya Institute of Technology and Science,Opposite Yerragattu Hillock,Bheemaram Village,Hasanparthy Mandal,506015,Warangal,Telangana,320,150,80,109,81,80,150,180,66,115,116,66,254,130,0,240,0
+7,IIT MADRAS,Warangal,1207,7089,Vaagdevi College of Engineering,Bollikunta,Mamoonoor Camp,,506005,Warangal,Telangana,400,130,99,110,80,98,130,180,66,125,100,140,254,124,61,301,20

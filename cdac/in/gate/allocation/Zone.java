@@ -15,7 +15,7 @@ public class Zone{
 		Map<String, ArrayList<Applicant> > paperWiseApplicant; 
 		int allocated;
 
-		Zone(String zoneId ){
+		Zone(String zoneId){
 
 				this.zoneId = zoneId;
 				this.cityMap = new TreeMap<String, City>();
