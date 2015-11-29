@@ -221,37 +221,37 @@ public class Allocator{
 									System.exit(0);						
 								}
 
-								String tcsCode = tk[4].trim();
-								String centerCode = tk[5].trim();
-								String centerName = tk[6].trim();
-								String cityName = tk[9].trim();
-								String state = tk[10].trim();
+								String tcsCode = tk[3].trim();
+								String centerCode = tk[4].trim();
+								String centerName = tk[5].trim();
+								String cityName = tk[10].trim();
+								String state = tk[11].trim();
 
-								int S1EC1 = Integer.parseInt( tk[11].trim() );
-								int S1ME1 = Integer.parseInt( tk[12].trim() );
+								int S1EC1 = Integer.parseInt( tk[13].trim() );
+								int S1ME1 = Integer.parseInt( tk[14].trim() );
 
-								int S2ME2 = Integer.parseInt( tk[13].trim() );
-								int S2BTCHGGMNPH = Integer.parseInt( tk[14].trim() );
+								int S2ME2 = Integer.parseInt( tk[15].trim() );
+								int S2BTCHGGMNPH = Integer.parseInt( tk[16].trim() );
 
-								int S3ME3 = Integer.parseInt( tk[15].trim() );
-								int S3EC2 = Integer.parseInt( tk[16].trim() );
+								int S3ME3 = Integer.parseInt( tk[17].trim() );
+								int S3EC2 = Integer.parseInt( tk[18].trim() );
 
-								int S4EC3 = Integer.parseInt( tk[17].trim() );
-								int S4ARCYINMAPE = Integer.parseInt( tk[18].trim() );
+								int S4EC3 = Integer.parseInt( tk[19].trim() );
+								int S4ARCYINMAPE = Integer.parseInt( tk[20].trim() );
 
-								int S5CE1 = Integer.parseInt( tk[19].trim() );
-								int S5CS1 = Integer.parseInt( tk[20].trim() );
+								int S5CE1 = Integer.parseInt( tk[21].trim() );
+								int S5CS1 = Integer.parseInt( tk[22].trim() );
 
-								int S6CS2 = Integer.parseInt( tk[21].trim() );
-								int S6EE1 = Integer.parseInt( tk[22].trim() );
+								int S6CS2 = Integer.parseInt( tk[23].trim() );
+								int S6EE1 = Integer.parseInt( tk[24].trim() );
 
-								int S7CE2 = Integer.parseInt( tk[23].trim() );
-								int S7AGEYMTPI = Integer.parseInt( tk[24].trim() );
+								int S7CE2 = Integer.parseInt( tk[25].trim() );
+								int S7AGEYMTPI = Integer.parseInt( tk[26].trim() );
 
-								int S8EE2 = Integer.parseInt( tk[25].trim() );
-								int S8AETFXLXE = Integer.parseInt( tk[26].trim() );
+								int S8EE2 = Integer.parseInt( tk[27].trim() );
+								int S8AETFXLXE = Integer.parseInt( tk[28].trim() );
 
-								//String PwDFriendly = tk[i].trim();
+								//String PwDFriendly = tk[29].trim();
 								String PwDFriendly = "YES";
 
 								List<Session> sessions = new ArrayList<Session>();
@@ -405,8 +405,8 @@ public class Allocator{
 				try{
 						Allocator allocator = new Allocator();
 						allocator.readCityCodeMapping("./data/gate-examcity-code.csv", true);
-						allocator.readApplicants("./data/gate-applicant-20151129.csv", true);
 						allocator.readCentres("./data/zone7.csv", true);
+						allocator.readApplicants("./data/gate-applicant-20151129.csv", true);
 						allocator.allocate();
 						allocator.centreAllocation();
 						allocator.print();
