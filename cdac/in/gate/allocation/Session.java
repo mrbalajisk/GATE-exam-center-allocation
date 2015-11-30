@@ -20,8 +20,8 @@ class PaperCapacity{
 public class Session{
 
 	String sessionId;
-
 	int capacity;
+	int maxCapacity;
 	int allocated;
 	int pwdAllocated;
 	
@@ -31,10 +31,12 @@ public class Session{
 	Map<String, PaperCapacity> paperCapacities;
 	Map<String, List<Applicant>> paperAllocatedApplicant;
 
-	Session(String sessionId, int capacity, String date, String time){
+	Session(String sessionId, int capacity, int maxCapacity,  String date, String time){
 
 		this.sessionId = sessionId;
 		this.capacity = capacity;
+		this.maxCapacity =  maxCapacity;
+
 		this.date = date;
 		this.time = time;
 

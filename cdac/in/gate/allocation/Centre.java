@@ -28,11 +28,10 @@ public class Centre{
 
 	}
 
-    void header(){
+    static void header(){
 		System.out.print("Zone, CityCode, Centre-Code, CentreName, Pwd-Friendly");
-		Set<String> sessionIds = sessions.keySet();
-		for(String sessionId: sessionIds){
-			System.out.print(", ( S"+sessions.get(sessionId).sessionId+"|Capacity|Allocated|PwD)");	
+		for(int i = 1; i < 9; i++){
+			System.out.print(", ( S"+i+"| MaxCapacity | Capacity | Allocated | PwD)");	
 		}
 		System.out.println();
 	}
@@ -43,7 +42,7 @@ public class Centre{
 		Set<String> sessionIds = sessions.keySet();
 		for(String sessionId: sessionIds){
 			Session session = sessions.get( sessionId );
-			System.out.print(", ("+session.capacity+"|"+session.allocated+"|"+session.pwdAllocated+")");
+			System.out.print(", ("+session.maxCapacity + "|"+ session.capacity +"|"+ session.allocated +"|"+ session.pwdAllocated +")");
 		}
 		System.out.println();
 	}

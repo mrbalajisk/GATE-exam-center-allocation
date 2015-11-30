@@ -11,6 +11,7 @@ public class Zone{
 		String zoneId;
 
 		Map<String, City> cityMap;
+		Map<String, String> cityChange;
 
 		List<Applicant> applicants;
 		List<Applicant> pwdApplicants;
@@ -24,7 +25,9 @@ public class Zone{
 			this.cityMap = new TreeMap<String, City>();
 			this.applicants = new ArrayList<Applicant>();	
 			this.pwdApplicants = new ArrayList<Applicant>();	
+			
 			this.paperWiseApplicant = new TreeMap<String, ArrayList<Applicant>>();
+			this.cityChange = new TreeMap<String, String>();
 			this.allocated = 0 ;
 		}
 
