@@ -27,15 +27,15 @@ public class Allocator{
 	List<Applicant> otherApplicants;
 	List<Applicant> femaleApplicants;
 
-	List<Applicant> notAllocatedApplicants;
-	List<Applicant> allocatedApplicants;
+	List<Applicant> allAllocatedApplicants;
+	List<Applicant> allNotAllocatedApplicants;
 		
 
 	public Allocator(){
 
 		applicants = new ArrayList<Applicant>();
-		notAllocatedApplicants = new ArrayList<Applicant>();
-		allocatedApplicants = new ArrayList<Applicant>();
+		allAllocatedApplicants = new ArrayList<Applicant>();
+		allNotAllocatedApplicants = new ArrayList<Applicant>();
 
 		PwDApplicants = new ArrayList<Applicant>();
 		femaleApplicants = new ArrayList<Applicant>();
@@ -481,6 +481,7 @@ public class Allocator{
 						applicant.centre = centre;
 						applicant.isAllocated = true;
 						applicant.session = session;
+						applicant.city = city;
 						applicant.allotedChoice = ( choiceNumber + 1 );
 						pc.allocated++;
 						session.allocated++;
@@ -496,7 +497,7 @@ public class Allocator{
 						}	
 						paperApplicants.add( applicant );
 						session.paperAllocatedApplicant.put( applicant.paperCode, paperApplicants );
-						allocatedApplicants.add ( applicant );
+						allAllocatedApplicants.add ( applicant );
 					        break;	
 					}	
 
@@ -514,7 +515,6 @@ public class Allocator{
 	}
 
 	void centerAllocate(City city){
-			
 			for( Centre centre: city.centres ){
 					Set<String> sessionIds = centre.sessions.keySet();
 					for(String sessionId: sessionIds ){
@@ -550,6 +550,7 @@ public class Allocator{
 
 		Centre.header();
 		Set<String> zoneIds = zones.keySet();
+
 		for(String zoneId: zoneIds){
 			Zone zone = zones.get( zoneId );
 			Set<String> cityCodes = zone.cityMap.keySet();
@@ -560,18 +561,18 @@ public class Allocator{
 		}
 
 		Applicant.header();
-		for(Applicant applicant: allocatedApplicants ){
+		for(Applicant applicant: allAllocatedApplicants ){
 			applicant.print();
 		}
 
 		System.out.println("------------------ Not Allocated Candidate ---------------");
 		Applicant.header();
 
-		for(Applicant applicant: notAllocatedApplicants ){
+		for(Applicant applicant: allNotAllocatedApplicants ){
 			applicant.print();
 		}
-		System.out.println("Not Allocated candidate "+notAllocatedApplicants.size());
-		System.out.println("Allocated candidate "+allocatedApplicants.size());
+		System.out.println("Allocated candidate "+allAllocatedApplicants.size());
+		System.out.println("Not Allocated candidate "+allNotAllocatedApplicants.size());
 	}
 
 	void cityChangeUpdate(List<Applicant> applicants, Map<String, String> cityChange){
@@ -613,14 +614,21 @@ public class Allocator{
 		allocate( zone.applicants, 0, true );
 
 
-
 		for( Applicant applicant: zone.applicants){
-			if( !applicant.isAllocated )
-				notAllocatedApplicants.add( applicant ); 				
+
+			if( !applicant.isAllocated ){
+				zone.notAllocatedApplicants.add( applicant );
+				allNotAllocatedApplicants.add( applicant );
+
+			}else{
+				zone.allocatedApplicants.add( applicant);
+				if( !allAllocatedApplicants.contains( applicant ) )
+					allAllocatedApplicants.add( applicant );
+			}
 		}
 
-		System.out.println("Allocated Applicant From Zone: "+zoneId+" => "+ allocatedApplicants.size() );
-		System.out.println("Not Allocated Applicant From Zone: "+zoneId+" => "+ notAllocatedApplicants.size() );
+		System.out.println("Allocated Applicant From Zone: "+zoneId+" => "+ zone.allocatedApplicants.size() );
+		System.out.println("Not Allocated Applicant From Zone: "+zoneId+" => "+ zone.notAllocatedApplicants.size() );
 	}
 
 	void allocate( ){
@@ -638,15 +646,15 @@ public class Allocator{
 
 			Allocator allocator = new Allocator();
 			allocator.readApplicants("./data/gate-applicant-20151129.csv", true);
-			//allocator.readCentres("./data/zone7.csv", true);
+			allocator.readCentres("./data/zone7.csv", true);
 			allocator.readCentres("./data/zone5.csv", true);
 			allocator.readCityChangeMapping("./data/city-change.csv",true);
 
 			//allocator.readCityCodeMapping("./data/gate-examcity-code.csv", true);
 			//allocator.print();
 
-			//allocator.allocate("7");
 			allocator.allocate("5");
+			allocator.allocate("7");
 
 			allocator.centreAllocation();
 
