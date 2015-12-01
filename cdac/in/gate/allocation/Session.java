@@ -24,6 +24,7 @@ public class Session{
 	int maxCapacity;
 	int allocated;
 	int pwdAllocated;
+	int registrationGenerated;
 	
 	String date;
 	String time;
@@ -42,6 +43,7 @@ public class Session{
 
 		this.pwdAllocated = 0;
 		this.allocated = 0;
+		this.registrationGenerated = 0;
 		this.paperCapacities = new TreeMap<String, PaperCapacity>();
 		this.paperAllocatedApplicant = new TreeMap<String, List<Applicant>>();
 

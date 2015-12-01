@@ -507,20 +507,43 @@ public class Allocator{
 		}	
 	}
 
-	void centerAllocate(City city){
+	String generateRegistration(Applicant applicant){
+			String count = "000"+(applicant.session.registrationGenerated + 1);
+			applicant.session.registrationGenerated++;
+			String registrationId = applicant.paperCode+"16S"+applicant.session.sessionId+""+applicant.centre.centreCode+""+count.substring( count.length() - 3 );			return registrationId;
+	}
 
+	void centerAllocate(City city){
+			
+			for( Centre centre: city.centres ){
+					Set<String> sessionIds = centre.sessions.keySet();
+					for(String sessionId: sessionIds ){
+						Session session = centre.sessions.get( sessionId );
+						Set<String> paperCodes = session.paperAllocatedApplicant.keySet();
+						boolean run = true;
+						while( run ){	
+							run = false;
+							for(String paperCode: paperCodes ){
+								List<Applicant> applicants = session.paperAllocatedApplicant.get( paperCode );
+								if( applicants != null && applicants.size() > 0){
+									Applicant applicant = applicants.remove(0);
+									run = true;
+									applicant.registrationId = generateRegistration( applicant );
+								}
+							}
+						}
+					} 	
+			} 
 	}
 
 	void centreAllocation(){
 
-		/*
-		   Set<String> cityCodes = cityMap.keySet();
+		   Set<String> cityCodes = cities.keySet();
 		   for(String cityCode: cityCodes){
-		   		City city = cityMap.get( cityCode );
+		   		City city = cities.get( cityCode );
 		   		System.err.println( "Allocation for "+city.cityCode+" | "+city.cityName);
 		   		centerAllocate( city );
 		   }
-		   */
 	}
 
 	void print(){
@@ -615,15 +638,17 @@ public class Allocator{
 
 			Allocator allocator = new Allocator();
 			allocator.readApplicants("./data/gate-applicant-20151129.csv", true);
-			allocator.readCentres("./data/zone7.csv", true);
+			//allocator.readCentres("./data/zone7.csv", true);
+			allocator.readCentres("./data/zone5.csv", true);
 			allocator.readCityChangeMapping("./data/city-change.csv",true);
 
 			//allocator.readCityCodeMapping("./data/gate-examcity-code.csv", true);
 			//allocator.print();
 
-			allocator.allocate("7");
+			//allocator.allocate("7");
+			allocator.allocate("5");
 
-			//allocator.centreAllocation();
+			allocator.centreAllocation();
 
 			allocator.print();
 
