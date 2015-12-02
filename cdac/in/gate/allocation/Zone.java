@@ -8,57 +8,57 @@ import java.util.TreeMap;
 
 public class Zone{
 
-		String zoneId;
+	String zoneId;
 
-		Map<String, City> cityMap;
-		Map<String, String> cityChange;
+	Map<String, City> cityMap;
+	Map<String, String> cityChange;
 
-		List<Applicant> applicants;
-		List<Applicant> pwdApplicants;
+	List<Applicant> applicants;
+	List<Applicant> pwdApplicants;
 
-		Map<String, ArrayList<Applicant> > paperWiseApplicant; 
-		List<Applicant> allocatedApplicants;
-		List<Applicant> notAllocatedApplicants;
+	Map<String, ArrayList<Applicant> > paperWiseApplicant; 
+	List<Applicant> allocatedApplicants;
+	List<Applicant> notAllocatedApplicants;
 
-		int allocated;
+	int allocated;
 
-		Zone(String zoneId){
+	Zone(String zoneId){
 
-			this.zoneId = zoneId;
-			this.cityMap = new TreeMap<String, City>();
-			this.applicants = new ArrayList<Applicant>();	
-			this.pwdApplicants = new ArrayList<Applicant>();	
-			
-			this.allocatedApplicants = new ArrayList<Applicant>();
-			this.notAllocatedApplicants = new ArrayList<Applicant>();
-			
-			this.paperWiseApplicant = new TreeMap<String, ArrayList<Applicant>>();
-			this.cityChange = new TreeMap<String, String>();
-			this.allocated = 0 ;
+		this.zoneId = zoneId;
+		this.cityMap = new TreeMap<String, City>();
+		this.applicants = new ArrayList<Applicant>();	
+		this.pwdApplicants = new ArrayList<Applicant>();	
+
+		this.allocatedApplicants = new ArrayList<Applicant>();
+		this.notAllocatedApplicants = new ArrayList<Applicant>();
+
+		this.paperWiseApplicant = new TreeMap<String, ArrayList<Applicant>>();
+		this.cityChange = new TreeMap<String, String>();
+		this.allocated = 0 ;
+	}
+
+	void add(Applicant applicant){
+
+		if( applicant.isPwD )
+			pwdApplicants.add( applicant );
+
+		applicants.add( applicant );
+
+		ArrayList<Applicant> pApplicants = paperWiseApplicant.get( applicant.paperCode );
+
+		if( pApplicants == null ){
+			pApplicants = new ArrayList<Applicant>();
 		}
 
-		void add(Applicant applicant){
+		pApplicants.add( applicant );
+		paperWiseApplicant.put( applicant.paperCode,  pApplicants );
+	}
 
-				if( applicant.isPwD )
-					pwdApplicants.add( applicant );
-
-				applicants.add( applicant );
-
-				ArrayList<Applicant> pApplicants = paperWiseApplicant.get( applicant.paperCode );
-
-				if( pApplicants == null ){
-					pApplicants = new ArrayList<Applicant>();
-				}
-
-				pApplicants.add( applicant );
-				paperWiseApplicant.put( applicant.paperCode,  pApplicants );
-		}
-
-		void print(){
-				Set<String> cities = cityMap.keySet();
-				for(String city: cities){
-						cityMap.get( city ).print( zoneId );	
-				}			
-		}
+	void print(){
+		Set<String> cities = cityMap.keySet();
+		for(String city: cities){
+			cityMap.get( city ).print( zoneId );	
+		}			
+	}
 } 
 

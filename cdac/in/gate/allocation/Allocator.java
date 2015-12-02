@@ -12,24 +12,26 @@ import java.io.File;
 
 public class Allocator{
 
-	Map<String, Zone> zones;
-	Map<String, City> cities;
+	static Map<String, Zone> zones;
+	static Map<String, City> cities;
 
-	Map<String, String> paperSession;
-	Map<String, String> sessionPaper;
-	Map<String, String> cityCodes;
+	static Map<String, String> paperSession;
+	static Map<String, String> sessionPaper;
+	static Map<String, String> cityCodes;
+	static Map<String, String> codeCities = new TreeMap<String, String>();
 
-	Map<String, String> cityChangeMap;
+	static Map<String, String> cityChangeMap;
 
-	List<Applicant> applicants;
+	static List<Applicant> applicants;
 
-	List<Applicant> PwDApplicants;
-	List<Applicant> otherApplicants;
-	List<Applicant> femaleApplicants;
+	static List<Applicant> PwDApplicants;
+	static List<Applicant> otherApplicants;
+	static List<Applicant> femaleApplicants;
 
-	List<Applicant> allAllocatedApplicants;
-	List<Applicant> allNotAllocatedApplicants;
-		
+	static List<Applicant> allAllocatedApplicants;
+	static List<Applicant> allNotAllocatedApplicants;
+
+	static Map<String, Analysis> zoneWiseAnalysis = new TreeMap<String, Analysis>();
 
 	public Allocator(){
 
@@ -99,46 +101,96 @@ public class Allocator{
 		cityCodes = new TreeMap<String, String>();
 	}
 
+	void zoneWiseAllocationDetails(){
+
+		System.out.println("-----------------------------------------------------------");	
+		System.out.println("ZoneId, Total Applicant, Allocated, Not Allocated ");	
+		Set<String> zoneIds = zones.keySet();
+		for( String zoneId: zoneIds ){
+			Zone zone = zones.get( zoneId );
+			System.out.println(zone.zoneId+", "+zone.applicants.size()+", "+zone.allocatedApplicants.size()+", "+zone.notAllocatedApplicants.size() );
+		}
+	}
+
+	void printDataDetails(){
+
+		System.out.println("-----------------------------------------------------------");	
+		System.out.println("Total Applicant  : "+applicants.size() );
+		System.out.println("PwD Applicant    : "+PwDApplicants.size() );
+		System.out.println("Female Applicant : "+femaleApplicants.size() );
+		System.out.println("!PwD  Applicant  : "+otherApplicants.size() );
+
+		System.out.println("-----------------------------------------------------------");	
+
+		Set<String> zoneCodes = zones.keySet();
+		int total = 0;
+		boolean flag = true;
+		for(String zoneCode: zoneCodes){
+			Zone zone = zones.get( zoneCode );
+			Set<String> paperCodes = zone.paperWiseApplicant.keySet();
+			if( flag ){
+				System.out.print("ZoneId, Total");
+				for(String paperCode: paperCodes){
+					System.out.print(", "+paperCode);
+				}		
+				System.out.println();
+				flag = false;
+			}		
+
+			total += zone.applicants.size();
+			System.out.print(zone.zoneId+", "+zone.applicants.size());
+			for(String paperCode: paperCodes){
+				System.out.print(", "+zone.paperWiseApplicant.get(paperCode).size() );
+			}	
+			System.out.println();
+		}	
+
+		if( total != applicants.size() ){
+			System.err.println("Error in Applicant data Count mismatch "+total+" != "+applicants.size() );
+		}
+	}
 
 	void readCityChangeMapping(String filename, boolean withHeader){
 
-        if( filename == null || filename.trim().length() == 0)
-            return;
+		if( filename == null || filename.trim().length() == 0)
+			return;
 
-        BufferedReader br =  null;
-        String line = null;
+		BufferedReader br =  null;
+		String line = null;
 
-        try{
-            br = new BufferedReader( new FileReader(new File(filename) ) );
-            boolean header = true;
-            int count = 0;
-            while( ( line =  br.readLine() ) != null ){
-                if( withHeader ){
-                    withHeader = false;
-                    continue;
-                }
-                String[] tk = line.split(",");
+		try{
+			br = new BufferedReader( new FileReader(new File(filename) ) );
+			boolean header = true;
+			int count = 0;
+			while( ( line =  br.readLine() ) != null ){
+
+				if( withHeader ){
+					withHeader = false;
+					continue;
+				}
+				String[] tk = line.split(",");
 				Zone zone = zones.get( tk[0].trim() );
-				System.out.println( "==> Zone"+tk[0].trim()+", "+tk[1].trim()+", "+tk[2].trim() );
+
+				System.err.println("Zone"+tk[0].trim()+", "+tk[1].trim()+", "+tk[2].trim() );
+
 				zone.cityChange.put( tk[1].trim(), tk[2].trim() );
 				count++;
-            }
+			}
 			System.err.println("Number of City Change Request: "+count);
-			System.out.println("Number of City Change Request: "+count);
 
-        }catch(Exception e){
-            e.printStackTrace();
-            System.out.println("Line: "+line);
-            System.exit(0);
-        }finally{
-            if( br != null){
-                try{
-		             br.close();
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-            }
-        }
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("Line: "+line);
+			System.exit(0);
+		}finally{
+			if( br != null){
+				try{
+					br.close();
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		}
 
 	}
 
@@ -158,8 +210,10 @@ public class Allocator{
 					withHeader = false; 
 					continue;
 				}
+
 				String[] tk = line.split(",");
 				cityCodes.put( tk[0].trim(), tk[2].trim() );
+				codeCities.put( tk[2].trim(), tk[0].trim() );
 			}
 
 		}catch(Exception e){
@@ -201,8 +255,9 @@ public class Allocator{
 
 				if( tk.length < 10)	
 					continue;
-				
+
 				Applicant applicant = new Applicant( tk[0].trim(), tk[1].trim(), tk[2].trim(), tk[3].trim(), tk[4].trim(), tk[5].trim(), tk[6].trim(), tk[7].trim(), tk[8].trim(), tk[9].trim() );
+				applicant.originalFirstChoice = tk[6].trim();
 
 				applicants.add( applicant );	
 
@@ -225,38 +280,11 @@ public class Allocator{
 				zones.put( applicant.zoneId, zone);
 
 				if( count % 100000 == 0){
-					System.out.println(count+" Applicant Read!");
 					System.err.println(count+" Applicant Read!");
 				}
 
-
 			}
 
-			System.out.println(PwDApplicants.size()+" Total PwD Applicant Read!");	
-			System.out.println(femaleApplicants.size()+" Total Female Applicant Read!");	
-			System.out.println(otherApplicants.size()+" Total other (not PwD) Applicant Read!");	
-			System.out.println(applicants.size()+" Total Applicant Read!");	
-
-			System.err.println("Number of Applicant Read: "+count);
-			System.out.println("Number of Applicant Read: "+count);
-
-			int total = 0;
-			Set<String> zoneCodes = zones.keySet();
-
-			for(String zoneCode: zoneCodes){
-				Zone zone = zones.get( zoneCode );
-				total += zone.applicants.size();
-				System.out.print(zone.zoneId+", "+zone.applicants.size());
-				Set<String> paperCodes = zone.paperWiseApplicant.keySet();
-				int ptotal = 0;
-				for(String paperCode: paperCodes){
-					ptotal += zone.paperWiseApplicant.get(paperCode).size();
-					System.out.print(", "+paperCode+":"+zone.paperWiseApplicant.get(paperCode).size() );
-				}	
-				System.out.println(", Total:"+ptotal);
-			}	
-
-			System.out.println("TOTAL: "+total);
 
 		}catch(Exception e){
 			e.printStackTrace();	
@@ -297,11 +325,11 @@ public class Allocator{
 				String zoneName = tk[1].trim();
 				String cityCode = tk[2].trim();
 				/*
-				cityCode = cityCodes.get( cityCode );
-				if( cityCode == null){
-					System.out.println("City: "+tk[2].trim()+" Not Found!");
-					System.exit(0);						
-				}
+				   cityCode = cityCodes.get( cityCode );
+				   if( cityCode == null){
+				   	System.out.println("City: "+tk[2].trim()+" Not Found!");
+				   	System.exit(0);						
+				   }
 				*/	
 				String tcsCode = tk[3].trim();
 				String centerCode = tk[4].trim();
@@ -420,7 +448,6 @@ public class Allocator{
 				count++;
 			}	
 			System.err.println("Number of Centre Read: "+count);
-			System.out.println("Number of Centre Read: "+count);
 
 		}catch(Exception e){
 			e.printStackTrace();
@@ -439,18 +466,19 @@ public class Allocator{
 	}
 
 
-	void allocate(List<Applicant> applicants, int choiceNumber, boolean isMaxCapcityUse ){
+	void allocate(List<Applicant> applicants, int choiceNumber, boolean isMaxCapcityUse, boolean femalePrefForChangeCity ){
 
 		for(Applicant applicant: applicants){
 
 			if( applicant.isAllocated )
 				continue;
-			
+
 			String choice = applicant.choices[ choiceNumber ];
+
 			City city = cities.get( choice );
-			
+
 			if( city == null){
-				System.err.println( choice +" Not Found");
+				//System.err.println("Not Found City: "+ choice);
 				continue;
 			}
 
@@ -459,6 +487,11 @@ public class Allocator{
 				if( applicant.isPwD && ( !centre.pwdFriendly ) ){
 					continue;	
 				}
+
+				/* for cityChnage female applicants should get the preferance */
+
+				if( !applicant.isPwD && applicant.gender.equals("Male") && femalePrefForChangeCity && cityChangeMap.get( city.cityCode ) != null )
+					continue;
 
 				String[] sessionIds = paperSession.get( applicant.paperCode ).split(",",-1);
 
@@ -472,11 +505,11 @@ public class Allocator{
 						System.err.println( session.sessionId+", "+applicant.paperCode+", PC not found");
 						System.exit(0);
 					}
-					
+
 					if( applicant.isPwD && session.pwdAllocated == 5 )
 						continue;
 
-					if( ( ( pc.capacity - pc.allocated ) > 0 && ( session.capacity - session.allocated ) > 0) || ( isMaxCapcityUse && ( session.maxCapacity - session.allocated ) > 0 )  ){
+					if( ( ( pc.capacity - pc.allocated ) > 0 && ( session.capacity - session.allocated ) > 0) || ( isMaxCapcityUse && ( session.maxCapacity - session.allocated ) > 0 ) ){
 
 						applicant.centre = centre;
 						applicant.isAllocated = true;
@@ -495,12 +528,12 @@ public class Allocator{
 						if( paperApplicants == null ){
 							paperApplicants = new ArrayList<Applicant>();
 						}	
+
 						paperApplicants.add( applicant );
 						session.paperAllocatedApplicant.put( applicant.paperCode, paperApplicants );
-						allAllocatedApplicants.add ( applicant );
-					        break;	
 					}	
-
+					if( applicant.isAllocated )
+						break;
 				}		
 				if( applicant.isAllocated )
 					break;
@@ -509,48 +542,47 @@ public class Allocator{
 	}
 
 	String generateRegistration(Applicant applicant){
-			String count = "000"+(applicant.session.registrationGenerated + 1);
-			applicant.session.registrationGenerated++;
-			String registrationId = applicant.paperCode+"16S"+applicant.session.sessionId+""+applicant.centre.centreCode+""+count.substring( count.length() - 3 );			return registrationId;
+		String count = "000"+(applicant.session.registrationGenerated + 1);
+		applicant.session.registrationGenerated++;
+		String registrationId = applicant.paperCode+"16S"+applicant.session.sessionId+""+applicant.centre.centreCode+""+count.substring( count.length() - 3 );
+	return registrationId;
 	}
 
 	void centerAllocate(City city){
-			for( Centre centre: city.centres ){
-					Set<String> sessionIds = centre.sessions.keySet();
-					for(String sessionId: sessionIds ){
-						Session session = centre.sessions.get( sessionId );
-						Set<String> paperCodes = session.paperAllocatedApplicant.keySet();
-						boolean run = true;
-						while( run ){	
-							run = false;
-							for(String paperCode: paperCodes ){
-								List<Applicant> applicants = session.paperAllocatedApplicant.get( paperCode );
-								if( applicants != null && applicants.size() > 0){
-									Applicant applicant = applicants.remove(0);
-									run = true;
-									applicant.registrationId = generateRegistration( applicant );
-								}
-							}
+		for( Centre centre: city.centres ){
+			Set<String> sessionIds = centre.sessions.keySet();
+			for(String sessionId: sessionIds ){
+				Session session = centre.sessions.get( sessionId );
+				Set<String> paperCodes = session.paperAllocatedApplicant.keySet();
+				boolean run = true;
+				while( run ){	
+					run = false;
+					for(String paperCode: paperCodes ){
+						List<Applicant> applicants = session.paperAllocatedApplicant.get( paperCode );
+						if( applicants != null && applicants.size() > 0){
+							Applicant applicant = applicants.remove(0);
+							run = true;
+							applicant.registrationId = generateRegistration( applicant );
 						}
-					} 	
-			} 
+					}
+				}
+			} 	
+		} 
 	}
 
 	void centreAllocation(){
 
-		   Set<String> cityCodes = cities.keySet();
-		   for(String cityCode: cityCodes){
-		   		City city = cities.get( cityCode );
-		   		System.err.println( "Allocation for "+city.cityCode+" | "+city.cityName);
-		   		centerAllocate( city );
-		   }
+		Set<String> cityCodes = cities.keySet();
+		for(String cityCode: cityCodes){
+			City city = cities.get( cityCode );
+			centerAllocate( city );
+		}
 	}
 
-	void print(){
-
+	void printCentres(){
+		System.out.println("-----------------------------------------------------------");	
 		Centre.header();
 		Set<String> zoneIds = zones.keySet();
-
 		for(String zoneId: zoneIds){
 			Zone zone = zones.get( zoneId );
 			Set<String> cityCodes = zone.cityMap.keySet();
@@ -559,7 +591,11 @@ public class Allocator{
 				city.print( zone.zoneId );
 			}
 		}
+	}
 
+	void printAllocation( ){
+
+		System.out.println("-----------------------------------------------------------");	
 		Applicant.header();
 		for(Applicant applicant: allAllocatedApplicants ){
 			applicant.print();
@@ -567,34 +603,77 @@ public class Allocator{
 
 		System.out.println("------------------ Not Allocated Candidate ---------------");
 		Applicant.header();
-
 		for(Applicant applicant: allNotAllocatedApplicants ){
 			applicant.print();
 		}
-		System.out.println("Allocated candidate "+allAllocatedApplicants.size());
-		System.out.println("Not Allocated candidate "+allNotAllocatedApplicants.size());
+
+		System.out.println("Total Allocated    :"+ allAllocatedApplicants.size() );
+		System.out.println("Total notAllocated :"+ allNotAllocatedApplicants.size() );
 	}
 
 	void cityChangeUpdate(List<Applicant> applicants, Map<String, String> cityChange){
-
-		int count = 0;
-
 		for( Applicant applicant: applicants){
-
-				if( !applicant.isAllocated ){
-
-					String newChoice = cityChange.get( applicant.choices[0] );
-
-					if( newChoice != null ){
-						applicant.originalFirstChoice = applicant.choices[0];
-						applicant.choices[0] = newChoice;
-						count++;
-					}
+			if( !applicant.isAllocated ){
+				String newChoice = cityChange.get( applicant.choices[0] );
+				if( newChoice != null ){
+					applicant.choices[0] = newChoice;
 				}
+			}
 		}
 	}
 
-	void allocate(String zoneId){
+
+	void allocationAnalysis(String zoneId){
+
+		Zone zone = zones.get( zoneId );	
+
+		for( Applicant applicant: zone.applicants){
+
+			if( !applicant.isAllocated ){
+				
+				allNotAllocatedApplicants.add( applicant );	
+				zone.notAllocatedApplicants.add( applicant );
+
+				Analysis analysis = zoneWiseAnalysis.get( applicant.zoneId );
+
+				if( analysis == null ){
+					analysis =  new Analysis( applicant.zoneId );
+				}
+				CityWise city = analysis.cityWise.get( applicant.choices[0] );
+				if( city == null ){
+					city = new CityWise( applicant.choices[0] );	
+				}	
+				PaperWise paper = city.paperWise.get( applicant.paperCode );
+				if( paper == null){
+					paper = new PaperWise( applicant.paperCode );
+				}
+				paper.count++;
+
+				city.paperWise.put( applicant.paperCode, paper );
+				analysis.cityWise.put( applicant.choices[0], city );
+				zoneWiseAnalysis.put( applicant.zoneId, analysis );
+
+			}else {
+				allAllocatedApplicants.add( applicant );
+				zone.allocatedApplicants.add( applicant);
+			}
+		}		
+	}
+
+	void zoneWiseAnalyisPrint(){
+
+		System.out.println("-----------------------------------------------------------");	
+		System.out.println("ZoneId, Paper:not-AllocatedCount, ...");
+
+		Set<String> zoneIds = zoneWiseAnalysis.keySet();
+
+		for(String zoneId: zoneIds ){
+			zoneWiseAnalysis.get( zoneId ).print();
+			System.out.println();
+		}
+	}
+
+	void allocate( String zoneId, int choiceNo ){
 
 		Zone zone = zones.get( zoneId );	
 		Collections.sort( zone.pwdApplicants , new ApplicantComp() );	
@@ -602,42 +681,19 @@ public class Allocator{
 
 		/* Don't use Maxcapacity */
 
-		allocate( zone.pwdApplicants, 0, false );
-		allocate( zone.applicants, 0, false );
+		allocate( zone.pwdApplicants, choiceNo, false, false);
+		allocate( zone.applicants, choiceNo, false, true  /* female only for city change */ );
+		allocate( zone.applicants, choiceNo, false, false );
 
 		cityChangeUpdate(  zone.pwdApplicants, zone.cityChange );	
 		cityChangeUpdate(  zone.applicants, zone.cityChange );	
-	
+
 		/* Utilised Max Capacity */ 
 
-		allocate( zone.pwdApplicants, 0, true );
-		allocate( zone.applicants, 0, true );
+		allocate( zone.pwdApplicants, choiceNo, true, false );
+		allocate( zone.applicants, choiceNo, true, true /* female only for city change */ );
+		allocate( zone.applicants, choiceNo, true, false );
 
-
-		for( Applicant applicant: zone.applicants){
-
-			if( !applicant.isAllocated ){
-				zone.notAllocatedApplicants.add( applicant );
-				allNotAllocatedApplicants.add( applicant );
-
-			}else{
-				zone.allocatedApplicants.add( applicant);
-				if( !allAllocatedApplicants.contains( applicant ) )
-					allAllocatedApplicants.add( applicant );
-			}
-		}
-
-		System.out.println("Allocated Applicant From Zone: "+zoneId+" => "+ zone.allocatedApplicants.size() );
-		System.out.println("Not Allocated Applicant From Zone: "+zoneId+" => "+ zone.notAllocatedApplicants.size() );
-	}
-
-	void allocate( ){
-
-		Collections.sort( PwDApplicants , new ApplicantComp() );	
-		Collections.sort( otherApplicants , new ApplicantComp() );	
-
-		allocate( PwDApplicants, 0, false );
-		allocate( otherApplicants, 0, false );
 	}
 
 	public static void main(String[] args){
@@ -645,20 +701,36 @@ public class Allocator{
 		try{
 
 			Allocator allocator = new Allocator();
+
 			allocator.readApplicants("./data/gate-applicant-20151129.csv", true);
+
+			allocator.readCentres("./data/zone4.csv", true);
+			allocator.readCentres("./data/zone6.csv", true);
 			allocator.readCentres("./data/zone7.csv", true);
 			allocator.readCentres("./data/zone5.csv", true);
+
 			allocator.readCityChangeMapping("./data/city-change.csv",true);
+			allocator.readCityCodeMapping("./data/gate-examcity-code.csv", true);
+			
+			allocator.printDataDetails();
 
-			//allocator.readCityCodeMapping("./data/gate-examcity-code.csv", true);
-			//allocator.print();
-
-			allocator.allocate("5");
-			allocator.allocate("7");
+			allocator.allocate("4", 0);
+			allocator.allocate("5", 0);
+			allocator.allocate("6", 0);
+			allocator.allocate("6", 1);
+			allocator.allocate("7", 0);
 
 			allocator.centreAllocation();
 
-			allocator.print();
+			allocator.allocationAnalysis("4");
+			allocator.allocationAnalysis("5");
+			allocator.allocationAnalysis("6");
+			allocator.allocationAnalysis("7");
+
+			allocator.printCentres();	
+			allocator.printAllocation();
+			allocator.zoneWiseAllocationDetails();
+			allocator.zoneWiseAnalyisPrint();
 
 		}catch(Exception e){
 			e.printStackTrace();

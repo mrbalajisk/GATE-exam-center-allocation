@@ -44,6 +44,27 @@ public class Centre{
 			Session session = sessions.get( sessionId );
 			System.out.print(", ("+session.maxCapacity + "|"+ session.capacity +"|"+ session.allocated +"|"+ session.pwdAllocated +")");
 		}
+
+		System.out.println();
+		System.out.print( zone+", "+cityCode+", "+centreCode+", '"+centreName+"', "+pwdFriendly);
+		for(String sessionId: sessionIds){
+			Session session = sessions.get( sessionId );
+			Set<String> paperCodes = session.paperAllocatedApplicant.keySet();
+			System.out.print(", S"+sessionId+"[ ");
+			boolean flag = true;
+
+			for(String paperCode: paperCodes){
+				PaperCapacity pc = session.paperCapacities.get( paperCode );
+				if( flag ){
+					flag = false;
+					System.out.print(paperCode+":"+pc.allocated);	
+				}else{
+					System.out.print(" | "+paperCode+":"+pc.allocated);	
+				}
+			}	
+			System.out.print(" ] ");
+		}
+
 		System.out.println();
 	}
 } 

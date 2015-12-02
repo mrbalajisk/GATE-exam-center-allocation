@@ -61,5 +61,6 @@ public class Session{
 		for(String paperCode: paperCodes){
 				System.out.print(", ("+paperCode+"|"+paperCapacities.get( paperCode ).capacity+"|"+paperCapacities.get( paperCode ).allocated+")");
 		}
+
 	}
 } 
