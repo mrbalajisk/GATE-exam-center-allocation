@@ -44,7 +44,7 @@ public class Analysis{
 		Set<String> cityCodes = cityWise.keySet();
 		for(String cityCode: cityCodes){
 			CityWise city = cityWise.get( cityCode );
-			System.out.print(zoneId+", "+cityCode+"("+Allocator.codeCities.get( cityCode )+") " );
+			System.out.print(zoneId+", "+cityCode+"( "+Allocator.codeCities.get( cityCode )+" )" );
 			Set<String> paperCodes = city.paperWise.keySet();
 			for(String paperCode: paperCodes){
 				System.out.print(", "+paperCode+":"+city.paperWise.get( paperCode ).count);

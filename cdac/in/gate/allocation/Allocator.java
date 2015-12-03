@@ -20,10 +20,7 @@ public class Allocator{
 	static Map<String, String> cityCodes;
 	static Map<String, String> codeCities = new TreeMap<String, String>();
 
-	static Map<String, String> cityChangeMap;
-
 	static List<Applicant> applicants;
-
 	static List<Applicant> PwDApplicants;
 	static List<Applicant> otherApplicants;
 	static List<Applicant> femaleApplicants;
@@ -47,8 +44,6 @@ public class Allocator{
 		cities = new TreeMap<String, City>();
 
 		paperSession = new TreeMap<String, String>();
-		cityChangeMap = new TreeMap<String, String>();
-
 
 		/*	
 			paperSession.put("ME,EC","1");	
@@ -170,10 +165,9 @@ public class Allocator{
 				}
 				String[] tk = line.split(",");
 				Zone zone = zones.get( tk[0].trim() );
-
 				System.err.println("Zone"+tk[0].trim()+", "+tk[1].trim()+", "+tk[2].trim() );
-
 				zone.cityChange.put( tk[1].trim(), tk[2].trim() );
+
 				count++;
 			}
 			System.err.println("Number of City Change Request: "+count);
@@ -466,7 +460,7 @@ public class Allocator{
 	}
 
 
-	void allocate(List<Applicant> applicants, int choiceNumber, boolean isMaxCapcityUse, boolean femalePrefForChangeCity ){
+	void allocate(Zone zone, List<Applicant> applicants, int choiceNumber, boolean isMaxCapcityUse, boolean femalePrefForChangeCity ){
 
 		for(Applicant applicant: applicants){
 
@@ -490,8 +484,9 @@ public class Allocator{
 
 				/* for cityChnage female applicants should get the preferance */
 
-				if( !applicant.isPwD && applicant.gender.equals("Male") && femalePrefForChangeCity && cityChangeMap.get( city.cityCode ) != null )
+				if( !applicant.isPwD && applicant.gender.equals("Male") && femalePrefForChangeCity && zone.cityChange.get( city.cityCode ) != null ){
 					continue;
+				}
 
 				String[] sessionIds = paperSession.get( applicant.paperCode ).split(",",-1);
 
@@ -612,6 +607,7 @@ public class Allocator{
 	}
 
 	void cityChangeUpdate(List<Applicant> applicants, Map<String, String> cityChange){
+
 		for( Applicant applicant: applicants){
 			if( !applicant.isAllocated ){
 				String newChoice = cityChange.get( applicant.choices[0] );
@@ -663,7 +659,7 @@ public class Allocator{
 	void zoneWiseAnalyisPrint(){
 
 		System.out.println("-----------------------------------------------------------");	
-		System.out.println("ZoneId, Paper:not-AllocatedCount, ...");
+		System.out.println("ZoneId, CityCode(cityName), Paper:not-AllocatedCount, ...");
 
 		Set<String> zoneIds = zoneWiseAnalysis.keySet();
 
@@ -681,18 +677,18 @@ public class Allocator{
 
 		/* Don't use Maxcapacity */
 
-		allocate( zone.pwdApplicants, choiceNo, false, false);
-		allocate( zone.applicants, choiceNo, false, true  /* female only for city change */ );
-		allocate( zone.applicants, choiceNo, false, false );
+		allocate(zone, zone.pwdApplicants, choiceNo, false, false);
+		allocate(zone, zone.applicants, choiceNo, false, true  /* female only for city change */ );
+		allocate(zone, zone.applicants, choiceNo, false, false );
 
 		cityChangeUpdate(  zone.pwdApplicants, zone.cityChange );	
 		cityChangeUpdate(  zone.applicants, zone.cityChange );	
 
 		/* Utilised Max Capacity */ 
 
-		allocate( zone.pwdApplicants, choiceNo, true, false );
-		allocate( zone.applicants, choiceNo, true, true /* female only for city change */ );
-		allocate( zone.applicants, choiceNo, true, false );
+		allocate(zone, zone.pwdApplicants, choiceNo, true, false );
+		allocate(zone, zone.applicants, choiceNo, true, true /* female only for city change */ );
+		allocate(zone, zone.applicants, choiceNo, true, false );
 
 	}
 
@@ -701,7 +697,6 @@ public class Allocator{
 		try{
 
 			Allocator allocator = new Allocator();
-
 			allocator.readApplicants("./data/gate-applicant-20151129.csv", true);
 
 			allocator.readCentres("./data/zone4.csv", true);
@@ -717,7 +712,6 @@ public class Allocator{
 			allocator.allocate("4", 0);
 			allocator.allocate("5", 0);
 			allocator.allocate("6", 0);
-			allocator.allocate("6", 1);
 			allocator.allocate("7", 0);
 
 			allocator.centreAllocation();
