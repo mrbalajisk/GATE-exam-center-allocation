@@ -19,10 +19,10 @@ class PaperWise{
 
 class CityWise{
 	
-	String cityCode;
+	Integer cityCode;
 	Map<String, PaperWise> paperWise;
 
-	CityWise(String cityCode){
+	CityWise(Integer cityCode){
 		this.cityCode = cityCode;
 		this.paperWise = new TreeMap<String, PaperWise>();	
 
@@ -32,19 +32,23 @@ class CityWise{
 
 public class Analysis{
 
-	String zoneId;
-	Map<String, CityWise> cityWise;
+	Integer zoneId;
+	Map<Integer, CityWise> cityWise;
 
-	Analysis(String zoneId){
+	Analysis(Integer zoneId){
 		this.zoneId = zoneId;
-		this.cityWise = new TreeMap<String, CityWise>();
+		this.cityWise = new TreeMap<Integer, CityWise>();
 	}
 
 	void print(){
-		Set<String> cityCodes = cityWise.keySet();
-		for(String cityCode: cityCodes){
+
+		Set<Integer> cityCodes = cityWise.keySet();
+
+		for(Integer cityCode: cityCodes){
+
 			CityWise city = cityWise.get( cityCode );
 			System.out.print(zoneId+", "+cityCode+"( "+Allocator.codeCities.get( cityCode )+" )" );
+
 			Set<String> paperCodes = city.paperWise.keySet();
 			for(String paperCode: paperCodes){
 				System.out.print(", "+paperCode+":"+city.paperWise.get( paperCode ).count);

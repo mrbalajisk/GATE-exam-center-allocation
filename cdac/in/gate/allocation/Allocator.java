@@ -12,49 +12,27 @@ import java.io.File;
 
 public class Allocator{
 
-	static Map<String, Zone> zones;
-	static Map<String, City> cities;
+	static Map<Integer, Zone> zones = new TreeMap<Integer, Zone>();
+	static Map<Integer, City> cities = new TreeMap<Integer, City>();
 
-	static Map<String, String> paperSession;
-	static Map<String, String> sessionPaper;
-	static Map<String, String> cityCodes;
-	static Map<String, String> codeCities = new TreeMap<String, String>();
+	static Map<String, String> paperSession = new TreeMap<String, String>();
 
-	static List<Applicant> applicants;
-	static List<Applicant> PwDApplicants;
-	static List<Applicant> otherApplicants;
-	static List<Applicant> femaleApplicants;
+	static Map<Integer, String> sessionPaper = new TreeMap<Integer, String>();
 
-	static List<Applicant> allAllocatedApplicants;
-	static List<Applicant> allNotAllocatedApplicants;
+	static Map<String, Integer> cityCodes = new TreeMap<String, Integer>();
+	static Map<Integer, String> codeCities = new TreeMap<Integer, String>();
 
-	static Map<String, Analysis> zoneWiseAnalysis = new TreeMap<String, Analysis>();
+	static List<Applicant> applicants = new ArrayList<Applicant>();
+	static List<Applicant> PwDApplicants = new ArrayList<Applicant>();
+	static List<Applicant> otherApplicants = new ArrayList<Applicant>();
+	static List<Applicant> femaleApplicants = new ArrayList<Applicant>();
+
+	static List<Applicant> allAllocatedApplicants = new ArrayList<Applicant>();
+	static List<Applicant> allNotAllocatedApplicants = new ArrayList<Applicant>();
+
+	static Map<Integer, Analysis> zoneWiseAnalysis = new TreeMap<Integer, Analysis>();
 
 	public Allocator(){
-
-		applicants = new ArrayList<Applicant>();
-		allAllocatedApplicants = new ArrayList<Applicant>();
-		allNotAllocatedApplicants = new ArrayList<Applicant>();
-
-		PwDApplicants = new ArrayList<Applicant>();
-		femaleApplicants = new ArrayList<Applicant>();
-		otherApplicants = new ArrayList<Applicant>();
-
-		zones = new TreeMap<String, Zone>(); 
-		cities = new TreeMap<String, City>();
-
-		paperSession = new TreeMap<String, String>();
-
-		/*	
-			paperSession.put("ME,EC","1");	
-			paperSession.put("ME,BT,CH,GG,MN,PH","2");	
-			paperSession.put("ME,EC","3");	
-			paperSession.put("EC,AR,CY,IN,MA,PE","4");	
-			paperSession.put("CS,CE","5");	
-			paperSession.put("CS,EE","6");	
-			paperSession.put("CE,AG,EY,MT,PI","7");
-			paperSession.put("EE,AE,TF,XL,XE","8");	
-		*/
 
 		paperSession.put("ME","1,2,3");
 		paperSession.put("EC","1,3,4");
@@ -80,28 +58,22 @@ public class Allocator{
 		paperSession.put("XL","8");
 		paperSession.put("XE","8");
 
+		sessionPaper.put(new Integer(1),"ME,EC");	
+		sessionPaper.put(new Integer(2),"ME,BT,CH,GG,MN,PH");	
+		sessionPaper.put(new Integer(3),"ME,EC");	
+		sessionPaper.put(new Integer(4),"EC,AR,CY,IN,MA,PE");	
+		sessionPaper.put(new Integer(5),"CS,CE");	
+		sessionPaper.put(new Integer(6),"CS,EE");	
+		sessionPaper.put(new Integer(7),"CE,AG,EY,MT,PI");
+		sessionPaper.put(new Integer(8),"EE,AE,TF,XL,XE");	
 
-		sessionPaper = new TreeMap<String, String>();
-
-		sessionPaper.put("1","ME,EC");	
-		sessionPaper.put("2","ME,BT,CH,GG,MN,PH");	
-		sessionPaper.put("3","ME,EC");	
-		sessionPaper.put("4","EC,AR,CY,IN,MA,PE");	
-		sessionPaper.put("5","CS,CE");	
-		sessionPaper.put("6","CS,EE");	
-		sessionPaper.put("7","CE,AG,EY,MT,PI");
-		sessionPaper.put("8","EE,AE,TF,XL,XE");	
-		sessionPaper.put("8","");	
-
-		cityCodes = new TreeMap<String, String>();
 	}
 
 	void zoneWiseAllocationDetails(){
-
 		System.out.println("-----------------------------------------------------------");	
 		System.out.println("ZoneId, Total Applicant, Allocated, Not Allocated ");	
-		Set<String> zoneIds = zones.keySet();
-		for( String zoneId: zoneIds ){
+		Set<Integer> zoneIds = zones.keySet();
+		for( Integer zoneId: zoneIds ){
 			Zone zone = zones.get( zoneId );
 			System.out.println(zone.zoneId+", "+zone.applicants.size()+", "+zone.allocatedApplicants.size()+", "+zone.notAllocatedApplicants.size() );
 		}
@@ -117,10 +89,12 @@ public class Allocator{
 
 		System.out.println("-----------------------------------------------------------");	
 
-		Set<String> zoneCodes = zones.keySet();
+
 		int total = 0;
 		boolean flag = true;
-		for(String zoneCode: zoneCodes){
+
+		Set<Integer> zoneCodes = zones.keySet();
+		for(Integer zoneCode: zoneCodes){
 			Zone zone = zones.get( zoneCode );
 			Set<String> paperCodes = zone.paperWiseApplicant.keySet();
 			if( flag ){
@@ -164,9 +138,13 @@ public class Allocator{
 					continue;
 				}
 				String[] tk = line.split(",");
-				Zone zone = zones.get( tk[0].trim() );
+
+				Integer zoneId = new Integer( tk[0].trim() );
+				Zone zone = zones.get( zoneId );
+
 				System.err.println("Zone"+tk[0].trim()+", "+tk[1].trim()+", "+tk[2].trim() );
-				zone.cityChange.put( tk[1].trim(), tk[2].trim() );
+
+				zone.cityChange.put( new Integer(tk[1].trim()), new Integer( tk[2].trim() ) );
 
 				count++;
 			}
@@ -206,8 +184,8 @@ public class Allocator{
 				}
 
 				String[] tk = line.split(",");
-				cityCodes.put( tk[0].trim(), tk[2].trim() );
-				codeCities.put( tk[2].trim(), tk[0].trim() );
+				cityCodes.put( tk[0].trim(), new Integer( tk[2].trim() ) );
+				codeCities.put( new Integer( tk[2].trim() ), tk[0].trim() );
 			}
 
 		}catch(Exception e){
@@ -251,7 +229,7 @@ public class Allocator{
 					continue;
 
 				Applicant applicant = new Applicant( tk[0].trim(), tk[1].trim(), tk[2].trim(), tk[3].trim(), tk[4].trim(), tk[5].trim(), tk[6].trim(), tk[7].trim(), tk[8].trim(), tk[9].trim() );
-				applicant.originalFirstChoice = tk[6].trim();
+				applicant.originalFirstChoice = new Integer( tk[6].trim() ) ;
 
 				applicants.add( applicant );	
 
@@ -271,7 +249,7 @@ public class Allocator{
 				}
 
 				zone.add( applicant );
-				zones.put( applicant.zoneId, zone);
+				zones.put( new Integer( applicant.zoneId ), zone);
 
 				if( count % 100000 == 0){
 					System.err.println(count+" Applicant Read!");
@@ -315,9 +293,10 @@ public class Allocator{
 
 				String[] tk = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 
-				String zoneId = tk[0].trim();
+				Integer zoneId = new Integer( tk[0].trim() );
 				String zoneName = tk[1].trim();
-				String cityCode = tk[2].trim();
+				Integer cityCode =  new Integer( tk[2].trim() );
+
 				/*
 				   cityCode = cityCodes.get( cityCode );
 				   if( cityCode == null){
@@ -325,8 +304,9 @@ public class Allocator{
 				   	System.exit(0);						
 				   }
 				*/	
+
 				String tcsCode = tk[3].trim();
-				String centerCode = tk[4].trim();
+				Integer centerCode = new Integer( tk[4].trim() );
 				String centerName = tk[5].trim();
 				String cityName = tk[10].trim();
 				String state = tk[11].trim();
@@ -362,12 +342,12 @@ public class Allocator{
 
 				List<Session> sessions = new ArrayList<Session>();
 
-				Session session = new Session("1", ( S1EC1 + S1ME1 ), maxCapacity,  "30th January 2016(Saturday)", "9.00 AM to 12.00 Noon" ) ;
+				Session session = new Session(new Integer(1), ( S1EC1 + S1ME1 ), maxCapacity,  "30th January 2016(Saturday)", "9.00 AM to 12.00 Noon" ) ;
 				session.paperCapacities.put("EC",new PaperCapacity( S1EC1 ) ) ;
 				session.paperCapacities.put("ME",new PaperCapacity(S1ME1) ) ;
 				sessions.add( session );
 
-				session = new Session("2", ( S2ME2 + S2BTCHGGMNPH ), maxCapacity, "30th January 2016 (Saturday)", "2.00 PM to 5.00 PM" );
+				session = new Session(new Integer(2), ( S2ME2 + S2BTCHGGMNPH ), maxCapacity, "30th January 2016 (Saturday)", "2.00 PM to 5.00 PM" );
 				session.paperCapacities.put("ME", new PaperCapacity( S2ME2 ) );
 
 				PaperCapacity pc = new PaperCapacity( S2BTCHGGMNPH );
@@ -379,12 +359,13 @@ public class Allocator{
 
 				sessions.add( session );
 
-				session = new Session("3", ( S3ME3 + S3EC2 ), maxCapacity, "31st January 2016 (Sunday)", "9.00 AM to 12.00 Noon" );
+				session = new Session(new Integer(3), ( S3ME3 + S3EC2 ), maxCapacity, "31st January 2016 (Sunday)", "9.00 AM to 12.00 Noon" );
 				session.paperCapacities.put("ME", new PaperCapacity( S3ME3 ) );
 				session.paperCapacities.put("EC",new PaperCapacity( S3EC2 ) );
 				sessions.add( session );
 
-				session = new Session("4", ( S4EC3 + S4ARCYINMAPE ), maxCapacity, "31st January 2016 (Sunday)", "2.00 PM to 5.00 PM" );
+				session = new Session(new Integer(4), ( S4EC3 + S4ARCYINMAPE ), maxCapacity, "31st January 2016 (Sunday)", "2.00 PM to 5.00 PM" );
+
 				session.paperCapacities.put("EC", new PaperCapacity(  S4EC3 ) );
 				pc = new PaperCapacity( S4ARCYINMAPE );
 				session.paperCapacities.put("AR", pc );
@@ -394,17 +375,17 @@ public class Allocator{
 				session.paperCapacities.put("PE", pc );
 				sessions.add( session );
 
-				session = new Session("5", ( S5CE1 + S5CS1 ), maxCapacity, "6th Febuary 2016 (Saturday)", "9.00 AM to 12.00 Noon");
+				session = new Session(new Integer(5), ( S5CE1 + S5CS1 ), maxCapacity, "6th Febuary 2016 (Saturday)", "9.00 AM to 12.00 Noon");
 				session.paperCapacities.put("CE",new PaperCapacity( S5CE1 ) );
 				session.paperCapacities.put("CS",new PaperCapacity( S5CS1 ) );
 				sessions.add( session );
 
-				session = new Session("6", ( S6CS2 + S6EE1), maxCapacity, "6th Febuary 2016 (Saturday)", "2.00 PM to 5.00 PM" );
+				session = new Session(new Integer(6), ( S6CS2 + S6EE1), maxCapacity, "6th Febuary 2016 (Saturday)", "2.00 PM to 5.00 PM" );
 				session.paperCapacities.put("CS", new PaperCapacity( S6CS2 ) );
 				session.paperCapacities.put("EE", new PaperCapacity( S6EE1 ) );
 				sessions.add( session );
 
-				session = new Session("7", ( S7CE2 + S7AGEYMTPI ), maxCapacity, "7th Febuary 2016 (Sunday)", "9.00 AM to 12.00 Noon" );
+				session = new Session(new Integer(7), ( S7CE2 + S7AGEYMTPI ), maxCapacity, "7th Febuary 2016 (Sunday)", "9.00 AM to 12.00 Noon" );
 				session.paperCapacities.put("CE",new PaperCapacity( S7CE2 ) );
 				pc = new PaperCapacity( S7AGEYMTPI );
 				session.paperCapacities.put("AG", pc );
@@ -413,7 +394,7 @@ public class Allocator{
 				session.paperCapacities.put("PI", pc );
 				sessions.add( session );
 
-				session = new Session("8", ( S8EE2 + S8AETFXLXE ), maxCapacity, "7th Febuary 2016 (Sunday)", "2.00 PM to 5.00 PM" );
+				session = new Session(new Integer(8), ( S8EE2 + S8AETFXLXE ), maxCapacity, "7th Febuary 2016 (Sunday)", "2.00 PM to 5.00 PM" );
 				session.paperCapacities.put("EE",new PaperCapacity( S8EE2 ) );
 				pc = new PaperCapacity( S8AETFXLXE );
 				session.paperCapacities.put("AE", pc );
@@ -427,7 +408,7 @@ public class Allocator{
 					zone = new Zone( zoneId );
 				}
 
-				City city = zone.cityMap.get( cityCode );
+				City city = zone.cities.get( cityCode );
 
 				if( city == null){
 					city = new City( cityCode, cityName );
@@ -437,7 +418,7 @@ public class Allocator{
 				city.centres.add( centre );
 
 				cities.put( cityCode, city );	
-				zone.cityMap.put( cityCode, city );
+				zone.cities.put( cityCode, city );
 				zones.put( zoneId, zone );
 				count++;
 			}	
@@ -467,7 +448,7 @@ public class Allocator{
 			if( applicant.isAllocated )
 				continue;
 
-			String choice = applicant.choices[ choiceNumber ];
+			Integer choice = applicant.choices[ choiceNumber ];
 
 			City city = cities.get( choice );
 
@@ -492,7 +473,7 @@ public class Allocator{
 
 				for(String sessionId: sessionIds){
 
-					Session session = centre.sessions.get( sessionId );
+					Session session = centre.sessions.get( new Integer( sessionId ) );
 
 					PaperCapacity pc = session.paperCapacities.get( applicant.paperCode );	
 
@@ -544,9 +525,12 @@ public class Allocator{
 	}
 
 	void centerAllocate(City city){
+
 		for( Centre centre: city.centres ){
-			Set<String> sessionIds = centre.sessions.keySet();
-			for(String sessionId: sessionIds ){
+			Set<Integer> sessionIds = centre.sessions.keySet();
+
+			for(Integer sessionId: sessionIds ){
+
 				Session session = centre.sessions.get( sessionId );
 				Set<String> paperCodes = session.paperAllocatedApplicant.keySet();
 				boolean run = true;
@@ -565,24 +549,35 @@ public class Allocator{
 		} 
 	}
 
-	void centreAllocation(){
+	void centreAllocation( ){
 
-		Set<String> cityCodes = cities.keySet();
-		for(String cityCode: cityCodes){
+		Set<Integer> cityCodes = cities.keySet();
+		for(Integer cityCode: cityCodes){
 			City city = cities.get( cityCode );
 			centerAllocate( city );
 		}
 	}
 
+	void centreAllocation(String zoneId){
+
+		Zone zone = zones.get(zoneId );
+		Set<Integer> cityCodes = zone.cities.keySet();
+		for(Integer cityCode: cityCodes){
+			City city = zone.cities.get( cityCode );
+			centerAllocate( city );
+		}
+	}
+
 	void printCentres(){
+
 		System.out.println("-----------------------------------------------------------");	
 		Centre.header();
-		Set<String> zoneIds = zones.keySet();
-		for(String zoneId: zoneIds){
+		Set<Integer> zoneIds = zones.keySet();
+		for(Integer zoneId: zoneIds){
 			Zone zone = zones.get( zoneId );
-			Set<String> cityCodes = zone.cityMap.keySet();
-			for(String cityCode: cityCodes){
-				City city = cities.get( cityCode );
+			Set<Integer> cityCodes = zone.cities.keySet();
+			for(Integer cityCode: cityCodes){
+				City city = zone.cities.get( cityCode );
 				city.print( zone.zoneId );
 			}
 		}
@@ -606,20 +601,20 @@ public class Allocator{
 		System.out.println("Total notAllocated :"+ allNotAllocatedApplicants.size() );
 	}
 
-	void cityChangeUpdate(List<Applicant> applicants, Map<String, String> cityChange){
+	void cityChangeUpdate(List<Applicant> applicants, Map<Integer, Integer> cityChange){
 
 		for( Applicant applicant: applicants){
 			if( !applicant.isAllocated ){
-				String newChoice = cityChange.get( applicant.choices[0] );
+				Integer newChoice = cityChange.get( applicant.choices[0] );
 				if( newChoice != null ){
-					applicant.choices[0] = newChoice;
+					applicant.choices[0] = new Integer( newChoice );
 				}
 			}
 		}
 	}
 
 
-	void allocationAnalysis(String zoneId){
+	void allocationAnalysis(int zoneId){
 
 		Zone zone = zones.get( zoneId );	
 
@@ -658,20 +653,20 @@ public class Allocator{
 
 	void zoneWiseAnalyisPrint(){
 
-		System.out.println("-----------------------------------------------------------");	
+		System.out.println("----------------------------------------------------------");	
 		System.out.println("ZoneId, CityCode(cityName), Paper:not-AllocatedCount, ...");
 
-		Set<String> zoneIds = zoneWiseAnalysis.keySet();
+		Set<Integer> zoneIds = zoneWiseAnalysis.keySet();
 
-		for(String zoneId: zoneIds ){
+		for(Integer zoneId: zoneIds ){
 			zoneWiseAnalysis.get( zoneId ).print();
 			System.out.println();
 		}
 	}
 
-	void allocate( String zoneId, int choiceNo ){
+	void allocate(int  zoneId, int choiceNo ){
 
-		Zone zone = zones.get( zoneId );	
+		Zone zone = zones.get( new Integer( zoneId ) );	
 		Collections.sort( zone.pwdApplicants , new ApplicantComp() );	
 		Collections.sort( zone.applicants , new ApplicantComp() );	
 
@@ -709,17 +704,18 @@ public class Allocator{
 			
 			allocator.printDataDetails();
 
-			allocator.allocate("4", 0);
-			allocator.allocate("5", 0);
-			allocator.allocate("6", 0);
-			allocator.allocate("7", 0);
+			allocator.allocate(4, 0);
+			allocator.allocate(5, 0);
+			allocator.allocate(6, 0);
+			allocator.allocate(6, 1);
+			allocator.allocate(7, 0);
 
 			allocator.centreAllocation();
 
-			allocator.allocationAnalysis("4");
-			allocator.allocationAnalysis("5");
-			allocator.allocationAnalysis("6");
-			allocator.allocationAnalysis("7");
+			allocator.allocationAnalysis(4);
+			allocator.allocationAnalysis(5);
+			allocator.allocationAnalysis(6);
+			allocator.allocationAnalysis(7);
 
 			allocator.printCentres();	
 			allocator.printAllocation();

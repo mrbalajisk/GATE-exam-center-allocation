@@ -19,7 +19,7 @@ class PaperCapacity{
 
 public class Session{
 
-	String sessionId;
+	Integer sessionId;
 	int capacity;
 	int maxCapacity;
 	int allocated;
@@ -32,7 +32,7 @@ public class Session{
 	Map<String, PaperCapacity> paperCapacities;
 	Map<String, List<Applicant>> paperAllocatedApplicant;
 
-	Session(String sessionId, int capacity, int maxCapacity,  String date, String time){
+	Session(Integer sessionId, int capacity, int maxCapacity,  String date, String time){
 
 		this.sessionId = sessionId;
 		this.capacity = capacity;
@@ -55,7 +55,7 @@ public class Session{
 		return false;	
 	}
 
-	void print(String zoneCode, String cityCode, String centreCode, String centreName){
+	void print(Integer zoneCode, Integer cityCode, Integer centreCode, String centreName){
 		System.out.print(zoneCode+", "+cityCode+", "+centreCode+", "+centreName+", "+sessionId+", "+capacity+", "+allocated+", "+pwdAllocated);
 		Set<String> paperCodes = paperCapacities.keySet();
 		for(String paperCode: paperCodes){

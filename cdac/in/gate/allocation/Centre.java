@@ -7,20 +7,20 @@ import java.util.TreeMap;
 
 public class Centre{
 
-	String centreCode;
+	Integer centreCode;
 	String centreName;
 	boolean pwdFriendly;
 
-	Map<String, Session> sessions;
+	Map<Integer, Session> sessions;
 
-	Centre( String centreCode, String centreName, List<Session> sessions, String PwDFriendly ){
+	Centre(Integer centreCode, String centreName, List<Session> sessions, String PwDFriendly ){
 
 		this.centreName = centreName;
-		this.centreCode = centreCode;
+		this.centreCode = new Integer( centreCode );
 
 		if( PwDFriendly.equals("YES") || PwDFriendly.equals("Yes") || PwDFriendly.indexOf("Y") >= 0 || PwDFriendly.indexOf("y") >=0 )
 			this.pwdFriendly = true;
-		this.sessions = new TreeMap<String, Session>();
+		this.sessions = new TreeMap<Integer, Session>();
 
 		for(Session session: sessions){
 			this.sessions.put( session.sessionId, session );
@@ -36,18 +36,20 @@ public class Centre{
 		System.out.println();
 	}
 	
-	void print(String zone, String cityCode){
+	void print(Integer zone, Integer cityCode){
 
 		System.out.print( zone+", "+cityCode+", "+centreCode+", '"+centreName+"', "+pwdFriendly);
-		Set<String> sessionIds = sessions.keySet();
-		for(String sessionId: sessionIds){
+		Set<Integer> sessionIds = sessions.keySet();
+
+		for(Integer sessionId: sessionIds){
 			Session session = sessions.get( sessionId );
 			System.out.print(", ("+session.maxCapacity + "|"+ session.capacity +"|"+ session.allocated +"|"+ session.pwdAllocated +")");
 		}
 
 		System.out.println();
 		System.out.print( zone+", "+cityCode+", "+centreCode+", '"+centreName+"', "+pwdFriendly);
-		for(String sessionId: sessionIds){
+
+		for(Integer sessionId: sessionIds){
 			Session session = sessions.get( sessionId );
 			Set<String> paperCodes = session.paperAllocatedApplicant.keySet();
 			System.out.print(", S"+sessionId+"[ ");

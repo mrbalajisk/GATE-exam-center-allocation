@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 
 public class Applicant{
 
-	String zoneId;	
+	Integer zoneId;	
 	String enrollment;
 	String name;
 	String gender;	
@@ -16,7 +16,7 @@ public class Applicant{
 
 	boolean isPwD;
 	boolean isScribeReq;
-	String[] choices;
+	Integer[] choices;
 
 	String registrationId;
 	boolean isAllocated;
@@ -25,14 +25,14 @@ public class Applicant{
 	Session session;
 	int allotedChoice;
 
-	String originalFirstChoice;
+	Integer originalFirstChoice;
 
 
 	Applicant(String enrollment, String name, String gender, String isPD, String isScribe, String paperCode, String choice1, String choice2, String choice3, String zoneId){
 		this.enrollment = enrollment;
 		this.name = name;
 		this.gender = gender;
-		this.zoneId = zoneId;
+		this.zoneId = new Integer( zoneId );
 
 		this.paperCode = paperCode;
 
@@ -41,12 +41,13 @@ public class Applicant{
 		if( isScribe.equals("t") )
 			this.isScribeReq = true;
 
-		this.choices = new String[3];
-		this.choices[0] = choice1;
-		this.choices[1] = choice2;
-		this.choices[2] = choice3;
+		this.choices = new Integer[3];
+		this.choices[0] = new Integer( choice1 );
+		this.choices[1] = new Integer( choice2 );
+		this.choices[2] = new Integer( choice3 );
 		
-		this.originalFirstChoice = null;	
+		this.originalFirstChoice = new Integer( choice1 );	
+
 		this.registrationId = null;
 		this.isAllocated = false;
 		this.centre = null;
@@ -54,20 +55,8 @@ public class Applicant{
 		this.city = null;
 		this.allotedChoice = -1;	
 
-		
-			
-		try{
-			MessageDigest md = MessageDigest.getInstance("MD5");
-			String code = enrollment.substring( enrollment.length() - 2)+""+name.substring(name.length() - 2) ;
-			//String code = name.substring(name.length() - 2) +""+enrollment.substring( enrollment.length() - 2) ;
-			byte[] array = md.digest( code.getBytes() );
-			//this.hashCode = array.toString();
-			this.hashCode = ""+code.hashCode();
-
-		}catch(Exception e){
-			System.out.println(enrollment+", "+name);
-			e.printStackTrace();
-		}	
+		String code = enrollment.substring( enrollment.length() - 2)+""+name.substring(name.length() - 2) ;
+		this.hashCode = ""+code.hashCode();
 		
 	}
 

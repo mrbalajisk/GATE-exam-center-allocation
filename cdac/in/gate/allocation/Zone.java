@@ -8,10 +8,10 @@ import java.util.TreeMap;
 
 public class Zone{
 
-	String zoneId;
+	Integer zoneId;
 
-	Map<String, City> cityMap;
-	Map<String, String> cityChange;
+	Map<Integer, City> cities;
+	Map<Integer, Integer> cityChange;
 
 	List<Applicant> applicants;
 	List<Applicant> pwdApplicants;
@@ -22,10 +22,10 @@ public class Zone{
 
 	int allocated;
 
-	Zone(String zoneId){
+	Zone(Integer zoneId){
 
 		this.zoneId = zoneId;
-		this.cityMap = new TreeMap<String, City>();
+		this.cities = new TreeMap<Integer, City>();
 		this.applicants = new ArrayList<Applicant>();	
 		this.pwdApplicants = new ArrayList<Applicant>();	
 
@@ -33,7 +33,7 @@ public class Zone{
 		this.notAllocatedApplicants = new ArrayList<Applicant>();
 
 		this.paperWiseApplicant = new TreeMap<String, ArrayList<Applicant>>();
-		this.cityChange = new TreeMap<String, String>();
+		this.cityChange = new TreeMap<Integer, Integer>();
 		this.allocated = 0 ;
 	}
 
@@ -55,9 +55,9 @@ public class Zone{
 	}
 
 	void print(){
-		Set<String> cities = cityMap.keySet();
-		for(String city: cities){
-			cityMap.get( city ).print( zoneId );	
+		Set<Integer> cityCodes = cities.keySet();
+		for(Integer cityCode: cityCodes){
+			cities.get( cityCode ).print( zoneId );	
 		}			
 	}
 } 
