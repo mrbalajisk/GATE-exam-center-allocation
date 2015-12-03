@@ -1,4 +1,4 @@
-Zone ID,Zone,City Code,TCS ID,Centre code,LISP,Add1,Add2,Add3,Pincode,City,State,Max,S1-EC1,S1-ME1,S2-ME2,"S2-BT, CH, GG, MN, PH",S3-ME3,S3-EC2,S4-EC3,"S4-AR, CY, IN, MA, PE",S5-CE1,S5-CS1,S6-CS2,S6-EE1,S7-CE2,"S7-AG, EY, MT, PI",S8-EE2,"S8-AE, TF, XL, XE"
+Zone ID,Zone,City Code,TCS ID,Centre code,LISP,Add1,Add2,Add3,Pincode,City,State,Max,S1-ME1,S1-EC1,S2-ME2,"S2-BT, CH, GG, MN, PH",S3-ME3,S3-EC2,S4-EC3,"S4-AR, CY, IN, MA, PE",S5-CS1,S5-CE1,S6-CS2,S6-EE1,S7-CE2,"S7-AG, EY, MT, PI",S8-EE2,"S8-AE, TF, XL, XE"
 5,IIT KANPUR,2,,5001,Anand Engineering College,Agra-Delhi Highway  NH2  Keetham,Agra Uttar Pradesh India,,282007,Agra,Uttar Pradesh,300,188,102,101,107,195,106,51,66,65,153,165,53,197,17,223,58
 5,IIT KANPUR,2,,5002,Hindustan Institute Of Technology And Management,Hindustan Institute of Technology and Management Agra 19 km stone NH 2,Agra Delhi Highway,,282007,Agra,Uttar Pradesh,200,110,60,97,103,124,67,83,108,60,141,152,49,123,10,104,28
 5,IIT KANPUR,2,,5003,K. P. Group of Institutions,NH-2 Agra-Firozabad Road Etmadpur,Agra Uttar Pradesh India,,283202,Agra,Uttar Pradesh,140,85,46,59,62,65,36,44,57,42,99,106,35,0,0,0,0

@@ -117,6 +117,7 @@ public class Allocator{
 		if( total != applicants.size() ){
 			System.err.println("Error in Applicant data Count mismatch "+total+" != "+applicants.size() );
 		}
+		System.out.println("-----------------------------------------------------------");	
 	}
 
 	void readCityChangeMapping(String filename, boolean withHeader){
@@ -313,8 +314,8 @@ public class Allocator{
 
 				int maxCapacity = Integer.parseInt( tk[12].trim() );
 
-				int S1EC1 = Integer.parseInt( tk[13].trim() );
-				int S1ME1 = Integer.parseInt( tk[14].trim() );
+				int S1ME1 = Integer.parseInt( tk[13].trim() );
+				int S1EC1 = Integer.parseInt( tk[14].trim() );
 
 				int S2ME2 = Integer.parseInt( tk[15].trim() );
 				int S2BTCHGGMNPH = Integer.parseInt( tk[16].trim() );
@@ -325,8 +326,8 @@ public class Allocator{
 				int S4EC3 = Integer.parseInt( tk[19].trim() );
 				int S4ARCYINMAPE = Integer.parseInt( tk[20].trim() );
 
-				int S5CE1 = Integer.parseInt( tk[21].trim() );
-				int S5CS1 = Integer.parseInt( tk[22].trim() );
+				int S5CS1 = Integer.parseInt( tk[21].trim() );
+				int S5CE1 = Integer.parseInt( tk[22].trim() );
 
 				int S6CS2 = Integer.parseInt( tk[23].trim() );
 				int S6EE1 = Integer.parseInt( tk[24].trim() );
@@ -344,7 +345,7 @@ public class Allocator{
 
 				Session session = new Session(new Integer(1), ( S1EC1 + S1ME1 ), maxCapacity,  "30th January 2016(Saturday)", "9.00 AM to 12.00 Noon" ) ;
 				session.paperCapacities.put("EC",new PaperCapacity( S1EC1 ) ) ;
-				session.paperCapacities.put("ME",new PaperCapacity(S1ME1) ) ;
+				session.paperCapacities.put("ME",new PaperCapacity( S1ME1 ) ) ;
 				sessions.add( session );
 
 				session = new Session(new Integer(2), ( S2ME2 + S2BTCHGGMNPH ), maxCapacity, "30th January 2016 (Saturday)", "2.00 PM to 5.00 PM" );
@@ -475,6 +476,10 @@ public class Allocator{
 
 					Session session = centre.sessions.get( new Integer( sessionId ) );
 
+					if( applicant.isPwD && session.pwdAllocated == 5 )
+						continue;
+
+
 					PaperCapacity pc = session.paperCapacities.get( applicant.paperCode );	
 
 					if( pc == null ){
@@ -482,10 +487,9 @@ public class Allocator{
 						System.exit(0);
 					}
 
-					if( applicant.isPwD && session.pwdAllocated == 5 )
-						continue;
 
-					if( ( ( pc.capacity - pc.allocated ) > 0 && ( session.capacity - session.allocated ) > 0) || ( isMaxCapcityUse && ( session.maxCapacity - session.allocated ) > 0 ) ){
+					if( ( ( pc.capacity - pc.allocated ) > 0 && ( session.capacity - session.allocated ) > 0 ) || 
+				        ( isMaxCapcityUse && (session.maxCapacity - session.allocated) > 0 && session.capacity > 0 && zone.cityChange.get(city.cityCode) != null ) ){
 
 						applicant.centre = centre;
 						applicant.isAllocated = true;
@@ -692,30 +696,31 @@ public class Allocator{
 		try{
 
 			Allocator allocator = new Allocator();
-			allocator.readApplicants("./data/gate-applicant-20151129.csv", true);
+			//allocator.readApplicants("./data/gate-applicant-20151129.csv", true);
+			allocator.readApplicants("./data/applicant-2015-12-03.csv", true);
 
-			allocator.readCentres("./data/zone4.csv", true);
-			allocator.readCentres("./data/zone6.csv", true);
-			allocator.readCentres("./data/zone7.csv", true);
+			//allocator.readCentres("./data/zone4.csv", true);
 			allocator.readCentres("./data/zone5.csv", true);
+			//allocator.readCentres("./data/zone6.csv", true);
+			//allocator.readCentres("./data/zone7.csv", true);
 
 			allocator.readCityChangeMapping("./data/city-change.csv",true);
 			allocator.readCityCodeMapping("./data/gate-examcity-code.csv", true);
 			
 			allocator.printDataDetails();
 
-			allocator.allocate(4, 0);
+			//allocator.allocate(4, 0);
 			allocator.allocate(5, 0);
-			allocator.allocate(6, 0);
-			allocator.allocate(6, 1);
-			allocator.allocate(7, 0);
+			//allocator.allocate(6, 0);
+			//allocator.allocate(6, 1);
+			//allocator.allocate(7, 0);
 
 			allocator.centreAllocation();
 
-			allocator.allocationAnalysis(4);
+			//allocator.allocationAnalysis(4);
 			allocator.allocationAnalysis(5);
-			allocator.allocationAnalysis(6);
-			allocator.allocationAnalysis(7);
+			//allocator.allocationAnalysis(6);
+			//allocator.allocationAnalysis(7);
 
 			allocator.printCentres();	
 			allocator.printAllocation();
