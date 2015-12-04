@@ -23,9 +23,9 @@ public class City{
 		this.sessions = new LinkedHashMap<Integer, Session>();
 	}
 
-	void print(Integer zoneId){
+	void print(Zone zone, boolean iiscformat){
 		for(Centre centre: centres ){
-			centre.print( zoneId, cityCode );
+			centre.print( zone, cityCode, iiscformat );
 		}
 	}
 } 

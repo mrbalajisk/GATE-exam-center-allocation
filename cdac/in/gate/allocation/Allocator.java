@@ -117,7 +117,6 @@ public class Allocator{
 		if( total != applicants.size() ){
 			System.err.println("Error in Applicant data Count mismatch "+total+" != "+applicants.size() );
 		}
-		System.out.println("-----------------------------------------------------------");	
 	}
 
 	void readCityChangeMapping(String filename, boolean withHeader){
@@ -309,8 +308,13 @@ public class Allocator{
 				String tcsCode = tk[3].trim();
 				Integer centerCode = new Integer( tk[4].trim() );
 				String centerName = tk[5].trim();
+				String address1 =  tk[6].trim();	
+				String address2 =  tk[7].trim();	
+				String address3 =  tk[8].trim();		
+				String pincode = tk[9].trim();
 				String cityName = tk[10].trim();
 				String state = tk[11].trim();
+				Integer max = new Integer( tk[12].trim() );
 
 				int maxCapacity = Integer.parseInt( tk[12].trim() );
 
@@ -415,7 +419,7 @@ public class Allocator{
 					city = new City( cityCode, cityName );
 				}
 
-				Centre centre = new Centre( centerCode, centerName, sessions, PwDFriendly);
+				Centre centre = new Centre( centerCode, centerName, address1, address2, address3, pincode, cityName, state, max, sessions, PwDFriendly);
 				city.centres.add( centre );
 
 				cities.put( cityCode, city );	
@@ -489,6 +493,7 @@ public class Allocator{
 
 
 					if( ( ( pc.capacity - pc.allocated ) > 0 && ( session.capacity - session.allocated ) > 0 ) || 
+
 				        ( isMaxCapcityUse && (session.maxCapacity - session.allocated) > 0 && session.capacity > 0 && zone.cityChange.get(city.cityCode) != null ) ){
 
 						applicant.centre = centre;
@@ -572,17 +577,18 @@ public class Allocator{
 		}
 	}
 
-	void printCentres(){
+	void printCentres( boolean iiscFormate ){
 
 		System.out.println("-----------------------------------------------------------");	
-		Centre.header();
+		Centre.header( iiscFormate );
+
 		Set<Integer> zoneIds = zones.keySet();
 		for(Integer zoneId: zoneIds){
 			Zone zone = zones.get( zoneId );
 			Set<Integer> cityCodes = zone.cities.keySet();
 			for(Integer cityCode: cityCodes){
 				City city = zone.cities.get( cityCode );
-				city.print( zone.zoneId );
+				city.print( zone, iiscFormate );
 			}
 		}
 	}
@@ -596,9 +602,12 @@ public class Allocator{
 		}
 
 		System.out.println("------------------ Not Allocated Candidate ---------------");
-		Applicant.header();
-		for(Applicant applicant: allNotAllocatedApplicants ){
-			applicant.print();
+
+		if( allNotAllocatedApplicants.size() > 0 ){
+			Applicant.header();
+			for(Applicant applicant: allNotAllocatedApplicants ){
+				applicant.print();
+			}
 		}
 
 		System.out.println("Total Allocated    :"+ allAllocatedApplicants.size() );
@@ -657,14 +666,17 @@ public class Allocator{
 
 	void zoneWiseAnalyisPrint(){
 
-		System.out.println("----------------------------------------------------------");	
-		System.out.println("ZoneId, CityCode(cityName), Paper:not-AllocatedCount, ...");
+		if( zoneWiseAnalysis.keySet().size() > 0 ){
 
-		Set<Integer> zoneIds = zoneWiseAnalysis.keySet();
+				System.out.println("----------------------------------------------------------");	
+				System.out.println("ZoneId, CityCode(cityName), Paper:not-AllocatedCount, ...");
 
-		for(Integer zoneId: zoneIds ){
-			zoneWiseAnalysis.get( zoneId ).print();
-			System.out.println();
+				Set<Integer> zoneIds = zoneWiseAnalysis.keySet();
+
+				for(Integer zoneId: zoneIds ){
+					zoneWiseAnalysis.get( zoneId ).print();
+					System.out.println();
+				}
 		}
 	}
 
@@ -700,8 +712,8 @@ public class Allocator{
 			allocator.readApplicants("./data/applicant-2015-12-03.csv", true);
 
 			//allocator.readCentres("./data/zone4.csv", true);
-			allocator.readCentres("./data/zone5.csv", true);
-			//allocator.readCentres("./data/zone6.csv", true);
+			//allocator.readCentres("./data/zone5.csv", true);
+			allocator.readCentres("./data/zone6.csv", true);
 			//allocator.readCentres("./data/zone7.csv", true);
 
 			allocator.readCityChangeMapping("./data/city-change.csv",true);
@@ -710,19 +722,22 @@ public class Allocator{
 			allocator.printDataDetails();
 
 			//allocator.allocate(4, 0);
-			allocator.allocate(5, 0);
-			//allocator.allocate(6, 0);
-			//allocator.allocate(6, 1);
+			//allocator.allocate(5, 0);
+			allocator.allocate(6, 0);
+			allocator.allocate(6, 1);
 			//allocator.allocate(7, 0);
 
 			allocator.centreAllocation();
 
 			//allocator.allocationAnalysis(4);
-			allocator.allocationAnalysis(5);
+			//allocator.allocationAnalysis(5);
+			allocator.allocationAnalysis(6);
 			//allocator.allocationAnalysis(6);
 			//allocator.allocationAnalysis(7);
 
-			allocator.printCentres();	
+			allocator.printCentres(false);	
+			allocator.printCentres(true);
+	
 			allocator.printAllocation();
 			allocator.zoneWiseAllocationDetails();
 			allocator.zoneWiseAnalyisPrint();

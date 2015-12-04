@@ -9,6 +9,7 @@ import java.util.TreeMap;
 public class Zone{
 
 	Integer zoneId;
+	String  name;
 
 	Map<Integer, City> cities;
 	Map<Integer, Integer> cityChange;
@@ -25,6 +26,7 @@ public class Zone{
 	Zone(Integer zoneId){
 
 		this.zoneId = zoneId;
+		this.name = "";
 		this.cities = new TreeMap<Integer, City>();
 		this.applicants = new ArrayList<Applicant>();	
 		this.pwdApplicants = new ArrayList<Applicant>();	
@@ -54,10 +56,10 @@ public class Zone{
 		paperWiseApplicant.put( applicant.paperCode,  pApplicants );
 	}
 
-	void print(){
+	void print( boolean iiscformate ){
 		Set<Integer> cityCodes = cities.keySet();
 		for(Integer cityCode: cityCodes){
-			cities.get( cityCode ).print( zoneId );	
+			cities.get( cityCode ).print( this, iiscformate );	
 		}			
 	}
 } 

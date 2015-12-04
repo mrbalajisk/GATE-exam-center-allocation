@@ -9,13 +9,28 @@ public class Centre{
 
 	Integer centreCode;
 	String centreName;
+	String address1;
+	String address2;
+	String address3;
+	String pincode;
+	String city;
+	String state;
+	Integer max;
 	boolean pwdFriendly;
 
 	Map<Integer, Session> sessions;
 
-	Centre(Integer centreCode, String centreName, List<Session> sessions, String PwDFriendly ){
+	Centre(Integer centreCode, String centreName,String add1, String add2, String add3, String pincode, String city, String state, Integer max, List<Session> sessions, String PwDFriendly ){
 
 		this.centreName = centreName;
+		this.address1 = add1;
+		this.address2 = add2;
+		this.address3 = add3;
+		this.pincode = pincode;
+		this.city = city;
+		this.state = state;
+		this.max = max;
+		
 		this.centreCode = new Integer( centreCode );
 
 		if( PwDFriendly.equals("YES") || PwDFriendly.equals("Yes") || PwDFriendly.indexOf("Y") >= 0 || PwDFriendly.indexOf("y") >=0 )
@@ -28,46 +43,77 @@ public class Centre{
 
 	}
 
-    static void header(){
-		System.out.print("Zone, CityCode, Centre-Code, CentreName, Pwd-Friendly");
-		for(int i = 1; i < 9; i++){
-			System.out.print(", ( S"+i+"| MaxCapacity | Capacity | Allocated | PwD)");	
+    static void header( boolean iiscFormate){
+		if( iiscFormate ){
+			System.out.println("Zone ID, Zone, City Code, TCS ID , Centre code, LISP, Add1, Add2, Add3, Pincode, City, State, Max, S1-ME1, S1-EC1, S2-ME2, \"S2-BT, CH, GG, MN, PH\",S3-ME3,S3-EC2,S4-EC3,\"S4-AR, CY, IN, MA, PE\",S5-CS1,S5-CE1,S6-CS2,S6-EE1,S7-CE2,\"S7-AG, EY, MT, PI\",S8-EE2,\"S8-AE, TF, XL, XE\"");
 		}
-		System.out.println();
+		else{
+			System.out.print("Zone, CityCode, Centre-Code, CentreName, Pwd-Friendly");
+			for(int i = 1; i < 9; i++){
+				System.out.print(", ( S"+i+"| MaxCapacity | Capacity | Allocated | PwD)");	
+			}
+			System.out.println();
+		}
+	
 	}
 	
-	void print(Integer zone, Integer cityCode){
+	void print(Zone zone, Integer cityCode, boolean iiscFormate){
 
-		System.out.print( zone+", "+cityCode+", "+centreCode+", '"+centreName+"', "+pwdFriendly);
-		Set<Integer> sessionIds = sessions.keySet();
 
-		for(Integer sessionId: sessionIds){
-			Session session = sessions.get( sessionId );
-			System.out.print(", ("+session.maxCapacity + "|"+ session.capacity +"|"+ session.allocated +"|"+ session.pwdAllocated +")");
-		}
+		if( iiscFormate ){
 
-		System.out.println();
-		System.out.print( zone+", "+cityCode+", "+centreCode+", '"+centreName+"', "+pwdFriendly);
+				System.out.print(zone.zoneId+", "+zone.name+", "+cityCode+",  , "+centreCode+", \""+centreName+"\", \""+address1+"\", \""+address2+"\", \""+address3+"\", "+pincode+", "+city+", "+state+", "+max);
+				System.out.print(", "+ sessions.get( 1 ).paperCapacities.get("ME").allocated );
+				System.out.print(", "+ sessions.get( 1 ).paperCapacities.get("EC").allocated );
+				System.out.print(", "+ sessions.get( 2 ).paperCapacities.get("ME").allocated );
+				System.out.print(", "+ sessions.get( 2 ).paperCapacities.get("BT").allocated );
+				System.out.print(", "+ sessions.get( 3 ).paperCapacities.get("ME").allocated );
+				System.out.print(", "+ sessions.get( 3 ).paperCapacities.get("EC").allocated );
+				System.out.print(", "+ sessions.get( 4 ).paperCapacities.get("EC").allocated );
+				System.out.print(", "+ sessions.get( 4 ).paperCapacities.get("AR").allocated );
+				System.out.print(", "+ sessions.get( 5 ).paperCapacities.get("CS").allocated );
+				System.out.print(", "+ sessions.get( 5 ).paperCapacities.get("CE").allocated );
+				System.out.print(", "+ sessions.get( 6 ).paperCapacities.get("CS").allocated );
+				System.out.print(", "+ sessions.get( 6 ).paperCapacities.get("EE").allocated );
+				System.out.print(", "+ sessions.get( 7 ).paperCapacities.get("CE").allocated );
+				System.out.print(", "+ sessions.get( 7 ).paperCapacities.get("AG").allocated );
+				System.out.print(", "+ sessions.get( 8 ).paperCapacities.get("EE").allocated );
+				System.out.print(", "+ sessions.get( 8 ).paperCapacities.get("AE").allocated );
+				System.out.println();
 
-		for(Integer sessionId: sessionIds){
-			Session session = sessions.get( sessionId );
-			Set<String> paperCodes = session.paperAllocatedApplicant.keySet();
-			System.out.print(", S"+sessionId+"[ ");
-			boolean flag = true;
+		}else{
 
-			for(String paperCode: paperCodes){
-				PaperCapacity pc = session.paperCapacities.get( paperCode );
-				if( flag ){
-					flag = false;
-					System.out.print(paperCode+":"+pc.allocated);	
-				}else{
-					System.out.print(" | "+paperCode+":"+pc.allocated);	
+				System.out.print( zone.zoneId+", "+cityCode+", "+centreCode+", '"+centreName+"', "+pwdFriendly);
+				Set<Integer> sessionIds = sessions.keySet();
+
+				for(Integer sessionId: sessionIds){
+					Session session = sessions.get( sessionId );
+					System.out.print(", ("+session.maxCapacity + "|"+ session.capacity +"|"+ session.allocated +"|"+ session.pwdAllocated +")");
 				}
-			}	
-			System.out.print(" ] ");
-		}
 
-		System.out.println();
+				System.out.println();
+				System.out.print( zone.zoneId+", "+cityCode+", "+centreCode+", '"+centreName+"', "+pwdFriendly);
+
+				for(Integer sessionId: sessionIds){
+					Session session = sessions.get( sessionId );
+					Set<String> paperCodes = session.paperAllocatedApplicant.keySet();
+					System.out.print(", S"+sessionId+"[ ");
+					boolean flag = true;
+					for(String paperCode: paperCodes){
+						PaperCapacity pc = session.paperCapacities.get( paperCode );
+						if( flag ){
+							flag = false;
+							System.out.print(paperCode+":"+pc.allocated);	
+						}else{
+							System.out.print(" | "+paperCode+":"+pc.allocated);	
+						}
+					}	
+					System.out.print(" ] ");
+				}
+
+				System.out.println();
+		}
 	}
+
 } 
 
