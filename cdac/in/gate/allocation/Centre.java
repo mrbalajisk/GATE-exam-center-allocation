@@ -45,7 +45,7 @@ public class Centre{
 
     static void header( boolean iiscFormate){
 		if( iiscFormate ){
-			System.out.println("Zone ID, Zone, City Code, TCS ID , Centre code, LISP, Add1, Add2, Add3, Pincode, City, State, Max, S1-ME1, S1-EC1, S2-ME2, \"S2-BT, CH, GG, MN, PH\",S3-ME3,S3-EC2,S4-EC3,\"S4-AR, CY, IN, MA, PE\",S5-CS1,S5-CE1,S6-CS2,S6-EE1,S7-CE2,\"S7-AG, EY, MT, PI\",S8-EE2,\"S8-AE, TF, XL, XE\"");
+			System.out.println("Zone ID, Zone, City Code, TCS ID , Centre code, LISP, Add1, Add2, Add3, Pincode, City, State, Max, S1-ME1, S1-EC1, S2-ME2, \"S2-BT,CH,GG,MN,PH\", S3-ME3,S3-EC2,S4-EC3, \"S4-AR,CY,IN,MA,PE\", S5-CS1, S5-CE1, S6-CS2, S6-EE1, S7-CE2, \"S7-AG, EY, MT, PI\", S8-EE2, \"S8-AE,TF,XL,XE\"");
 		}
 		else{
 			System.out.print("Zone, CityCode, Centre-Code, CentreName, Pwd-Friendly");
@@ -62,7 +62,7 @@ public class Centre{
 
 		if( iiscFormate ){
 
-				System.out.print(zone.zoneId+", "+zone.name+", "+cityCode+",  , "+centreCode+", \""+centreName+"\", \""+address1+"\", \""+address2+"\", \""+address3+"\", "+pincode+", "+city+", "+state+", "+max);
+				System.out.print(zone.zoneId+", "+zone.name+", "+cityCode+", ,"+centreCode+", \""+centreName+"\", \""+address1+"\", \""+address2+"\", \""+address3+"\", "+pincode+", "+city+", "+state+", "+max);
 				System.out.print(", "+ sessions.get( 1 ).paperCapacities.get("ME").allocated );
 				System.out.print(", "+ sessions.get( 1 ).paperCapacities.get("EC").allocated );
 				System.out.print(", "+ sessions.get( 2 ).paperCapacities.get("ME").allocated );
@@ -100,12 +100,15 @@ public class Centre{
 					System.out.print(", S"+sessionId+"[ ");
 					boolean flag = true;
 					for(String paperCode: paperCodes){
-						PaperCapacity pc = session.paperCapacities.get( paperCode );
+						List<Applicant> applicants =  session.applicants.get( paperCode );
+						//PaperCapacity pc = session.paperCapacities.get( paperCode );
 						if( flag ){
 							flag = false;
-							System.out.print(paperCode+":"+pc.allocated);	
+							//System.out.print(paperCode+":"+pc.allocated);	
+							System.out.print(paperCode+":"+applicants.size() );	
 						}else{
-							System.out.print(" | "+paperCode+":"+pc.allocated);	
+							//System.out.print(" | "+paperCode+":"+pc.allocated);	
+							System.out.print(" | "+paperCode+":"+applicants.size());	
 						}
 					}	
 					System.out.print(" ] ");

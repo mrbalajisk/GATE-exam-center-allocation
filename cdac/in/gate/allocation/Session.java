@@ -2,6 +2,7 @@ package cdac.in.gate.allocation;
 
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -31,6 +32,7 @@ public class Session{
 
 	Map<String, PaperCapacity> paperCapacities;
 	Map<String, List<Applicant>> paperAllocatedApplicant;
+	Map<String, List<Applicant>> applicants;
 
 	Session(Integer sessionId, int capacity, int maxCapacity,  String date, String time){
 
@@ -46,6 +48,7 @@ public class Session{
 		this.registrationGenerated = 0;
 		this.paperCapacities = new TreeMap<String, PaperCapacity>();
 		this.paperAllocatedApplicant = new TreeMap<String, List<Applicant>>();
+		this.applicants = new TreeMap<String, List<Applicant>>();
 
 	}
 	

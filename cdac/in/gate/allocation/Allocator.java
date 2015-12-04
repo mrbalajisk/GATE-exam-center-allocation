@@ -412,7 +412,7 @@ public class Allocator{
 				if( zone == null){
 					zone = new Zone( zoneId );
 				}
-
+				zone.name = zoneName;
 				City city = zone.cities.get( cityCode );
 
 				if( city == null){
@@ -509,13 +509,17 @@ public class Allocator{
 							session.pwdAllocated++;
 
 						List<Applicant> paperApplicants = session.paperAllocatedApplicant.get( applicant.paperCode );
+						List<Applicant> tapplicants = session.applicants.get( applicant.paperCode );
 
 						if( paperApplicants == null ){
 							paperApplicants = new ArrayList<Applicant>();
+							tapplicants = new ArrayList<Applicant>();
 						}	
 
 						paperApplicants.add( applicant );
+						tapplicants.add( applicant );
 						session.paperAllocatedApplicant.put( applicant.paperCode, paperApplicants );
+						session.applicants.put( applicant.paperCode, tapplicants );
 					}	
 					if( applicant.isAllocated )
 						break;
@@ -735,8 +739,8 @@ public class Allocator{
 			//allocator.allocationAnalysis(6);
 			//allocator.allocationAnalysis(7);
 
-			allocator.printCentres(false);	
-			allocator.printCentres(true);
+			//allocator.printCentres(false);	
+			allocator.printCentres( false );
 	
 			allocator.printAllocation();
 			allocator.zoneWiseAllocationDetails();
