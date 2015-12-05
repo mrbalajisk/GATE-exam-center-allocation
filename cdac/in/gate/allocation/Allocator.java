@@ -717,9 +717,9 @@ public class Allocator{
 
 			//allocator.readCentres("./data/zone4.csv", true);
 			//allocator.readCentres("./data/zone5.csv", true);
-			//allocator.readCentres("./data/zone6.csv", true);
+			allocator.readCentres("./data/zone6.csv", true);
 			//allocator.readCentres("./data/zone7.csv", true);
-			allocator.readCentres("./data/zone8.csv", true);
+			//allocator.readCentres("./data/zone8.csv", true);
 
 			allocator.readCityChangeMapping("./data/city-change.csv",true);
 			allocator.readCityCodeMapping("./data/gate-examcity-code.csv", true);
@@ -729,20 +729,20 @@ public class Allocator{
 			//allocator.allocate(4, 0);
 			//allocator.allocate(4, 1);
 			//allocator.allocate(5, 0);
-			//allocator.allocate(6, 0);
-			//allocator.allocate(6, 1);
+			allocator.allocate(6, 0);
+			allocator.allocate(6, 1);
 			//allocator.allocate(7, 0);
-			allocator.allocate(8, 0);
-			allocator.allocate(8, 1);
+			//allocator.allocate(8, 0);
+			//allocator.allocate(8, 1);
 
 			allocator.centreAllocation();
 
 			//allocator.allocationAnalysis(4);
 			//allocator.allocationAnalysis(5);
 			//allocator.allocationAnalysis(6);
-			//allocator.allocationAnalysis(6);
+			allocator.allocationAnalysis(6);
 			//allocator.allocationAnalysis(7);
-			allocator.allocationAnalysis(8);
+			//allocator.allocationAnalysis(8);
 
 
 			//allocator.printCentres(false);	
