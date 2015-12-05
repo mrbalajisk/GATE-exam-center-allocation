@@ -10,10 +10,36 @@ import java.io.BufferedReader;
 import java.util.Collections;
 import java.io.File;
 
+
+class CentreDataMismatch{
+
+	Centre centre;
+	City city;
+	Session session;
+
+	CentreDataMismatch(Centre centre, City city, Session session){
+		this.centre = centre;
+		this.city = city;
+		this.session = session;	
+	}
+
+	static void header(){
+		System.err.println("CentreCode, Session, City, City-Name, Max, Allocation");
+	}
+
+	void print(){
+		System.err.println( centre.centreCode+", "+session.sessionId+", "+city.cityCode+", "+city.cityName+", "+session.maxCapacity+", "+session.capacity);
+	}
+
+
+}
+
 public class Allocator{
 
 	static Map<Integer, Zone> zones = new TreeMap<Integer, Zone>();
 	static Map<Integer, City> cities = new TreeMap<Integer, City>();
+
+	static Map<String, CentreDataMismatch> centreDataMissMatches = new TreeMap<String, CentreDataMismatch>();
 
 	static Map<String, String> paperSession = new TreeMap<String, String>();
 
@@ -491,8 +517,12 @@ public class Allocator{
 						System.exit(0);
 					}
 
+					if( ( session.maxCapacity - session.allocated ) <= 0 &&  session.capacity  > ( session.maxCapacity + 1 )  ){
+						centreDataMissMatches.put(centre.centreCode+""+session.sessionId+""+city.cityCode, new CentreDataMismatch( centre, city, session )  );
+						continue;	
+					}
 
-					if( ( ( pc.capacity - pc.allocated ) > 0 && ( session.capacity - session.allocated ) > 0 ) || 
+					if( ( ( pc.capacity - pc.allocated ) > 0 && ( session.capacity - session.allocated ) > 0  ) || 
 
 				        ( isMaxCapcityUse && (session.maxCapacity - session.allocated) > 0 && session.capacity > 0 && zone.cityChange.get(city.cityCode) != null ) ){
 
@@ -707,6 +737,17 @@ public class Allocator{
 
 	}
 
+	void printErrorData(){
+		Set<String> keys = centreDataMissMatches.keySet();
+		if( keys.size() > 0){
+			CentreDataMismatch.header();
+	        	for(String key: keys){
+				centreDataMissMatches.get( key ).print();	
+			}
+		}	
+
+	}
+
 	public static void main(String[] args){
 
 		try{
@@ -716,7 +757,7 @@ public class Allocator{
 			allocator.readApplicants("./data/applicant-2015-12-03.csv", true);
 
 			//allocator.readCentres("./data/zone4.csv", true);
-			//allocator.readCentres("./data/zone5.csv", true);
+			allocator.readCentres("./data/zone5.csv", true);
 			allocator.readCentres("./data/zone6.csv", true);
 			//allocator.readCentres("./data/zone7.csv", true);
 			//allocator.readCentres("./data/zone8.csv", true);
@@ -728,9 +769,9 @@ public class Allocator{
 
 			//allocator.allocate(4, 0);
 			//allocator.allocate(4, 1);
-			//allocator.allocate(5, 0);
+			allocator.allocate(5, 0);
 			allocator.allocate(6, 0);
-			allocator.allocate(6, 1);
+			//allocator.allocate(6, 1);
 			//allocator.allocate(7, 0);
 			//allocator.allocate(8, 0);
 			//allocator.allocate(8, 1);
@@ -738,14 +779,16 @@ public class Allocator{
 			allocator.centreAllocation();
 
 			//allocator.allocationAnalysis(4);
-			//allocator.allocationAnalysis(5);
-			//allocator.allocationAnalysis(6);
+			allocator.allocationAnalysis(5);
 			allocator.allocationAnalysis(6);
+			//allocator.allocationAnalysis(6);
 			//allocator.allocationAnalysis(7);
 			//allocator.allocationAnalysis(8);
 
 
 			//allocator.printCentres(false);	
+			//
+			allocator.printErrorData();
 			allocator.printCentres( true );
 			allocator.printAllocation();
 			allocator.zoneWiseAllocationDetails();

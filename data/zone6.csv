@@ -6,7 +6,7 @@ Zone ID,Zone,City Code,TCS ID,Centre code,LISP,Add1,Add2,Add3,Pincode,City,State
 6,IIT Kharagpur,86,,6005,"Sri Sai Aditya Institute of Science & Technology","Aditya Nagar, ADB Road","Surampalem, Gandepalli Mandal",East Godavari Dist,533437,Kakinada,Andhra Pradesh,300,91,210,201,69,91,209,123,140,162,134,0,249,0,0,241,8
 6,IIT Kharagpur,148,,6006,Rajamahendri Institute of Engineering  & Technology,Bhoopalapatnam,Near Pidimgoyyi  ,East Godavari Dist,533107,Rajahmundry,Andhra Pradesh,300,137,162,174,125,138,162,168,130,147,14,0,192,160,16,172,5
 6,IIT Kharagpur,148,,6007,Godavari Institute of Engineering and Technology,NH-16 ,Chaitanya Knowledge City,East Godavari Dist,533296,Rajahmundry,Andhra Pradesh,180,83,97,104,75,83,97,101,78,132,13,0,173,144,15,155,4
-6,IIT Kharagpur,170,,6008,Sri Vasavi Engineering College,Pedatadepalli,Tadepalligudem Mandal,West Godavari Dist,534101,Tadepalligudem,Andhra Pradesh,310,0,0,229,13,59,249,91,39,0,0,121,138,125,3,143,1
+6,IIT Kharagpur,170,,6008,Sri Vasavi Engineering College,Pedatadepalli,Tadepalligudem Mandal,West Godavari Dist,534101,Tadepalligudem,Andhra Pradesh,310,0,0,229,13,59,249,91,39,0,0,132,138,125,3,143,1
 6,IIT Kharagpur,189,,6009,NRI Institute of Technology,NRI Group of Colleges,"Pothavarappadu, Via Nunna, Agrirpalli",Krishna Dist,521212,Vijayawada,Andhra Pradesh,500,141,319,205,38,141,318,152,76,218,272,139,246,0,0,223,20
 6,IIT Kharagpur,189,,6010,Devineni Venkata Ramana & Dr. Himasekhar MIC College of Technology,MIC College Road ,"Off NH-9 Kanchikacherla, Near Vijayawada",Krishna Dist,521180,Vijayawada,Andhra Pradesh,400,113,255,328,61,113,255,152,76,174,218,139,246,200,43,357,32
 6,IIT Kharagpur,189,,6011,Potti Sreeramulu Chalavadi Mallikharjuna Rao College of Engineering and Technology,Raghava Reddy Street ,Kothapeta,Krishna Dist,520001,Vijayawada,Andhra Pradesh,300,71,160,205,38,71,159,152,76,131,164,87,154,200,43,268,24
@@ -25,15 +25,15 @@ Zone ID,Zone,City Code,TCS ID,Centre code,LISP,Add1,Add2,Add3,Pincode,City,State
 6,IIT Kharagpur,201,,6024,Lendi Institute of Engineering and Technology,,Jonnada (Vill),Denkada (Md),535005,Vizianagaram,Andhra Pradesh,360,119,214,207,57,0,0,0,0,265,90,0,338,144,54,289,8
 6,IIT Kharagpur,38,,6025,Dr. C. V. Raman University,Kargi Road,Kota,,495113,Bilaspur,Chhattisgarh,279,226,54,112,168,227,53,182,98,140,140,140,140,206,74,253,27
 6,IIT Kharagpur,38,,6026,Lakhmi Chand Institute of Technology,"Near High Court, Raipur Road",Bodri ,PO: Chararbhata,495220,Bilaspur,Chhattisgarh,148,120,29,60,89,121,28,97,52,74,75,75,74,109,40,135,14
-6,IIT Kharagpur,31,,6027,Bharti College of Engineering & Technology,Pulgaon Chowk,Durg,Near Bhilai Nagar,491001,Bhilai,Chhattisgarh,400,265,87,281,35,265,87,233,84,113,256,173,195,250,108,351,15
-6,IIT Kharagpur,31,,6028,Shri Shankaracharya Technical Campus (Center-1),Junwani ,P.O. Nehru Nagar,Durg,490020,Bhilai,Chhattisgarh,650,430,141,456,56,430,140,378,135,183,416,282,317,0,0,570,25
-6,IIT Kharagpur,31,,6029,Shri Shankaracharya Technical Campus  (Center-2),Junwani ,P.O. Nehru Nagar,Durg,490020,Bhilai,Chhattisgarh,320,212,70,225,28,212,69,0,0,90,205,139,156,0,0,0,0
+6,IIT Kharagpur,31,,6027,Bharti College of Engineering & Technology,Pulgaon Chowk,Durg,Near Bhilai Nagar,491001,Bhilai,Chhattisgarh,400,265,87,281,35,265,87,233,84,113,256,173,195,254,108,386,15
+6,IIT Kharagpur,31,,6028,Shri Shankaracharya Technical Campus (Center-1),Junwani ,P.O. Nehru Nagar,Durg,490020,Bhilai,Chhattisgarh,650,522,141,456,56,522,140,378,135,216,435,311,339,0,0,631,25
+6,IIT Kharagpur,31,,6029,Shri Shankaracharya Technical Campus  (Center-2),Junwani ,P.O. Nehru Nagar,Durg,490020,Bhilai,Chhattisgarh,320,212,70,245,28,212,69,0,0,90,205,139,156,0,0,0,0
 6,IIT Kharagpur,147,,6030,Shri Shankaracharya Institute of Professional Management & Technology (SSIPMT),Old Dhamtari Road,"P.O.  Sejabahar, Mujgahan",In Side Plane City,492015,Raipur,Chhattisgarh,250,232,17,135,114,233,16,195,54,27,208,166,69,185,53,231,36
 6,IIT Kharagpur,147,,6031,Rungta College of Engineering of Technology (Raipur),Behind Nandan Van,Veer Savarkar Nagar  ,Ward No. 01,492099,Raipur,Chhattisgarh,400,372,27,216,182,372,26,312,86,43,333,265,110,296,84,369,57
 6,IIT Kharagpur,147,,6032,Bhilai Institute of Technology Raipur,Village- Kendri,"Near Abhanpur, NH-30",New Raipur,493661,Raipur,Chhattisgarh,225,209,15,122,103,209,15,176,49,25,187,149,62,0,0,0,0
 6,IIT Kharagpur,147,,6033,Columbia Institute of Engineering and Technology,Bhurkoni,Tekari Village,Near Vidhan Sabha,493111,Raipur,Chhattisgarh,150,140,10,81,69,140,10,117,33,17,125,100,42,111,32,139,22
 6,IIT Kharagpur,82,,6034,Al Kabir Polytechnic,Kabirnagar,P.O.- Kopali Mango,,831012,Jamshedpur,Jharkhand,235,193,38,125,82,193,38,106,54,121,96,0,0,0,0,139,14
-6,IIT Kharagpur,82,,6035,R.V.S. College of Engineering & Technology BLOCK - A,Edalbera,Bhilai Pahari ,NH-33,831012,Jamshedpur,Jharkhand,350,206,41,133,88,206,41,112,57,181,143,0,262,16,213,174,18
+6,IIT Kharagpur,82,,6035,R.V.S. College of Engineering & Technology BLOCK - A,Edalbera,Bhilai Pahari ,NH-33,831012,Jamshedpur,Jharkhand,350,206,41,133,88,206,41,112,57,184,143,0,262,17,214,174,18
 6,IIT Kharagpur,150,,6036,Ram Tahal Choudhary Institute of Technology (RTCIT),Anandi,Ormanjhi Block Chowk,,835219,Ranchi,Jharkhand,330,280,51,137,193,280,51,231,99,170,159,90,238,0,0,0,0
 6,IIT Kharagpur,150,,6037,Oxford Public School,Old H B Road,Pragati Path,,834001,Ranchi,Jharkhand,301,226,41,111,156,226,41,187,80,155,145,82,217,191,130,204,102
 6,IIT Kharagpur,150,,6038,Birla Institute of Technology Mesra,Mesra,,,835215,Ranchi,Jharkhand,186,153,28,75,106,153,28,126,54,96,90,51,134,118,80,126,64
@@ -42,7 +42,7 @@ Zone ID,Zone,City Code,TCS ID,Centre code,LISP,Add1,Add2,Add3,Pincode,City,State
 6,IIT Kharagpur,22,,6041,Modern Engineering & Management Studies,Near NH 5 ,Banaparia  ,Khuruda,756056,Balasore,Odisha,150,99,30,71,53,0,0,0,0,0,0,0,0,0,0,0,0
 6,IIT Kharagpur,29,,6042,Vignan Institute of Technology & Management,Bhairavi Vihar  Haradanga Village  Near Bairavi Temple ,Post Mantridi  via Golanthara,Ganjam ,761008,Berhampur,Odisha,305,0,0,200,61,228,76,140,89,108,60,53,146,200,15,260,22
 6,IIT Kharagpur,29,,6043,Roland Institute of Technology,Surya Vihar ,Golanthara,Ganjam,761008,Berhampur,Odisha,120,0,0,79,24,91,31,0,0,54,30,18,49,0,0,0,0
-6,IIT Kharagpur,34,,6044,Institute of Technical Education & Research (Center-1),Jagamohan Nagar,Jagamara , Khandagiri Marg,751030,Bhubaneswar,Odisha,400,274,86,257,116,62,395,0,151,122,249,73,311,0,0,0,0
+6,IIT Kharagpur,34,,6044,Institute of Technical Education & Research (Center-1),Jagamohan Nagar,Jagamara , Khandagiri Marg,751030,Bhubaneswar,Odisha,400,274,86,257,116,62,395,0,151,122,249,73,313,0,0,0,0
 6,IIT Kharagpur,34,,6045,Institute of Technical Education & Research  (Center-2),Jagamohan Nagar,Jagamara , Khandagiri Marg,751030,Bhubaneswar,Odisha,250,171,54,161,72,77,494,0,151,77,156,46,195,0,0,0,0
 6,IIT Kharagpur,34,,6046,KIIT University Campus-15,KIIT Campus ,Patia,,751024,Bhubaneswar,Odisha,360,246,77,193,87,0,0,0,151,110,224,66,280,0,0,0,0
 6,IIT Kharagpur,34,,6047,Regional College of Management,GD 12/13 Chakadola Dham,Chandrasekharpur,,751023,Bhubaneswar,Odisha,315,216,67,161,72,0,0,0,0,97,196,58,245,175,80,255,84
@@ -52,7 +52,7 @@ Zone ID,Zone,City Code,TCS ID,Centre code,LISP,Add1,Add2,Add3,Pincode,City,State
 6,IIT Kharagpur,34,,6051,Edu Surge,Plot No. 22 & 23 Zone D,"Sector-A, Mancheswar Industrial Area","ARSS Office Lane, Near Indian Express",751017,Bhubaneswar,Odisha,250,171,54,161,72,0,0,0,0,77,156,46,195,0,0,212,70
 6,IIT Kharagpur,34,,6052,Centurian University of Technology & Management,At - Ramchandrapur,P.O.  Jatni ,Khurda Dist,752050,Bhubaneswar,Odisha,243,166,52,156,70,0,0,0,0,75,152,45,189,0,0,200,66
 6,IIT Kharagpur,34,,6053,C. V. Raman College of Engineering,"Janla,  Bidyanagar",PO: Mahura  ,Dist. Khurda,752054,Bhubaneswar,Odisha,198,136,43,97,44,0,0,0,0,61,124,37,154,0,0,0,0
-6,IIT Kharagpur,34,,6054,Eastern Academy of Science & Technology (EAST),At - Prachivihar  Anantapur,P.O. Phulnakhara,Khurda,754001,Bhubaneswar,Odisha,500,342,107,321,144,0,0,0,301,153,311,91,389,350,159,424,139
+6,IIT Kharagpur,34,,6054,Eastern Academy of Science & Technology (EAST),At - Prachivihar  Anantapur,P.O. Phulnakhara,Khurda,754001,Bhubaneswar,Odisha,500,342,150,321,144,0,0,0,301,153,311,91,402,350,159,437,139
 6,IIT Kharagpur,46,,6055,Dhaneswar Rath Institute of Engineering & Management Studies,DRIEMS Campus,At - Kairapari,PO - Kotsahi (Tangi),754022,Cuttack,Odisha,243,206,37,48,195,206,37,71,172,118,125,39,204,190,53,180,63
 6,IIT Kharagpur,153,,6056,National Institute of Technology,NIT Campus ,Sundargarh,,769008,Rourkela,Odisha,320,0,0,131,167,0,0,162,218,124,119,0,0,76,127,232,72
 6,IIT Kharagpur,153,,6057,"Rourkela Institute of Management Studies","RIMS, Phase - II",Gopabandhu Nagar,Chhend,769015,Rourkela,Odisha,240,441,119,99,126,0,0,0,0,120,114,0,234,0,0,0,0
@@ -63,7 +63,7 @@ Zone ID,Zone,City Code,TCS ID,Centre code,LISP,Add1,Add2,Add3,Pincode,City,State
 6,IIT Kharagpur,97,,6062,Mallabhum Institute of Technology,Braja Radha Nagar,PO  Gossaipur  PS  Bishnupur,Dist - Bankura,722122,Bishnupur (under KGP),West Bengal,270,0,0,0,252,0,0,0,245,0,0,0,0,0,0,0,0
 6,IIT Kharagpur,71,,6063,Supreme Knowledge Foundation Group of Institutions,1 Khan Road,Mankundu ,Chandannagar,712139,Hooghly,West Bengal,180,64,95,81,78,64,95,23,136,147,34,35,146,174,7,86,95
 6,IIT Kharagpur,71,,6064,Technique Polytechnic Institute,Village-Panchrokhi,P.O. Sugandhya,,712102,Hooghly,West Bengal,130,44,66,56,53,44,66,16,93,106,25,25,106,125,6,63,68
-6,IIT Kharagpur,100,,6065,Edu Surge Kolkata,"Pride Hotel, Plot No. Bg 12","Action 1 B, New Town",Rajarhat,700156,Kolkata,West Bengal ,400,78,323,114,266,235,133,0,361,270,127,101,295,0,0,0,0
+6,IIT Kharagpur,100,,6065,Edu Surge Kolkata,"Pride Hotel, Plot No. Bg 12","Action 1 B, New Town",Rajarhat,700156,Kolkata,West Bengal ,400,78,323,114,266,235,133,0,361,270,127,101,296,0,0,0,0
 6,IIT Kharagpur,100,,6066,Regent Education and Research Foundation,Bara Kanthalia ,Barrackpore  ,P.O. Sewli Telini Para North 24 Parganas,700121,Kolkata,West Bengal,360,59,242,85,199,176,100,0,271,243,114,91,265,291,49,145,215
 6,IIT Kharagpur,100,,6067,Techno India University,"EM-4, Sector-V",Salt Lake City,,700091,Kolkata,West Bengal,250,49,202,71,166,147,84,0,226,169,79,64,184,0,0,0,0
 6,IIT Kharagpur,100,,6068,Budge Budge Institute of Technology,"K P Mondal Road, Nischintapur", Budge Budge,South 24 Parganas,700137,Kolkata,West Bengal,320,59,242,85,199,176,100,0,271,216,101,81,236,0,0,0,0
@@ -76,7 +76,7 @@ Zone ID,Zone,City Code,TCS ID,Centre code,LISP,Add1,Add2,Add3,Pincode,City,State
 6,IIT Kharagpur,100,,6075,NSHM Knowledge Campus,124(60) B.L.Saha Road,Near Tollygunge ,Mahabirtala,700053,Kolkata,West Bengal,220,39,162,57,133,118,67,0,181,149,70,56,162,178,30,89,132
 6,IIT Kharagpur,100,,6076,Gargi Memorial Institute of Technology,Balarampur ,Mauza Beralia,Baruipur,700144,Kolkata,West Bengal,200,39,162,57,133,118,67,0,181,135,64,51,148,162,27,81,120
 6,IIT Kharagpur,100,,6077,Techno India College of Technology Rajarhat,Block DG 1/1 New Town,Mega City,Rajarhat,700156,Kolkata,West Bengal,150,0,0,0,0,0,0,0,0,101,48,38,111,121,21,61,90
-6,IIT Kharagpur,100,,6078,MCKV Institute of Engineering,243 G. T. Road (N) ,Liluah ,Howrah,711204,Kolkata,West Bengal,200,0,0,0,0,0,0,0,0,135,64,51,148,162,27,81,120
+6,IIT Kharagpur,100,,6078,MCKV Institute of Engineering,243 G. T. Road (N) ,Liluah ,Howrah,711204,Kolkata,West Bengal,200,0,0,0,0,0,0,0,0,135,64,51,190,162,27,122,120
 6,IIT Kharagpur,100,,6079,Techno India Main,"EM-4/1, Sector-V",Salt Lake City,GATE - 1,700091,Kolkata,West Bengal,150,0,0,0,0,0,0,0,0,101,48,38,111,121,21,61,90
 6,IIT Kharagpur,100,,6080,Webel Human Resource Development Center,Webel HRDC,P-1 Taratala Road,Brace Bridge,700088,Kolkata,West Bengal,120,0,0,0,0,0,0,0,0,81,38,31,89,97,17,49,72
 6,IIT Kharagpur,100,,6081,Birla Institute of Technology Extn. Centre,Southend Conclave,1582 Rajdanga Main Road,4th Floor,700107,Kolkata,West Bengal ,120,0,0,0,0,0,0,0,0,81,38,31,89,0,0,49,72
