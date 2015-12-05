@@ -517,7 +517,7 @@ public class Allocator{
 						System.exit(0);
 					}
 
-					if( ( session.maxCapacity - session.allocated ) <= 0 &&  session.capacity  > ( session.maxCapacity + 1 )  ){
+					if( ( session.maxCapacity - session.allocated ) < 0 &&  session.capacity   > ( session.maxCapacity + 1 )  ){
 						centreDataMissMatches.put(centre.centreCode+""+session.sessionId+""+city.cityCode, new CentreDataMismatch( centre, city, session )  );
 						continue;	
 					}
