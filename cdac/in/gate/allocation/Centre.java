@@ -45,7 +45,7 @@ public class Centre{
 
     static void header( boolean iiscFormate){
 		if( iiscFormate ){
-			System.out.println("Zone ID, Zone, City Code, TCS ID , Centre code, LISP, Add1, Add2, Add3, Pincode, City, State, Max, S1-ME1, S1-EC1, S2-ME2, \"S2-BT,CH,GG,MN,PH\", S3-ME3,S3-EC2,S4-EC3, \"S4-AR,CY,IN,MA,PE\", S5-CS1, S5-CE1, S6-CS2, S6-EE1, S7-CE2, \"S7-AG, EY, MT, PI\", S8-EE2, \"S8-AE,TF,XL,XE\"");
+			System.out.println("Zone ID	Zone	City Code	TCS ID 	Centre code	LISP	Add1	Add2	Add3	Pincode	City	State	Max	S1-ME1	S1-EC1	S2-ME2	S2-BT,CH,GG,MN,PH	S3-ME3	S3-EC2	S4-EC3	S4-AR,CY,IN,MA,PE	S5-CS1	S5-CE1	S6-CS2	S6-EE1	S7-CE2	S7-AG,EY,MT,PI	S8-EE2	S8-AE,TF,XL,XE");
 		}
 		else{
 			System.out.print("Zone, CityCode, Centre-Code, CentreName, Pwd-Friendly");
@@ -62,23 +62,23 @@ public class Centre{
 
 		if( iiscFormate ){
 
-				System.out.print(zone.zoneId+", "+zone.name+", "+cityCode+", ,"+centreCode+", \""+centreName+"\", \""+address1+"\", \""+address2+"\", \""+address3+"\", "+pincode+", "+city+", "+state+", "+max);
-				System.out.print(", "+ sessions.get( 1 ).paperCapacities.get("ME").allocated );
-				System.out.print(", "+ sessions.get( 1 ).paperCapacities.get("EC").allocated );
-				System.out.print(", "+ sessions.get( 2 ).paperCapacities.get("ME").allocated );
-				System.out.print(", "+ sessions.get( 2 ).paperCapacities.get("BT").allocated );
-				System.out.print(", "+ sessions.get( 3 ).paperCapacities.get("ME").allocated );
-				System.out.print(", "+ sessions.get( 3 ).paperCapacities.get("EC").allocated );
-				System.out.print(", "+ sessions.get( 4 ).paperCapacities.get("EC").allocated );
-				System.out.print(", "+ sessions.get( 4 ).paperCapacities.get("AR").allocated );
-				System.out.print(", "+ sessions.get( 5 ).paperCapacities.get("CS").allocated );
-				System.out.print(", "+ sessions.get( 5 ).paperCapacities.get("CE").allocated );
-				System.out.print(", "+ sessions.get( 6 ).paperCapacities.get("CS").allocated );
-				System.out.print(", "+ sessions.get( 6 ).paperCapacities.get("EE").allocated );
-				System.out.print(", "+ sessions.get( 7 ).paperCapacities.get("CE").allocated );
-				System.out.print(", "+ sessions.get( 7 ).paperCapacities.get("AG").allocated );
-				System.out.print(", "+ sessions.get( 8 ).paperCapacities.get("EE").allocated );
-				System.out.print(", "+ sessions.get( 8 ).paperCapacities.get("AE").allocated );
+				System.out.print(zone.zoneId+"\t"+zone.name+"\t"+cityCode+"\t\t"+centreCode+"\t"+centreName+"\t"+address1+"\t"+address2+"\t"+address3+"\t"+pincode+"\t"+city+"\t"+state+"\t"+max);
+				System.out.print("\t"+ sessions.get( 1 ).paperCapacities.get("ME").allocated );
+				System.out.print("\t"+ sessions.get( 1 ).paperCapacities.get("EC").allocated );
+				System.out.print("\t"+ sessions.get( 2 ).paperCapacities.get("ME").allocated );
+				System.out.print("\t"+ sessions.get( 2 ).paperCapacities.get("BT").allocated );
+				System.out.print("\t"+ sessions.get( 3 ).paperCapacities.get("ME").allocated );
+				System.out.print("\t"+ sessions.get( 3 ).paperCapacities.get("EC").allocated );
+				System.out.print("\t"+ sessions.get( 4 ).paperCapacities.get("EC").allocated );
+				System.out.print("\t"+ sessions.get( 4 ).paperCapacities.get("AR").allocated );
+				System.out.print("\t"+ sessions.get( 5 ).paperCapacities.get("CS").allocated );
+				System.out.print("\t"+ sessions.get( 5 ).paperCapacities.get("CE").allocated );
+				System.out.print("\t"+ sessions.get( 6 ).paperCapacities.get("CS").allocated );
+				System.out.print("\t"+ sessions.get( 6 ).paperCapacities.get("EE").allocated );
+				System.out.print("\t"+ sessions.get( 7 ).paperCapacities.get("CE").allocated );
+				System.out.print("\t"+ sessions.get( 7 ).paperCapacities.get("AG").allocated );
+				System.out.print("\t"+ sessions.get( 8 ).paperCapacities.get("EE").allocated );
+				System.out.print("\t"+ sessions.get( 8 ).paperCapacities.get("AE").allocated );
 				System.out.println();
 
 		}else{

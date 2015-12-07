@@ -726,32 +726,26 @@ public class Allocator{
 		}
 	}
 
-	void allocate(int  zoneId, int choiceNo ){
+	void cityChangeUpdate(int zoneId){
+
+		Zone zone = zones.get( new Integer( zoneId ) );	
+		cityChangeUpdate(  zone.pwdApplicants, zone.cityChange );	
+		cityChangeUpdate(  zone.applicants, zone.cityChange );	
+	}
+
+	void allocate(int  zoneId, int choiceNo, boolean movement ){
 
 		Zone zone = zones.get( new Integer( zoneId ) );	
 		Collections.sort( zone.pwdApplicants , new ApplicantComp() );	
 		Collections.sort( zone.applicants , new ApplicantComp() );	
 
-		/* Don't use Maxcapacity */
+		allocate(zone, zone.pwdApplicants, choiceNo, movement, false, 1);
+		allocate(zone, zone.applicants, choiceNo, movement, true, 1  /* female only for city change */ );
+		allocate(zone, zone.applicants, choiceNo, movement, false, 1 );
 
-		allocate(zone, zone.pwdApplicants, choiceNo, false, false, 0);
-		allocate(zone, zone.applicants, choiceNo, false, true, 1  /* female only for city change */ );
-		allocate(zone, zone.applicants, choiceNo, false, false, 1 );
-
-		allocate(zone, zone.pwdApplicants, choiceNo, false, false, 0);
-		allocate(zone, zone.applicants, choiceNo, false, true, 0  /* female only for city change */ );
-		allocate(zone, zone.applicants, choiceNo, false, false, 0 );
-
-		cityChangeUpdate(  zone.pwdApplicants, zone.cityChange );	
-		cityChangeUpdate(  zone.applicants, zone.cityChange );	
-
-		/* Utilised Max Capacity */ 
-
-		//allocate(zone, zone.pwdApplicants, choiceNo, true, false, 0 );
-
-		allocate(zone, zone.applicants, choiceNo, true, true, 0 /* female only for city change */ );
-		allocate(zone, zone.applicants, choiceNo, true, false, 0 );
-
+		allocate(zone, zone.pwdApplicants, choiceNo, movement, false, 0);
+		allocate(zone, zone.applicants, choiceNo, movement, true, 0  /* female only for city change */ );
+		allocate(zone, zone.applicants, choiceNo, movement, false, 0 );
 	}
 
 	void printErrorData(){
@@ -782,7 +776,11 @@ public class Allocator{
 
 			//allocator.allocate(5, 0);
 			
-			allocator.allocate(4, 0);
+			allocator.allocate(4, 0, false);
+			allocator.allocate(4, 1, false);
+			allocator.cityChangeUpdate(4);
+			allocator.allocate(4, 0, true);
+
 			//allocator.allocate(4, 1);
 
 			allocator.centreAllocation();
