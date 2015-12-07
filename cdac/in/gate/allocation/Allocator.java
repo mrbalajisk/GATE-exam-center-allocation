@@ -97,11 +97,11 @@ public class Allocator{
 
 	void zoneWiseAllocationDetails(){
 		System.out.println("-----------------------------------------------------------");	
-		System.out.println("ZoneId, Total Applicant, Allocated, Not Allocated ");	
+		System.out.println("ZoneId, Total Applicant, Allocated, Not Allocated, FirstChocie, SecondChoice, ThirdChocie ");	
 		Set<Integer> zoneIds = zones.keySet();
 		for( Integer zoneId: zoneIds ){
 			Zone zone = zones.get( zoneId );
-			System.out.println(zone.zoneId+", "+zone.applicants.size()+", "+zone.allocatedApplicants.size()+", "+zone.notAllocatedApplicants.size() );
+			System.out.println(zone.zoneId+", "+zone.applicants.size()+", "+zone.allocatedApplicants.size()+", "+zone.notAllocatedApplicants.size()+", "+zone.firstChoice+", "+zone.secondChoice+", "+zone.thirdChoice );
 		}
 	}
 
@@ -368,8 +368,9 @@ public class Allocator{
 				int S8EE2 = Integer.parseInt( tk[27].trim() );
 				int S8AETFXLXE = Integer.parseInt( tk[28].trim() );
 
-				//String PwDFriendly = tk[29].trim();
-				String PwDFriendly = "YES";
+				String PwDFriendly = tk[29].trim();
+
+				//String PwDFriendly = "YES";
 
 				List<Session> sessions = new ArrayList<Session>();
 
@@ -472,11 +473,21 @@ public class Allocator{
 	}
 
 
-	void allocate(Zone zone, List<Applicant> applicants, int choiceNumber, boolean isMaxCapcityUse, boolean femalePrefForChangeCity ){
+	boolean allocate(Zone zone, List<Applicant> applicants, int choiceNumber, boolean movement, boolean femalePrefForChangeCity, int reducedCapacity ){
+
+		boolean allocated = false;		
 
 		for(Applicant applicant: applicants){
 
 			if( applicant.isAllocated )
+				continue;
+
+			if( applicant.isPwD && ( movement || choiceNumber > 0)  ) 
+				continue;
+
+			/* for cityChnage female applicants should get the preferance */
+
+			if( femalePrefForChangeCity && applicant.gender.equals("Male") && zone.cityChange.get( applicant.originalFirstChoice ) != null )
 				continue;
 
 			Integer choice = applicant.choices[ choiceNumber ];
@@ -484,7 +495,6 @@ public class Allocator{
 			City city = cities.get( choice );
 
 			if( city == null){
-				//System.err.println("Not Found City: "+ choice);
 				continue;
 			}
 
@@ -494,38 +504,32 @@ public class Allocator{
 					continue;	
 				}
 
-				/* for cityChnage female applicants should get the preferance */
-
-				if( !applicant.isPwD && applicant.gender.equals("Male") && femalePrefForChangeCity && zone.cityChange.get( city.cityCode ) != null ){
-					continue;
-				}
-
 				String[] sessionIds = paperSession.get( applicant.paperCode ).split(",",-1);
 
 				for(String sessionId: sessionIds){
 
 					Session session = centre.sessions.get( new Integer( sessionId ) );
 
-					if( applicant.isPwD && session.pwdAllocated == 5 )
-						continue;
-
-
 					PaperCapacity pc = session.paperCapacities.get( applicant.paperCode );	
+
+					if( applicant.isPwD && session.pwdAllocated >=  ((session.maxCapacity * 5) / 100)  )
+						continue;
 
 					if( pc == null ){
 						System.err.println( session.sessionId+", "+applicant.paperCode+", PC not found");
 						System.exit(0);
+
 					}
 
-					if( ( session.maxCapacity - session.allocated ) < 0 &&  session.capacity   > ( session.maxCapacity + 1 )  ){
+					if( ( session.maxCapacity - session.allocated ) <= 0 &&  ( session.capacity   > session.maxCapacity )  ){
 						centreDataMissMatches.put(centre.centreCode+""+session.sessionId+""+city.cityCode, new CentreDataMismatch( centre, city, session )  );
 						continue;	
 					}
 
-					if( ( ( pc.capacity - pc.allocated ) > 0 && ( session.capacity - session.allocated ) > 0  ) || 
+					if( ( ( ( pc.capacity - reducedCapacity) - pc.allocated ) > 0 && ( ( session.capacity - reducedCapacity ) - session.allocated ) > 0  ) || 
 
-				        ( isMaxCapcityUse && (session.maxCapacity - session.allocated) > 0 && session.capacity > 0 && zone.cityChange.get(city.cityCode) != null ) ){
-
+				        ( movement && (session.maxCapacity - session.allocated) > 0 && session.capacity > 0 && zone.cityChange.get( applicant.originalFirstChoice ) != null ) ){
+						allocated = true;		
 						applicant.centre = centre;
 						applicant.isAllocated = true;
 						applicant.session = session;
@@ -558,6 +562,8 @@ public class Allocator{
 					break;
 			}
 		}	
+
+	return allocated;	
 	}
 
 	String generateRegistration(Applicant applicant){
@@ -694,6 +700,12 @@ public class Allocator{
 			}else {
 				allAllocatedApplicants.add( applicant );
 				zone.allocatedApplicants.add( applicant);
+				if( applicant.allotedChoice == 1)
+					zone.firstChoice++;
+				else if ( applicant.allotedChoice == 2 )		
+					zone.secondChoice++;
+				else if ( applicant.allotedChoice == 3)
+					zone.thirdChoice++;
 			}
 		}		
 	}
@@ -722,18 +734,23 @@ public class Allocator{
 
 		/* Don't use Maxcapacity */
 
-		allocate(zone, zone.pwdApplicants, choiceNo, false, false);
-		allocate(zone, zone.applicants, choiceNo, false, true  /* female only for city change */ );
-		allocate(zone, zone.applicants, choiceNo, false, false );
+		allocate(zone, zone.pwdApplicants, choiceNo, false, false, 0);
+		allocate(zone, zone.applicants, choiceNo, false, true, 1  /* female only for city change */ );
+		allocate(zone, zone.applicants, choiceNo, false, false, 1 );
+
+		allocate(zone, zone.pwdApplicants, choiceNo, false, false, 0);
+		allocate(zone, zone.applicants, choiceNo, false, true, 0  /* female only for city change */ );
+		allocate(zone, zone.applicants, choiceNo, false, false, 0 );
 
 		cityChangeUpdate(  zone.pwdApplicants, zone.cityChange );	
 		cityChangeUpdate(  zone.applicants, zone.cityChange );	
 
 		/* Utilised Max Capacity */ 
 
-		allocate(zone, zone.pwdApplicants, choiceNo, true, false );
-		allocate(zone, zone.applicants, choiceNo, true, true /* female only for city change */ );
-		allocate(zone, zone.applicants, choiceNo, true, false );
+		//allocate(zone, zone.pwdApplicants, choiceNo, true, false, 0 );
+
+		allocate(zone, zone.applicants, choiceNo, true, true, 0 /* female only for city change */ );
+		allocate(zone, zone.applicants, choiceNo, true, false, 0 );
 
 	}
 
@@ -753,43 +770,30 @@ public class Allocator{
 		try{
 
 			Allocator allocator = new Allocator();
-			//allocator.readApplicants("./data/gate-applicant-20151129.csv", true);
 			allocator.readApplicants("./data/applicant-2015-12-03.csv", true);
 
-			//allocator.readCentres("./data/zone4.csv", true);
-			allocator.readCentres("./data/zone5.csv", true);
-			allocator.readCentres("./data/zone6.csv", true);
-			//allocator.readCentres("./data/zone7.csv", true);
-			//allocator.readCentres("./data/zone8.csv", true);
+			//allocator.readCentres("./data/zone5.csv", true);
+			allocator.readCentres("./data/zone4.csv", true);
 
 			allocator.readCityChangeMapping("./data/city-change.csv",true);
 			allocator.readCityCodeMapping("./data/gate-examcity-code.csv", true);
 			
 			allocator.printDataDetails();
 
-			//allocator.allocate(4, 0);
+			//allocator.allocate(5, 0);
+			
+			allocator.allocate(4, 0);
 			//allocator.allocate(4, 1);
-			allocator.allocate(5, 0);
-			allocator.allocate(6, 0);
-			//allocator.allocate(6, 1);
-			//allocator.allocate(7, 0);
-			//allocator.allocate(8, 0);
-			//allocator.allocate(8, 1);
 
 			allocator.centreAllocation();
 
-			//allocator.allocationAnalysis(4);
-			allocator.allocationAnalysis(5);
-			allocator.allocationAnalysis(6);
-			//allocator.allocationAnalysis(6);
-			//allocator.allocationAnalysis(7);
-			//allocator.allocationAnalysis(8);
+			//allocator.allocationAnalysis(5);
+			allocator.allocationAnalysis(4);
 
-
-			//allocator.printCentres(false);	
-			//
+			
 			allocator.printErrorData();
-			allocator.printCentres( true );
+			allocator.printCentres( true );	
+			//allocator.printCentres( false );
 			allocator.printAllocation();
 			allocator.zoneWiseAllocationDetails();
 			allocator.zoneWiseAnalyisPrint();

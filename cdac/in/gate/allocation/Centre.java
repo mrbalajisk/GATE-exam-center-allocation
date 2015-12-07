@@ -22,10 +22,10 @@ public class Centre{
 
 	Centre(Integer centreCode, String centreName,String add1, String add2, String add3, String pincode, String city, String state, Integer max, List<Session> sessions, String PwDFriendly ){
 
-		this.centreName = centreName;
-		this.address1 = add1;
-		this.address2 = add2;
-		this.address3 = add3;
+		this.centreName = centreName.replaceAll("\"","");
+		this.address1 = add1.replaceAll("\"","");
+		this.address2 = add2.replaceAll("\"","");
+		this.address3 = add3.replaceAll("\"","");
 		this.pincode = pincode;
 		this.city = city;
 		this.state = state;

@@ -22,6 +22,9 @@ public class Zone{
 	List<Applicant> notAllocatedApplicants;
 
 	int allocated;
+	int firstChoice = 0;
+	int secondChoice = 0;
+	int thirdChoice = 0;
 
 	Zone(Integer zoneId){
 
