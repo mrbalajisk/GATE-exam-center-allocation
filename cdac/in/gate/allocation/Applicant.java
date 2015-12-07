@@ -25,7 +25,7 @@ public class Applicant{
 	Session session;
 	int allotedChoice;
 
-	Integer originalFirstChoice;
+	Integer firstChoice;
 
 
 	Applicant(String enrollment, String name, String gender, String isPD, String isScribe, String paperCode, String choice1, String choice2, String choice3, String zoneId){
@@ -46,7 +46,7 @@ public class Applicant{
 		this.choices[1] = new Integer( choice2 );
 		this.choices[2] = new Integer( choice3 );
 		
-		this.originalFirstChoice = new Integer( choice1 );	
+		this.firstChoice = new Integer( choice1 );	
 
 		this.registrationId = null;
 		this.isAllocated = false;
@@ -66,9 +66,9 @@ public class Applicant{
 
 	void print(){
 		if( centre != null ){
-			System.out.println("Zone"+zoneId+", "+enrollment+", "+isPwD+", "+paperCode+", "+centre.centreCode+", "+city.cityCode+", "+registrationId+", "+choices[0]+", "+choices[1]+", "+choices[2]+", "+session.sessionId+", "+allotedChoice +", "+originalFirstChoice);
+			System.out.println("Zone"+zoneId+", "+enrollment+", "+isPwD+", "+paperCode+", "+centre.centreCode+", "+city.cityCode+", "+registrationId+", "+choices[0]+", "+choices[1]+", "+choices[2]+", "+session.sessionId+", "+allotedChoice +", "+firstChoice);
 		}else{
-			System.out.println("Zone"+zoneId+", "+enrollment+", "+isPwD+", "+paperCode+", null, null, "+registrationId+", "+choices[0]+", "+choices[1]+", "+choices[2]+",  nulll, -1, "+originalFirstChoice );
+			System.out.println("Zone"+zoneId+", "+enrollment+", "+isPwD+", "+paperCode+", null, null, "+registrationId+", "+choices[0]+", "+choices[1]+", "+choices[2]+",  nulll, -1, "+firstChoice );
 		}	
 	}
 } 
