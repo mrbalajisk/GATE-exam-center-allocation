@@ -10,6 +10,26 @@ import java.io.BufferedReader;
 import java.util.Collections;
 import java.io.File;
 
+class NewCity{
+
+     Integer cityCode;
+
+     List<Integer> centreCodes;
+
+     NewCity(Integer cityCode, String centres){
+
+ 	   this.cityCode = cityCode;
+	   String[] codes = centres.split("-", -1);	
+	   this.centreCodes = new ArrayList<Integer>();
+	   for(String city: codes ){
+		if( city.trim().length() > 0 ){   
+	   		this.centreCodes.add( new Integer( city.trim() ) );
+		}	
+	   }
+     }
+
+}
+
 
 class CentreDataMismatch{
 
@@ -37,6 +57,7 @@ class CentreDataMismatch{
 public class Allocator{
 
 	static Map<Integer, Zone> zones = new TreeMap<Integer, Zone>();
+
 	static Map<Integer, City> cities = new TreeMap<Integer, City>();
 
 	static Map<String, CentreDataMismatch> centreDataMissMatches = new TreeMap<String, CentreDataMismatch>();
@@ -163,14 +184,14 @@ public class Allocator{
 					withHeader = false;
 					continue;
 				}
-				String[] tk = line.split(",");
+				String[] tk = line.split(",", -1);
 
 				Integer zoneId = new Integer( tk[0].trim() );
 				Zone zone = zones.get( zoneId );
 
-				System.err.println("Zone"+tk[0].trim()+", "+tk[1].trim()+", "+tk[2].trim() );
+				System.err.println("Zone"+tk[0].trim()+", "+tk[1].trim()+", "+tk[2].trim()+", "+tk[3].trim() );
 
-				zone.cityChange.put( new Integer(tk[1].trim()), new Integer( tk[2].trim() ) );
+				zone.cityChange.put( new Integer( tk[1].trim() ), new NewCity( new Integer( tk[2].trim() ), tk[3].trim() ) );
 
 				count++;
 			}
@@ -483,9 +504,13 @@ public class Allocator{
 				continue;
 			}
 
-			if( applicant.isPwD && ( maximum || choiceNumber > 0)  ) {
+			/*
+
+			if( applicant.isPwD && ( choiceNumber > 0 || maximum )  ) {
 				continue;
 			}
+
+			*/
 
 			/* for cityChnage female applicants should get the preferance */
 
@@ -497,14 +522,29 @@ public class Allocator{
 
 			City city = cities.get( choice );
 
-			if( city == null){
+			if( city == null ){
 				continue;
+			}
+
+			NewCity newCity = null;
+
+			if( choiceNumber == 1 &&  choice.intValue() != applicant.firstChoice.intValue() ){
+
+				newCity = zone.cityChange.get( applicant.firstChoice );
+
+				if(newCity != null && newCity.centreCodes.size() == 0){
+					newCity = null;	
+				}
 			}
 
 			for(Centre centre: city.centres){
 
 				if( applicant.isPwD && ( !centre.pwdFriendly ) ){
 					continue;	
+				}
+
+				if( newCity != null && ! newCity.centreCodes.contains( centre.centreCode ) ){
+					continue;
 				}
 
 				String[] sessionIds = paperSession.get( applicant.paperCode ).split(",",-1);
@@ -515,13 +555,6 @@ public class Allocator{
 
 					PaperCapacity pc = session.paperCapacities.get( applicant.paperCode );	
 
-					/*
-					 *
-					 if( applicant.isPwD && centre.centreCode == 5028 && applicant.paperCode.equals("EE") ){
-						System.out.println(applicant.paperCode+", "+pwDpercent+"%, S:"+session.sessionId+", A:"+session.pwdAllocated+", MC:"+((session.maxCapacity * pwDpercent) / 100) );
-					}
-					*
-					*/
 
 					if( applicant.isPwD && session.pwdAllocated >=  ((session.maxCapacity * pwDpercent) / 100)  )
 						continue;
@@ -664,13 +697,16 @@ public class Allocator{
 		System.out.println("Total notAllocated :"+ allNotAllocatedApplicants.size() );
 	}
 
-	void cityChangeUpdate(List<Applicant> applicants, Map<Integer, Integer> cityChange){
+	void cityChangeUpdate(List<Applicant> applicants, Map<Integer, NewCity> cityChange){
 
 		for( Applicant applicant: applicants){
+
 			if( !applicant.isAllocated ){
-				Integer newChoice = cityChange.get( applicant.choices[0] );
-				if( newChoice != null ){
-					applicant.choices[0] = new Integer( newChoice );
+
+				NewCity newCity = cityChange.get( applicant.choices[0] );
+
+				if( newCity != null ){
+					applicant.choices[0] = newCity.cityCode;
 				}
 			}
 		}
@@ -793,10 +829,14 @@ public class Allocator{
 		try{
 
 			Allocator allocator = new Allocator();
-			allocator.readApplicants("./data/applicant-2015-12-03.csv", true);
+
+			//allocator.readApplicants("./data/applicant-2015-12-03.csv", true);
+			
+			allocator.readApplicants("./data/applicant-2015-12-08.csv", true);
 
 			//allocator.readCentres("./data/zone4.csv", true);
-			allocator.readCentres("./data/zone5.csv", true);
+			//allocator.readCentres("./data/zone5.csv", true);
+			allocator.readCentres("./data/zone6.csv", true);
 
 			allocator.readCityChangeMapping("./data/city-change.csv",true);
 			allocator.readCityCodeMapping("./data/gate-examcity-code.csv", true);
@@ -805,13 +845,16 @@ public class Allocator{
 
 			//allocator.allocate(4, true, 5);
 			
-			allocator.allocate(5, false, 1);
+			//allocator.allocate(5, false, 1);
+
+			allocator.allocate(6, true, 2);
 
 			allocator.centreAllocation();
 
 
 			//allocator.allocationAnalysis(4);
-			allocator.allocationAnalysis(5);
+			//allocator.allocationAnalysis(5);
+			allocator.allocationAnalysis(6);
 
 			
 			allocator.printErrorData();

@@ -12,7 +12,7 @@ public class Zone{
 	String  name;
 
 	Map<Integer, City> cities;
-	Map<Integer, Integer> cityChange;
+	Map<Integer, NewCity> cityChange;
 
 	List<Applicant> applicants;
 	List<Applicant> pwdApplicants;
@@ -38,7 +38,7 @@ public class Zone{
 		this.notAllocatedApplicants = new ArrayList<Applicant>();
 
 		this.paperWiseApplicant = new TreeMap<String, ArrayList<Applicant>>();
-		this.cityChange = new TreeMap<Integer, Integer>();
+		this.cityChange = new TreeMap<Integer, NewCity>();
 		this.allocated = 0 ;
 	}
 

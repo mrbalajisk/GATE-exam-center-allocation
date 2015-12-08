@@ -1,7 +1,7 @@
 Zone ID,Zone,City Code,TCS ID,Centre code,LISP,Add1,Add2,Add3,Pincode,City,State,Max,S1-ME1,S1-EC1,S2-ME2,"S2-BT, CH, GG, MN, PH",S3-ME3,S3-EC2,S4-EC3,"S4-AR, CY, IN, MA, PE",S5-CS1,S5-CE1,S6-CS2,S6-EE1,S7-CE2,"S7-AG, EY, MT, PI",S8-EE2,"S8-AE, TF, XL, XE",PWD FRIENDLY
 5,IIT KANPUR,2,,5001,Anand Engineering College,Agra-Delhi Highway  NH2  Keetham,Agra Uttar Pradesh India,,282007,Agra,Uttar Pradesh,300,188,102,101,107,195,106,50,65,65,153,165,53,197,17,223,58,YES
 5,IIT KANPUR,2,,5002,Hindustan Institute Of Technology And Management,Hindustan Institute of Technology and Management Agra 19 km stone NH 2,Agra Delhi Highway,,282007,Agra,Uttar Pradesh,200,110,60,97,103,124,67,82,107,60,141,152,49,123,10,104,28,NO
-5,IIT KANPUR,2,,5003,K. P. Group of Institutions,NH-2 Agra-Firozabad Road Etmadpur,Agra Uttar Pradesh India,,283202,Agra,Uttar Pradesh,140,85,46,59,62,65,36,43,56,42,99,106,35,0,0,0,0,NO
+5,IIT KANPUR,2,,5003,K. P. Group of Institutions,NH-2 Agra-Firozabad Road Etmadpur,Agra Uttar Pradesh India,,283202,Agra,Uttar Pradesh,140,85,46,59,62,65,36,43,57,42,99,106,35,0,0,0,0,NO
 5,IIT KANPUR,7,,5004,Mangalaytan University,"extended NCR, 33 Mile Stone Mathura Aligarh Highway",Uttar Pradesh India,,202145,Aligarh,Uttar Pradesh,200,143,58,1,200,143,58,26,175,102,64,53,113,144,22,76,91,YES
 5,IIT KANPUR,7,,5005,Institute of Technology & Management,Aligarh ﾖ Palwal-Delhi Road Karsua Aligarh,Uttar Pradesh India,,202001,Aligarh,Uttar Pradesh,246,175,72,1,245,175,71,32,214,119,75,62,132,169,26,88,106,YES
 5,IIT KANPUR,8,,5006,Shambhunath Institute of Engineering And Technology,Near IIIT Jhalwa Allahabad,Uttar Pradesh India,,211012,Allahabad,Uttar Pradesh,401,222,180,265,136,222,179,110,212,187,215,148,254,193,70,203,90,NO
