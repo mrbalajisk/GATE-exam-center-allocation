@@ -473,7 +473,7 @@ public class Allocator{
 	}
 
 
-	boolean allocate(Zone zone, List<Applicant> applicants, int choiceNumber, boolean maximum, boolean femalePref, int reducedCapacity ){
+	boolean allocate(Zone zone, List<Applicant> applicants, int choiceNumber, boolean maximum, boolean femalePref, int reducedCapacity, int pwDpercent ){
 
 		boolean allocated = false;		
 
@@ -515,7 +515,15 @@ public class Allocator{
 
 					PaperCapacity pc = session.paperCapacities.get( applicant.paperCode );	
 
-					if( applicant.isPwD && session.pwdAllocated >=  ((session.maxCapacity * 5) / 100)  )
+					/*
+					 *
+					 if( applicant.isPwD && centre.centreCode == 5028 && applicant.paperCode.equals("EE") ){
+						System.out.println(applicant.paperCode+", "+pwDpercent+"%, S:"+session.sessionId+", A:"+session.pwdAllocated+", MC:"+((session.maxCapacity * pwDpercent) / 100) );
+					}
+					*
+					*/
+
+					if( applicant.isPwD && session.pwdAllocated >=  ((session.maxCapacity * pwDpercent) / 100)  )
 						continue;
 
 					if( pc == null ){
@@ -734,34 +742,38 @@ public class Allocator{
 		cityChangeUpdate(  zone.applicants, zone.cityChange );	
 	}
 
-	void allocate(int  zoneId, int choiceNo, boolean maximum ){
+	void allocate(int  zoneId, int choiceNo, boolean maximum, int pwDpercent ){
 
 		Zone zone = zones.get( new Integer( zoneId ) );	
+
 		Collections.sort( zone.pwdApplicants , new ApplicantComp() );	
 		Collections.sort( zone.applicants , new ApplicantComp() );	
 
-		allocate(zone, zone.pwdApplicants, choiceNo, maximum, false, 1);
+		while( allocate( zone, zone.pwdApplicants, choiceNo, maximum, false, 1, ++pwDpercent ) ) ;
 
-		allocate(zone, zone.applicants, choiceNo, maximum, true, 1  /* female only for city change */ );
-		allocate(zone, zone.applicants, choiceNo, maximum, false, 1 );
+		System.out.println("Final PwD (%): "+ pwDpercent );
 
-		allocate(zone, zone.applicants, choiceNo, maximum, true, 0  /* female only for city change */ );
-		allocate(zone, zone.applicants, choiceNo, maximum, false, 0 );
+		allocate(zone, zone.applicants, choiceNo, maximum, true, 1, 0 /* female only for city change */ );
+		allocate(zone, zone.applicants, choiceNo, maximum, false, 1, 0 );
+
+		allocate(zone, zone.applicants, choiceNo, maximum, true, 0, 0  /* female only for city change */ );
+		allocate(zone, zone.applicants, choiceNo, maximum, false, 0, 0 );
 	}
 
 
-	void allocate(int zone, boolean second){
+	void allocate(int zone, boolean second, int pwDpercent){
 
-		allocate(zone, 0, false);
+		allocate(zone, 0, false, pwDpercent);
 
 		if( second ){
-			allocate(zone, 1, false);
-			allocate(zone, 1, true);
+			allocate(zone, 1, false, pwDpercent);
+			allocate(zone, 1, true, pwDpercent);
 		}
 
 		if( zones.get( zone ).cityChange.keySet().size() > 0 ){
+
 			cityChangeUpdate( zone );
-			allocate(zone, 0, true);
+			allocate(zone, 0, true, pwDpercent);
 		}	
 	}
 
@@ -783,22 +795,23 @@ public class Allocator{
 			Allocator allocator = new Allocator();
 			allocator.readApplicants("./data/applicant-2015-12-03.csv", true);
 
+			//allocator.readCentres("./data/zone4.csv", true);
 			allocator.readCentres("./data/zone5.csv", true);
-			allocator.readCentres("./data/zone4.csv", true);
 
 			allocator.readCityChangeMapping("./data/city-change.csv",true);
 			allocator.readCityCodeMapping("./data/gate-examcity-code.csv", true);
 			
 			allocator.printDataDetails();
 
-			allocator.allocate(4, true);
-			allocator.allocate(5, false);
+			//allocator.allocate(4, true, 5);
+			
+			allocator.allocate(5, false, 1);
 
 			allocator.centreAllocation();
 
-			//allocator.allocationAnalysis(5);
+
+			//allocator.allocationAnalysis(4);
 			allocator.allocationAnalysis(5);
-			allocator.allocationAnalysis(4);
 
 			
 			allocator.printErrorData();
