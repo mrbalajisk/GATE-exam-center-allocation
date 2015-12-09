@@ -389,9 +389,9 @@ public class Allocator{
 				int S8EE2 = Integer.parseInt( tk[27].trim() );
 				int S8AETFXLXE = Integer.parseInt( tk[28].trim() );
 
-				String PwDFriendly = tk[29].trim();
+				//String PwDFriendly = tk[29].trim();
 
-				//String PwDFriendly = "YES";
+				String PwDFriendly = "YES";
 
 				List<Session> sessions = new ArrayList<Session>();
 
@@ -504,13 +504,9 @@ public class Allocator{
 				continue;
 			}
 
-			/*
-
 			if( applicant.isPwD && ( choiceNumber > 0 || maximum )  ) {
 				continue;
 			}
-
-			*/
 
 			/* for cityChnage female applicants should get the preferance */
 
@@ -834,27 +830,31 @@ public class Allocator{
 			
 			allocator.readApplicants("./data/applicant-2015-12-08.csv", true);
 
-			//allocator.readCentres("./data/zone4.csv", true);
+			allocator.readCentres("./data/zone4.csv", true);
 			//allocator.readCentres("./data/zone5.csv", true);
-			allocator.readCentres("./data/zone6.csv", true);
+			//allocator.readCentres("./data/zone6.csv", true);
+			allocator.readCentres("./data/zone8.csv", true);
 
 			allocator.readCityChangeMapping("./data/city-change.csv",true);
 			allocator.readCityCodeMapping("./data/gate-examcity-code.csv", true);
 			
 			allocator.printDataDetails();
 
-			//allocator.allocate(4, true, 5);
+			allocator.allocate(4, true, 5);
 			
 			//allocator.allocate(5, false, 1);
 
-			allocator.allocate(6, true, 2);
+			//allocator.allocate(6, true, 2);
+			
+			allocator.allocate(8, true, 1);
 
 			allocator.centreAllocation();
 
 
-			//allocator.allocationAnalysis(4);
+			allocator.allocationAnalysis(4);
 			//allocator.allocationAnalysis(5);
-			allocator.allocationAnalysis(6);
+			//allocator.allocationAnalysis(6);
+			allocator.allocationAnalysis(8);
 
 			
 			allocator.printErrorData();
