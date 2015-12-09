@@ -1,14 +1,14 @@
 Zone ID,Zone,City Code,TCS ID,Centre code,LISP,Add1,Add2,Add3,Pincode,City,State,Max,S1-ME1,S1-EC1,S2-ME2,"S2-BT, CH, GG, MN, PH",S3-ME3,S3-EC2,S4-EC3,"S4-AR, CY, IN, MA, PE",S5-CS1,S5-CE1,S6-CS2,S6-EE1,S7-CE2,"S7-AG, EY, MT, PI",S8-EE2,"S8-AE, TF, XL, XE",PWD FRIENDLY
-4,IIT Guwahati,65,,4001,Royal Group of Institutions,"Betkuchi, Opp. Tirupati Balaji Temple","ISBT, N.H.- 37",,781035,Guwahati,Assam,325,185,137,51,269,168,124,63,255,84,240,152,147,0,0,0,0,YES
-4,IIT Guwahati,65,,4002,Edu Surge Guwahati,"Gotanagar, Guwahati Nursury","House No -7, Opp Radisson Blu Hotel","NH 37, Jalukbari",781011,Guwahati,Assam,300,117,86,33,173,106,78,18,73,51,146,140,136,168,41,176,103,NO
-4,IIT Guwahati,65,,4003,Scholar's Institute of Technology and Management,"Garoghuli Road, Garchuk",,,781035,Guwahati,Assam,170,97,72,27,141,88,65,33,133,44,126,80,77,0,0,0,0,YES
-4,IIT Guwahati,65,,4004,North Eastern Regional Institute of Management (NERIM),"Padma Nath Sarmah Bhawan, Tripura Road, Jayanagar",Khanapara,,781022,Guwahati,Assam,108,62,46,17,90,56,41,21,85,28,80,51,49,0,0,0,0,NO
-4,IIT Guwahati,65,,4005,Central Institute of Plastic Engineering & Technology (CIPET) - Guwahati,Changsari,Dist. Kamrup,,781101,Guwahati,Assam,96,55,41,15,80,50,37,19,76,25,71,45,44,0,0,0,0,NO
-4,IIT Guwahati,65,,4006,NETES Institute of Technology & Science Mirza,Shantipur,Mirza,,781125,Guwahati,Assam,110,63,47,18,92,57,42,22,87,29,82,52,50,0,0,0,0,NO
-4,IIT Guwahati,65,,4007,TCS ILP CENTRE,"5th Floor, NEDFi House","Near Hanuman Mandir, G.S. Road, Dispur ",,781006,Guwahati,Assam,130,0,0,0,0,68,50,26,102,0,0,0,0,73,18,76,45,YES
-4,IIT Guwahati,65,,4008,Assam Engineering Institute,"M.R.D. Road, Chandmari",,,781003,Guwahati,Assam,94,54,40,15,78,49,36,19,74,25,70,44,43,0,0,0,0,YES
-4,IIT Guwahati,65,,4009,Regional Institute of Science & Technology (RIST),"Techno City, Killing Road","Baridua, 9th Mile",,793101,Ri Bhoi,Meghalaya,85,0,0,0,0,44,33,17,67,0,0,0,0,48,12,50,30,NO
-4,IIT Guwahati,65,,4010,StudyLink Academy,"1st Floor, Uzzala Market","Fatasil, A.K Deb Road",,781009,Guwahati,Assam,90,52,38,15,75,0,0,0,0,24,67,42,41,0,0,0,0,NO
+4,IIT Guwahati,65,,4001,Royal Group of Institutions,"Betkuchi, Opp. Tirupati Balaji Temple","ISBT, N.H.- 37",,781035,Guwahati,Assam,325,185,137,50,264,168,124,63,255,84,240,160,155,0,0,0,0,YES
+4,IIT Guwahati,65,,4002,Edu Surge Guwahati,"Gotanagar, Guwahati Nursury","House No -7, Opp Radisson Blu Hotel","NH 37, Jalukbari",781011,Guwahati,Assam,300,117,86,23,122,106,78,18,73,51,146,114,110,166,40,168,98,NO
+4,IIT Guwahati,65,,4003,Scholar's Institute of Technology and Management,"Garoghuli Road, Garchuk",,,781035,Guwahati,Assam,170,97,72,26,138,88,65,33,133,44,126,84,81,0,0,0,0,YES
+4,IIT Guwahati,65,,4004,North Eastern Regional Institute of Management (NERIM),"Padma Nath Sarmah Bhawan, Tripura Road, Jayanagar",Khanapara,,781022,Guwahati,Assam,108,62,46,17,88,56,41,21,85,28,80,54,52,0,0,0,0,NO
+4,IIT Guwahati,65,,4005,Central Institute of Plastic Engineering & Technology (CIPET) - Guwahati,Changsari,Dist. Kamrup,,781101,Guwahati,Assam,96,55,41,15,78,50,37,19,76,25,71,48,46,0,0,0,0,NO
+4,IIT Guwahati,65,,4006,NETES Institute of Technology & Science Mirza,Shantipur,Mirza,,781125,Guwahati,Assam,110,63,47,17,90,57,42,22,87,29,82,55,53,0,0,0,0,NO
+4,IIT Guwahati,65,,4007,TCS ILP CENTRE,"5th Floor, NEDFi House","Near Hanuman Mandir, G.S. Road, Dispur ",,781006,Guwahati,Assam,130,0,0,0,0,68,50,26,102,0,0,0,0,75,18,81,48,YES
+4,IIT Guwahati,65,,4008,Assam Engineering Institute,"M.R.D. Road, Chandmari",,,781003,Guwahati,Assam,94,54,40,15,77,49,36,19,74,25,70,47,45,0,0,0,0,YES
+4,IIT Guwahati,65,,4009,Regional Institute of Science & Technology (RIST),"Techno City, Killing Road","Baridua, 9th Mile",,793101,Ri Bhoi,Meghalaya,85,0,0,13,69,44,33,17,67,0,0,0,0,49,12,53,31,NO
+4,IIT Guwahati,65,,4010,StudyLink Academy,"1st Floor, Uzzala Market","Fatasil, A.K Deb Road",,781009,Guwahati,Assam,90,52,38,14,73,0,0,0,0,24,67,45,43,0,0,0,0,NO
 4,IIT Guwahati,84,,4011,Jorhat Engineering College,Village:-Garmur,PO:-JEC,,785007,Jorhat,Assam,157,79,79,0,157,98,60,0,157,72,86,73,85,0,0,0,0,YES
 4,IIT Guwahati,84,,4012,J. B. College,JB College Road,Kakoti Gaon,Tarajan,785001,Jorhat,Assam,52,27,26,0,52,33,20,0,52,24,29,24,29,0,0,0,0,YES
 4,IIT Guwahati,163,,4013,National Institute of Technology Silchar,"New CSE/ECE Building, Central Computer Centre",NIT Silchar,Dist. Cachar,788010,Silchar,Assam,210,80,91,57,95,80,90,0,118,52,101,103,50,98,55,104,49,YES
