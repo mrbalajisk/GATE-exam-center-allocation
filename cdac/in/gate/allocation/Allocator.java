@@ -84,8 +84,10 @@ public class Allocator{
 		paperSession.put("ME","1,2,3");
 		paperSession.put("EC","1,3,4");
 		paperSession.put("CS","5,6");
-		paperSession.put("CE","5,7");
-		paperSession.put("EE","6,8");
+		//paperSession.put("CE","5,7");
+		paperSession.put("CE","7,5");
+		//paperSession.put("EE","6,8");
+		paperSession.put("EE","8,6");
 		paperSession.put("BT","2");
 		paperSession.put("CH","2");
 		paperSession.put("GG","2");
@@ -389,9 +391,9 @@ public class Allocator{
 				int S8EE2 = Integer.parseInt( tk[27].trim() );
 				int S8AETFXLXE = Integer.parseInt( tk[28].trim() );
 
-				//String PwDFriendly = tk[29].trim();
+				String PwDFriendly = tk[29].trim();
 
-				String PwDFriendly = "YES";
+				//String PwDFriendly = "YES";
 
 				List<Session> sessions = new ArrayList<Session>();
 
@@ -498,7 +500,7 @@ public class Allocator{
 
 		boolean allocated = false;		
 
-		String[] papers = {"AE", "AG", "AR", "BT", "CH", "CY", "EY", "GG", "IN", "MA", "MN", "MT", "PE", "PH", "PI", "TF", "XE", "XL", "CE", "EC","CS", "EE", "ME"};
+		String[] papers = {"AE", "AG", "AR", "BT", "CH", "CY", "EY", "GG", "IN", "MA", "MN", "MT", "PE", "PH", "PI", "TF", "XE", "XL", "CE", "EC","EE", "CS", "ME"};
 
 		for(String paper: papers)
 
@@ -800,9 +802,19 @@ public class Allocator{
 		Collections.sort( zone.pwdApplicants , new ApplicantComp() );	
 		Collections.sort( zone.applicants , new ApplicantComp() );	
 
-		while( allocate( zone, zone.pwdApplicants, choiceNo, maximum, false, false, 1, ++pwDpercent ) ) ;
+		int tchoiceNo = choiceNo;
+		int tpwDpercent = pwDpercent;
 
-		System.out.println("Final PwD (%): "+ pwDpercent );
+		while( allocate( zone, zone.pwdApplicants, tchoiceNo, maximum, false, false, 1, ++tpwDpercent ) ) ;
+
+		System.out.println("first Choice Final PwD (%): "+ tpwDpercent );
+
+		tchoiceNo = choiceNo + 1;
+		tpwDpercent = pwDpercent;
+
+		while( allocate( zone, zone.pwdApplicants, tchoiceNo, true, false, false, 1, ++tpwDpercent ) ) ;
+
+		System.out.println("Second Choice Final PwD (%): "+ tpwDpercent );
 
 		allocate(zone, zone.applicants, choiceNo, maximum, true, false, 1, 0 /* female only for city change */ );
 		allocate(zone, zone.applicants, choiceNo, maximum, false, true, 1, 0 /* for maximum second choice */ );
@@ -852,10 +864,10 @@ public class Allocator{
 			
 			allocator.readApplicants("./data/applicant-2015-12-08.csv", true);
 
-			//allocator.readCentres("./data/zone3.csv", true);
-			//allocator.readCentres("./data/zone4.csv", true);
-			//allocator.readCentres("./data/zone5.csv", true);
-			//allocator.readCentres("./data/zone6.csv", true);
+			allocator.readCentres("./data/zone3.csv", true);
+			allocator.readCentres("./data/zone4.csv", true);
+			allocator.readCentres("./data/zone5.csv", true);
+			allocator.readCentres("./data/zone6.csv", true);
 			allocator.readCentres("./data/zone8.csv", true);
 
 			allocator.readCityChangeMapping("./data/city-change.csv",true);
@@ -863,23 +875,20 @@ public class Allocator{
 			
 			allocator.printDataDetails();
 
-			//allocator.allocate(3, true, 1);
-			//allocator.allocate(3, true, 1);
-			
-			//allocator.allocate(4, true, 1);
-			
-			//allocator.allocate(5, false, 1);
-
-			//allocator.allocate(6, true, 1);
-			
+			allocator.allocate(3, true, 1);
+			allocator.allocate(3, true, 1);
+			allocator.allocate(3, true, 1);
+			allocator.allocate(4, true, 1);
+			allocator.allocate(5, false, 1);
+			allocator.allocate(6, true, 1);
 			allocator.allocate(8, true, 1);
 
 			allocator.centreAllocation();
 
-			//allocator.allocationAnalysis(3);
-
-			//allocator.allocationAnalysis(5);
-			//allocator.allocationAnalysis(6);
+			allocator.allocationAnalysis(3);
+			allocator.allocationAnalysis(4);
+			allocator.allocationAnalysis(5);
+			allocator.allocationAnalysis(6);
 			allocator.allocationAnalysis(8);
 
 			
