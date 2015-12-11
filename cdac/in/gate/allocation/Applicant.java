@@ -60,16 +60,31 @@ public class Applicant{
 		
 	}
 
-	static void header(){
-		System.out.println("Zone, Enrollment, Gender, PwD-Status, PaperCode, CenterCode, City, registrationId, City-Choice1, City-Choice2, City-Choice3, Alloted-Session, ChoiceNumber, OriginalFirstChoice");
+	static void header( boolean flag ){
+		if( flag ){
+			System.out.println("application_id, exam_center_id, registration_id, session, session_date, session_time, exam_city");
+		}else{
+			System.out.println("Zone, Enrollment, Gender, PwD-Status, PaperCode, CenterCode, City, registrationId, City-Choice1, City-Choice2, City-Choice3, Alloted-Session, ChoiceNumber, OriginalFirstChoice");
+		}
 	}
 
-	void print(){
-		if( centre != null ){
-			System.out.println("Zone"+zoneId+", "+enrollment+", "+gender+", "+isPwD+", "+paperCode+", "+centre.centreCode+", "+city.cityCode+", "+registrationId+", "+choices[0]+", "+choices[1]+", "+choices[2]+", "+session.sessionId+", "+allotedChoice +", "+firstChoice);
+
+	void print( boolean flag ){
+
+		if( flag ){
+
+			if( centre != null ){
+				System.out.println(enrollment+", "+centre.centreCode+", "+registrationId+", "+session.sessionId+", "+session.date+", "+session.time+", "+city.cityCode);
+			}		
+
 		}else{
-			System.out.println("Zone"+zoneId+", "+enrollment+", "+gender+", "+isPwD+", "+paperCode+", null, null, "+registrationId+", "+choices[0]+", "+choices[1]+", "+choices[2]+",  nulll, -1, "+firstChoice );
-		}	
+
+			if( centre != null ){
+				System.out.println("Zone"+zoneId+", "+enrollment+", "+gender+", "+isPwD+", "+paperCode+", "+centre.centreCode+", "+city.cityCode+", "+registrationId+", "+choices[0]+", "+choices[1]+", "+choices[2]+", "+session.sessionId+", "+allotedChoice +", "+firstChoice);
+			}else{
+				System.out.println("Zone"+zoneId+", "+enrollment+", "+gender+", "+isPwD+", "+paperCode+", null, null, "+registrationId+", "+choices[0]+", "+choices[1]+", "+choices[2]+",  nulll, -1, "+firstChoice );
+			}	
+		}
 	}
 } 
 

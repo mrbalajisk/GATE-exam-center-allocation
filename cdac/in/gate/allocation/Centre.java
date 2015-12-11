@@ -88,7 +88,7 @@ public class Centre{
 
 				for(Integer sessionId: sessionIds){
 					Session session = sessions.get( sessionId );
-					System.out.print(", ("+session.maxCapacity + "|"+ session.capacity +"|"+ session.allocated +"|"+ session.pwdAllocated +")");
+					System.out.print(", ("+session.maxCapacity + "|"+session.capacity +"|"+ session.allocated +"|"+ session.pwdAllocated +")");
 				}
 
 				System.out.println();

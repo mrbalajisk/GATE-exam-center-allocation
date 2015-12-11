@@ -7,11 +7,11 @@ Zone ID,Zone,City Code,TCS ID,Centre code,LISP,Add1,Add2,Add3,Pincode,City,State
 6,IIT Kharagpur,148,,6006,Rajamahendri Institute of Engineering  & Technology,Bhoopalapatnam,Near Pidimgoyyi  ,East Godavari Dist,533107,Rajahmundry,Andhra Pradesh,300,137,162,174,125,138,162,168,130,147,14,0,192,160,16,172,5,YES
 6,IIT Kharagpur,148,,6007,Godavari Institute of Engineering and Technology,NH-16 ,Chaitanya Knowledge City,East Godavari Dist,533296,Rajahmundry,Andhra Pradesh,180,83,97,104,75,83,97,101,78,132,13,0,173,144,15,155,4,NO
 6,IIT Kharagpur,170,,6008,Sri Vasavi Engineering College,Pedatadepalli,Tadepalligudem Mandal,West Godavari Dist,534101,Tadepalligudem,Andhra Pradesh,310,0,0,229,13,59,249,91,39,0,0,132,138,125,3,143,1,YES
-6,IIT Kharagpur,189,,6009,NRI Institute of Technology,NRI Group of Colleges,"Pothavarappadu, Via Nunna, Agrirpalli",Krishna Dist,521212,Vijayawada,Andhra Pradesh,500,141,319,205,38,141,318,152,76,218,272,139,246,0,0,223,20,YES
-6,IIT Kharagpur,189,,6010,Devineni Venkata Ramana & Dr. Himasekhar MIC College of Technology,MIC College Road ,"Off NH-9 Kanchikacherla, Near Vijayawada",Krishna Dist,521180,Vijayawada,Andhra Pradesh,400,113,255,328,61,113,255,152,76,174,218,139,246,200,43,357,32,NO
-6,IIT Kharagpur,189,,6011,Potti Sreeramulu Chalavadi Mallikharjuna Rao College of Engineering and Technology,Raghava Reddy Street ,Kothapeta,Krishna Dist,520001,Vijayawada,Andhra Pradesh,300,71,160,205,38,71,159,152,76,131,164,87,154,200,43,268,24,NO
+6,IIT Kharagpur,189,,6009,NRI Institute of Technology,NRI Group of Colleges,"Pothavarappadu, Via Nunna, Agrirpalli",Krishna Dist,521212,Vijayawada,Andhra Pradesh,500,141,319,205,38,141,318,152,76,218,272,139,246,150,32,223,20,YES
+6,IIT Kharagpur,189,,6010,Devineni Venkata Ramana & Dr. Himasekhar MIC College of Technology,MIC College Road ,"Off NH-9 Kanchikacherla, Near Vijayawada",Krishna Dist,521180,Vijayawada,Andhra Pradesh,400,113,255,328,61,113,255,152,76,174,218,139,246,150,32,357,32,NO
+6,IIT Kharagpur,189,,6011,Potti Sreeramulu Chalavadi Mallikharjuna Rao College of Engineering and Technology,Raghava Reddy Street ,Kothapeta,Krishna Dist,520001,Vijayawada,Andhra Pradesh,300,71,160,205,38,71,159,152,76,131,164,87,154,150,32,268,24,NO
 6,IIT Kharagpur,189,,6012,S R K Institute of Technology,Enikepadu,Krishna District,,521108,Vijayawada,Andhra Pradesh,250,71,160,205,38,71,159,92,46,109,136,70,123,0,0,0,0,YES
-6,IIT Kharagpur,189,,6013,KBN College,"9-42-104, Opp Srinivasa Mahal  ",Kothapeta,Krishna Dist,520001,Vijayawada,Andhra Pradesh,250,71,160,205,38,71,159,152,76,109,136,87,154,200,43,223,20,NO
+6,IIT Kharagpur,189,,6013,KBN College,"9-42-104, Opp Srinivasa Mahal  ",Kothapeta,Krishna Dist,520001,Vijayawada,Andhra Pradesh,250,71,160,205,38,71,159,152,76,109,136,87,154,150,32,223,20,NO
 6,IIT Kharagpur,192,,6014,GITAM University - (Wing A),Gandhi Nagar Campus,Rushikonda,,530045,Visakhapatnam,Andhra Pradesh,470,243,143,226,160,243,143,294,92,218,129,79,246,278,53,337,25,YES
 6,IIT Kharagpur,192,,6015,GITAM University - (Wing B),Gandhi Nagar Campus,Rushikonda,,530045,Visakhapatnam,Andhra Pradesh,250,122,72,113,80,122,72,147,46,116,69,47,148,159,30,211,16,YES
 6,IIT Kharagpur,192,,6016,Pydah College of Engineering & Technology,Gambheeram,Boyapalem,,531163,Visakhapatnam,Andhra Pradesh,380,213,125,198,140,213,125,257,81,176,104,71,222,199,38,295,22,YES
@@ -32,8 +32,8 @@ Zone ID,Zone,City Code,TCS ID,Centre code,LISP,Add1,Add2,Add3,Pincode,City,State
 6,IIT Kharagpur,147,,6031,Rungta College of Engineering of Technology (Raipur),Behind Nandan Van,Veer Savarkar Nagar  ,Ward No. 01,492099,Raipur,Chhattisgarh,400,372,27,216,182,372,26,312,86,43,333,265,130,296,84,343,57,YES
 6,IIT Kharagpur,147,,6032,Bhilai Institute of Technology Raipur,Village- Kendri,"Near Abhanpur, NH-30",New Raipur,493661,Raipur,Chhattisgarh,225,209,15,122,103,209,15,176,49,25,187,149,73,0,0,0,0,YES
 6,IIT Kharagpur,147,,6033,Columbia Institute of Engineering and Technology,Bhurkoni,Tekari Village,Near Vidhan Sabha,493111,Raipur,Chhattisgarh,150,140,10,81,69,140,10,117,33,17,125,100,49,111,32,129,22,NO
-6,IIT Kharagpur,82,,6034,Al Kabir Polytechnic,Kabirnagar,P.O.- Kopali Mango,,831012,Jamshedpur,Jharkhand,235,193,38,125,82,193,38,106,54,121,96,0,0,0,0,139,14,YES
-6,IIT Kharagpur,82,,6035,R.V.S. College of Engineering & Technology BLOCK - A,Edalbera,Bhilai Pahari ,NH-33,831012,Jamshedpur,Jharkhand,350,206,41,133,88,206,41,112,57,181,143,0,262,16,213,174,18,NO
+6,IIT Kharagpur,82,,6034,Al Kabir Polytechnic,Kabirnagar,P.O.- Kopali Mango,,831012,Jamshedpur,Jharkhand,235,193,38,125,82,193,38,106,54,121,96,43,75,5,61,139,14,YES
+6,IIT Kharagpur,82,,6035,R.V.S. College of Engineering & Technology BLOCK - A,Edalbera,Bhilai Pahari ,NH-33,831012,Jamshedpur,Jharkhand,350,206,41,133,88,206,41,112,57,181,143,108,187,12,153,174,18,NO
 6,IIT Kharagpur,150,,6036,Ram Tahal Choudhary Institute of Technology (RTCIT),Anandi,Ormanjhi Block Chowk,,835219,Ranchi,Jharkhand,330,280,51,137,193,280,51,231,99,169,162,91,240,0,0,0,0,NO
 6,IIT Kharagpur,150,,6037,Oxford Public School,Old H B Road,Pragati Path,,834001,Ranchi,Jharkhand,301,226,41,111,156,226,41,187,80,154,148,83,219,186,130,201,102,YES
 6,IIT Kharagpur,150,,6038,Birla Institute of Technology Mesra,Mesra,,,835215,Ranchi,Jharkhand,186,153,28,75,106,153,28,126,54,95,92,52,135,115,80,124,64,NO
