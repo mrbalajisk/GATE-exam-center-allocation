@@ -366,13 +366,13 @@ public class Allocator{
 
 								String tcsCode = tk[3].trim();
 								Integer centerCode = new Integer( tk[4].trim() );
-								String centerName = tk[5].trim();
-								String address1 =  tk[6].trim();	
-								String address2 =  tk[7].trim();	
-								String address3 =  tk[8].trim();		
-								String pincode = tk[9].trim();
-								String cityName = tk[10].trim();
-								String state = tk[11].trim();
+								String centerName = tk[5].trim().replaceAll("\"","");
+								String address1 =  tk[6].trim().replaceAll("\"","");	
+								String address2 =  tk[7].trim().replaceAll("\"","");	
+								String address3 =  tk[8].trim().replaceAll("\"","");		
+								String pincode = tk[9].trim().replaceAll("\"","");
+								String cityName = tk[10].trim().replaceAll("\"","");
+								String state = tk[11].trim().replaceAll("\"","");
 								Integer max = new Integer( tk[12].trim() );
 
 								int maxCapacity = Integer.parseInt( tk[12].trim() );
@@ -403,7 +403,7 @@ public class Allocator{
 
 								String PwDFriendly = "YES";
 
-								if(zoneId != 2 && zoneId != 7 ){
+								if( zoneId != 7 ){
 										PwDFriendly = tk[29].trim();
 								}
 
