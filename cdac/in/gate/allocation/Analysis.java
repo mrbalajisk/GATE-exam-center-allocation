@@ -6,6 +6,7 @@ import java.util.TreeMap;
 
 
 class PaperWise{
+
 	String paperCode;
 	int count;	
 	
