@@ -90,14 +90,49 @@ public class Allocator{
 
 				pwdRelex.add("B547M89");	
 				pwdRelex.add("B222W13");	
+				pwdRelex.add("B158Q44");	
+				pwdRelex.add("B616A81");	
 
-				paperSession.put("ME","1,2,3");
+				/* Delhi */
+
+				pwdRelex.add("B312Z13");
+				pwdRelex.add("B501U13");
+				pwdRelex.add("B298T13");
+				pwdRelex.add("B167R15");
+				pwdRelex.add("B607T16");
+				pwdRelex.add("B247Y23");
+				pwdRelex.add("B629V23");
+				pwdRelex.add("B622P31");
+				pwdRelex.add("B461Q32");
+				pwdRelex.add("B166K37");
+				pwdRelex.add("B624D41");
+				pwdRelex.add("B599X45");
+				pwdRelex.add("B596V47");
+				pwdRelex.add("B393H54");
+				pwdRelex.add("B639S61");
+				pwdRelex.add("B538D61");
+				pwdRelex.add("B186T66");
+				pwdRelex.add("B559R73");
+				pwdRelex.add("B499H73");
+				pwdRelex.add("B163Q75");
+				pwdRelex.add("B559C79");
+				pwdRelex.add("B606U88");
+				pwdRelex.add("B559W89");
+				pwdRelex.add("B180N93");
+				pwdRelex.add("B235Z94");
+				pwdRelex.add("B394V97");
+
+
+
+				//paperSession.put("ME","1,2,3");
+				paperSession.put("ME","1,3,2");
+				//paperSession.put("ME","3,1,2");
 				paperSession.put("EC","1,3,4");
 				paperSession.put("CS","5,6");
 				//paperSession.put("CE","5,7");
 				paperSession.put("CE","7,5");
 				//paperSession.put("EE","6,8");
-				paperSession.put("EE","8,6");
+				paperSession.put("EE","6,8");
 				paperSession.put("BT","2");
 				paperSession.put("CH","2");
 				paperSession.put("GG","2");
@@ -404,7 +439,7 @@ public class Allocator{
 								String PwDFriendly = "YES";
 
 								if( zoneId != 7 ){
-										PwDFriendly = tk[29].trim();
+										PwDFriendly = tk[29].trim().replaceAll("\"","");
 								}
 
 								List<Session> sessions = new ArrayList<Session>();
@@ -569,8 +604,7 @@ public class Allocator{
 
 								for(Centre centre: city.centres){
 
-										if( centre.centreCode == 2057 && applicant.gender.equals("Female") ){
-
+										if( centre.centreCode.intValue() == 2057 && applicant.gender.equals("Female") ){
 												applicant.print( true );
 												continue;
 										}
@@ -764,16 +798,19 @@ public class Allocator{
 				System.out.println("Total notAllocated :"+ allNotAllocatedApplicants.size() );
 		}
 
-		void cityChangeUpdate(List<Applicant> applicants, Map<Integer, NewCity> cityChange){
-
+		void cityChangeUpdate(List<Applicant> applicants, Map<Integer, NewCity> cityChange, Integer onlyCity){
 				for( Applicant applicant: applicants){
-
 						if( !applicant.isAllocated ){
-
 								NewCity newCity = cityChange.get( applicant.choices[0] );
+								if( onlyCity.intValue() != -1 && applicant.choices[0].intValue() == onlyCity.intValue() ){
+									if( newCity != null ){
+											applicant.choices[0] = newCity.cityCode;
+									}
+								}else if ( onlyCity.intValue() == -1){
 
-								if( newCity != null ){
-										applicant.choices[0] = newCity.cityCode;
+									if( newCity != null ){
+											applicant.choices[0] = newCity.cityCode;
+									}
 								}
 						}
 				}
@@ -840,10 +877,10 @@ public class Allocator{
 				}
 		}
 
-		void cityChangeUpdate(int zoneId){
+		void cityChangeUpdate(int zoneId, Integer onlyCity){
 
 				Zone zone = zones.get( new Integer( zoneId ) );	
-				cityChangeUpdate(  zone.applicants, zone.cityChange );	
+				cityChangeUpdate(  zone.applicants, zone.cityChange, onlyCity );	
 		}
 
 		void allocate(int  zoneId, int choiceNo, boolean maximum, int pwDpercent ){
@@ -878,18 +915,28 @@ public class Allocator{
 
 		void allocate(int zone, boolean second, int pwDpercent){
 
+				cityChangeUpdate( zone , 159);
+
 				allocate(zone, 0, false, pwDpercent);
 
-				if( second ){
-
-						allocate(zone, 1, false, pwDpercent);
-						allocate(zone, 1, true, pwDpercent);
+				if( zone == 7){
+						if( zones.get( zone ).cityChange.keySet().size() > 0 ){
+								cityChangeUpdate( zone , -1);
+								allocate(zone, 0, true, pwDpercent);
+						}
 				}
 
+				boolean maximum = true;
+
+				if( second ){
+						allocate(zone, 1, false, pwDpercent);
+						allocate(zone, 1, maximum, pwDpercent);
+				}
+				
 				if( zones.get( zone ).cityChange.keySet().size() > 0 ){
 
-						cityChangeUpdate( zone );
-						allocate(zone, 0, true, pwDpercent);
+						cityChangeUpdate( zone , -1);
+						allocate(zone, 0, maximum, pwDpercent);
 				}
 		}
 
@@ -946,13 +993,12 @@ public class Allocator{
 						allocator.readApplicants("./data/applicant-2015-12-08.csv", true);
 
 						allocator.readCentres("./data/zone2.csv", true);
-						
-						//allocator.readCentres("./data/zone3.csv", true);
-						//allocator.readCentres("./data/zone4.csv", true);
-						//allocator.readCentres("./data/zone5.csv", true);
-						//allocator.readCentres("./data/zone6.csv", true);
-						//allocator.readCentres("./data/zone7.csv", true);
-						//allocator.readCentres("./data/zone8.csv", true);
+						allocator.readCentres("./data/zone3.csv", true);
+						allocator.readCentres("./data/zone4.csv", true);
+						allocator.readCentres("./data/zone5.csv", true);
+						allocator.readCentres("./data/zone6.csv", true);
+						allocator.readCentres("./data/zone7.csv", true);
+						allocator.readCentres("./data/zone8.csv", true);
 
 						allocator.readCityChangeMapping("./data/city-change.csv",true);
 						allocator.readCityCodeMapping("./data/gate-examcity-code.csv", true);
@@ -960,24 +1006,24 @@ public class Allocator{
 						allocator.printDataDetails();
 
 						allocator.allocate(2, true, 1);
-						//allocator.allocate(3, true, 1);
-						//allocator.allocate(3, true, 1);
-						//allocator.allocate(3, true, 1);
-						//allocator.allocate(4, true, 1);
-						//allocator.allocate(5, false, 1);
-						//allocator.allocate(6, true, 1);
-						//allocator.allocate(7, true, 1);
-						//allocator.allocate(8, true, 1);
+						allocator.allocate(3, true, 1);
+						allocator.allocate(3, true, 1);
+						allocator.allocate(3, true, 1);
+						allocator.allocate(4, true, 1);
+						allocator.allocate(5, false, 1);
+						allocator.allocate(6, true, 1);
+						allocator.allocate(7, true, 1);
+						allocator.allocate(8, true, 1);
 
 						allocator.centreAllocation();
 
 						allocator.allocationAnalysis(2);
-						//allocator.allocationAnalysis(3);
-						//allocator.allocationAnalysis(4);
-						//allocator.allocationAnalysis(5);
-						//allocator.allocationAnalysis(6);
-						//allocator.allocationAnalysis(7);
-						//allocator.allocationAnalysis(8);
+						allocator.allocationAnalysis(3);
+						allocator.allocationAnalysis(4);
+						allocator.allocationAnalysis(5);
+						allocator.allocationAnalysis(6);
+						allocator.allocationAnalysis(7);
+						allocator.allocationAnalysis(8);
 
 						allocator.printErrorData();
 						allocator.printCentres( true );	
@@ -985,7 +1031,7 @@ public class Allocator{
 						allocator.printAllocation( cemraRedy );
 						allocator.zoneWiseAllocationDetails();
 						allocator.zoneWiseAnalyisPrint();
-						//allocator.printSessionWisePaper();
+						allocator.printSessionWisePaper();
 
 				}catch(Exception e){
 						e.printStackTrace();
