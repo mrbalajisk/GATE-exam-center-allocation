@@ -26,6 +26,7 @@ public class Applicant{
 	int allotedChoice;
 
 	Integer firstChoice;
+	boolean forcedChoice;
 
 
 	Applicant(String enrollment, String name, String gender, String isPD, String isScribe, String paperCode, String choice1, String choice2, String choice3, String zoneId){
@@ -50,6 +51,7 @@ public class Applicant{
 
 		this.registrationId = null;
 		this.isAllocated = false;
+		this.forcedChoice = false;
 		this.centre = null;
 		this.session = null;	
 		this.city = null;
@@ -64,7 +66,7 @@ public class Applicant{
 		if( flag ){
 			System.out.println("application_id, exam_center_id, registration_id, session, session_date, session_time, exam_city");
 		}else{
-			System.out.println("Zone, Enrollment, Gender, PwD-Status, PaperCode, CenterCode, City, registrationId, City-Choice1, City-Choice2, City-Choice3, Alloted-Session, ChoiceNumber, OriginalFirstChoice");
+			System.out.println("Zone, Enrollment, Gender, PwD-Status, PaperCode, CenterCode, City, registrationId, City-Choice1, City-Choice2, City-Choice3, Alloted-Session, ChoiceNumber, OriginalFirstChoice, ForcedChoice");
 		}
 	}
 
@@ -80,9 +82,9 @@ public class Applicant{
 		}else{
 
 			if( centre != null ){
-				System.out.println("Zone"+zoneId+", "+enrollment+", "+gender+", "+isPwD+", "+paperCode+", "+centre.centreCode+", "+city.cityCode+", "+registrationId+", "+choices[0]+", "+choices[1]+", "+choices[2]+", "+session.sessionId+", "+allotedChoice +", "+firstChoice);
+				System.out.println("Zone"+zoneId+", "+enrollment+", "+gender+", "+isPwD+", "+paperCode+", "+centre.centreCode+", "+city.cityCode+", "+registrationId+", "+choices[0]+", "+choices[1]+", "+choices[2]+", "+session.sessionId+", "+allotedChoice +", "+firstChoice+", "+forcedChoice);
 			}else{
-				System.out.println("Zone"+zoneId+", "+enrollment+", "+gender+", "+isPwD+", "+paperCode+", null, null, "+registrationId+", "+choices[0]+", "+choices[1]+", "+choices[2]+",  nulll, -1, "+firstChoice );
+				System.out.println("Zone"+zoneId+", "+enrollment+", "+gender+", "+isPwD+", "+paperCode+", null, null, "+registrationId+", "+choices[0]+", "+choices[1]+", "+choices[2]+",  nulll, -1, "+firstChoice+", "+forcedChoice);
 			}	
 		}
 	}

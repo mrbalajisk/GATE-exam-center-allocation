@@ -88,6 +88,31 @@ public class Allocator{
 		public Allocator(){
 
 
+
+				/* Bengaluru */
+
+				pwdRelex.add("B402U10");
+				pwdRelex.add("B132V16");
+				pwdRelex.add("B213J25");
+				pwdRelex.add("B558Q29");
+				pwdRelex.add("B529G37");
+				pwdRelex.add("B623B37");
+				pwdRelex.add("B180F40");
+				pwdRelex.add("B552H51");
+				pwdRelex.add("B191P53");
+				pwdRelex.add("B189Y56");
+				pwdRelex.add("B530M58");
+				pwdRelex.add("B292G65");
+				pwdRelex.add("B283B70");
+				pwdRelex.add("B607C72");
+				pwdRelex.add("B186T73");
+				pwdRelex.add("B270X73");
+				pwdRelex.add("B341W75");
+				pwdRelex.add("B125M87");
+				pwdRelex.add("B358J95");
+				pwdRelex.add("B559J96");
+    
+				/*   */
 				pwdRelex.add("B547M89");	
 				pwdRelex.add("B222W13");	
 				pwdRelex.add("B158Q44");	
@@ -121,8 +146,6 @@ public class Allocator{
 				pwdRelex.add("B180N93");
 				pwdRelex.add("B235Z94");
 				pwdRelex.add("B394V97");
-
-
 
 				//paperSession.put("ME","1,2,3");
 				paperSession.put("ME","1,3,2");
@@ -477,17 +500,17 @@ public class Allocator{
 								session.paperCapacities.put("PE", pc );
 								sessions.add( session );
 
-								session = new Session(new Integer(5), ( S5CE1 + S5CS1 ), maxCapacity, "6 Febuary 2016 ( Saturday )", "Forenoon");
+								session = new Session(new Integer(5), ( S5CE1 + S5CS1 ), maxCapacity, "6 February 2016 ( Saturday )", "Forenoon");
 								session.paperCapacities.put("CE",new PaperCapacity( S5CE1 ) );
 								session.paperCapacities.put("CS",new PaperCapacity( S5CS1 ) );
 								sessions.add( session );
 
-								session = new Session(new Integer(6), ( S6CS2 + S6EE1), maxCapacity, "6 Febuary 2016 ( Saturday )", "Afternoon" );
+								session = new Session(new Integer(6), ( S6CS2 + S6EE1), maxCapacity, "6 February 2016 ( Saturday )", "Afternoon" );
 								session.paperCapacities.put("CS", new PaperCapacity( S6CS2 ) );
 								session.paperCapacities.put("EE", new PaperCapacity( S6EE1 ) );
 								sessions.add( session );
 
-								session = new Session(new Integer(7), ( S7CE2 + S7AGEYMTPI ), maxCapacity, "7 Febuary 2016 ( Sunday )", "Forenoon" );
+								session = new Session(new Integer(7), ( S7CE2 + S7AGEYMTPI ), maxCapacity, "7 February 2016 ( Sunday )", "Forenoon" );
 								session.paperCapacities.put("CE",new PaperCapacity( S7CE2 ) );
 								pc = new PaperCapacity( S7AGEYMTPI );
 								session.paperCapacities.put("AG", pc );
@@ -496,7 +519,7 @@ public class Allocator{
 								session.paperCapacities.put("PI", pc );
 								sessions.add( session );
 
-								session = new Session(new Integer(8), ( S8EE2 + S8AETFXLXE ), maxCapacity, "7 Febuary 2016 ( Sunday )", "Afternoon" );
+								session = new Session(new Integer(8), ( S8EE2 + S8AETFXLXE ), maxCapacity, "7 February 2016 ( Sunday )", "Afternoon" );
 								session.paperCapacities.put("EE",new PaperCapacity( S8EE2 ) );
 								pc = new PaperCapacity( S8AETFXLXE );
 								session.paperCapacities.put("AE", pc );
@@ -548,6 +571,7 @@ public class Allocator{
 				boolean allocated = false;		
 
 				String[] papers = {"AE", "AG", "AR", "BT", "CH", "CY", "EY", "GG", "IN", "MA", "MN", "MT", "PE", "PH", "PI", "TF", "XE", "XL", "CE", "EC","EE", "CS", "ME"};
+				//String[] papers = {"AE", "AG", "AR", "BT", "CH", "CY", "EY", "GG", "IN", "MA", "MN", "MT", "PE", "PH", "PI", "TF", "XE", "XL", "CE","CS",  "EC","EE","ME"};
 
 				for(String paper: papers)
 
@@ -556,12 +580,6 @@ public class Allocator{
 								if( applicant.isAllocated ){
 										continue;
 								}
-
-								/*
-								 * if( applicant.isPwD && ( choiceNumber == 1 )  ) {
-								 continue;
-								 }
-								 **/
 
 								if( ! applicant.paperCode.equals( paper ) && ( choiceNumber == 1 || maximum ) ){
 										continue;
@@ -589,7 +607,7 @@ public class Allocator{
 
 
 								if( choiceNumber == 1  &&  zone.cityChange.get( applicant.firstChoice ) != null 
-												&& choice.intValue() == zone.cityChange.get( applicant.firstChoice ).cityCode.intValue() ){ //don't give second choice incase of shift
+											&& choice.intValue() == zone.cityChange.get( applicant.firstChoice ).cityCode.intValue() ){ //don't give second choice incase of shift
 										continue;
 								}
 
@@ -625,6 +643,9 @@ public class Allocator{
 
 												PaperCapacity pc = session.paperCapacities.get( applicant.paperCode );	
 
+												if( centre.centreCode.intValue() == 3045 && sessionId.trim().equals("7") && maximum ){
+													session.maxCapacity = 422;
+												}
 
 												if( applicant.isPwD && session.pwdAllocated >=  ((session.maxCapacity * pwDpercent) / 100)  )
 														continue;
@@ -662,6 +683,10 @@ public class Allocator{
 																paperApplicants = new ArrayList<Applicant>();
 																tapplicants = new ArrayList<Applicant>();
 														}	
+
+														if( (applicant.firstChoice.intValue() != applicant.choices[0].intValue()) && ( choice.intValue() == applicant.choices[0].intValue() ) ){
+															applicant.forcedChoice = true;
+														}
 
 														paperApplicants.add( applicant );
 														tapplicants.add( applicant );
@@ -928,15 +953,26 @@ public class Allocator{
 
 				boolean maximum = true;
 
-				if( second ){
-						allocate(zone, 1, false, pwDpercent);
-						allocate(zone, 1, maximum, pwDpercent);
+				if( zone == 1 || zone == 2){
+					maximum = false;
 				}
-				
-				if( zones.get( zone ).cityChange.keySet().size() > 0 ){
 
-						cityChangeUpdate( zone , -1);
-						allocate(zone, 0, maximum, pwDpercent);
+				if( second ){
+
+					allocate(zone, 1, false, pwDpercent);
+					allocate(zone, 1, maximum, pwDpercent);
+
+					if( zone == 1 || zone == 2)
+						allocate(zone, 1, true, pwDpercent);
+				}
+
+				if( zones.get( zone ).cityChange.keySet().size() > 0 ){
+					cityChangeUpdate( zone , -1);
+					allocate(zone, 0, maximum, pwDpercent);
+				}
+
+				if( zone == 1 | zone == 2){
+					allocate(zone, 0, true, pwDpercent);
 				}
 		}
 
@@ -992,38 +1028,41 @@ public class Allocator{
 
 						allocator.readApplicants("./data/applicant-2015-12-08.csv", true);
 
+						allocator.readCentres("./data/zone1.csv", true);
 						allocator.readCentres("./data/zone2.csv", true);
-						allocator.readCentres("./data/zone3.csv", true);
-						allocator.readCentres("./data/zone4.csv", true);
-						allocator.readCentres("./data/zone5.csv", true);
-						allocator.readCentres("./data/zone6.csv", true);
-						allocator.readCentres("./data/zone7.csv", true);
-						allocator.readCentres("./data/zone8.csv", true);
+						//allocator.readCentres("./data/zone3.csv", true);
+						//allocator.readCentres("./data/zone4.csv", true);
+						//allocator.readCentres("./data/zone5.csv", true);
+						//allocator.readCentres("./data/zone6.csv", true);
+						//allocator.readCentres("./data/zone7.csv", true);
+						//allocator.readCentres("./data/zone8.csv", true);
 
 						allocator.readCityChangeMapping("./data/city-change.csv",true);
 						allocator.readCityCodeMapping("./data/gate-examcity-code.csv", true);
 
 						allocator.printDataDetails();
 
+						allocator.allocate(1, true, 1);
 						allocator.allocate(2, true, 1);
-						allocator.allocate(3, true, 1);
-						allocator.allocate(3, true, 1);
-						allocator.allocate(3, true, 1);
-						allocator.allocate(4, true, 1);
-						allocator.allocate(5, false, 1);
-						allocator.allocate(6, true, 1);
-						allocator.allocate(7, true, 1);
-						allocator.allocate(8, true, 1);
+						//allocator.allocate(3, true, 1);
+						//allocator.allocate(3, true, 1);
+						//allocator.allocate(3, true, 1);
+						//allocator.allocate(4, true, 1);
+						//allocator.allocate(5, false, 1);
+						//allocator.allocate(6, true, 1);
+						//allocator.allocate(7, true, 1);
+						//allocator.allocate(8, true, 1);
 
 						allocator.centreAllocation();
 
+						allocator.allocationAnalysis(1);
 						allocator.allocationAnalysis(2);
-						allocator.allocationAnalysis(3);
-						allocator.allocationAnalysis(4);
-						allocator.allocationAnalysis(5);
-						allocator.allocationAnalysis(6);
-						allocator.allocationAnalysis(7);
-						allocator.allocationAnalysis(8);
+						//allocator.allocationAnalysis(3);
+						//allocator.allocationAnalysis(4);
+						//allocator.allocationAnalysis(5);
+						//allocator.allocationAnalysis(6);
+						//allocator.allocationAnalysis(7);
+						//allocator.allocationAnalysis(8);
 
 						allocator.printErrorData();
 						allocator.printCentres( true );	
@@ -1031,7 +1070,7 @@ public class Allocator{
 						allocator.printAllocation( cemraRedy );
 						allocator.zoneWiseAllocationDetails();
 						allocator.zoneWiseAnalyisPrint();
-						allocator.printSessionWisePaper();
+						//allocator.printSessionWisePaper();
 
 				}catch(Exception e){
 						e.printStackTrace();
