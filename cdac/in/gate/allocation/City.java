@@ -9,22 +9,23 @@ import java.util.LinkedHashMap;
 
 public class City{
 
-	String code;
-	Map<String, Centre> centreMap;
-	Map<String, Session> sessionMap;
-	
-	City(String code){
+	Integer cityCode;
+	String cityName;
 
-		this.code = code;
-		this.centreMap = new LinkedHashMap<String, Centre>();
-		this.sessionMap = new LinkedHashMap<String, Session>();
+	List<Centre> centres;
+	Map<Integer, Session> sessions;
+	
+	City(Integer code, String cityName){
+
+		this.cityCode = code;
+		this.cityName = cityName;
+		this.centres = new ArrayList<Centre>();
+		this.sessions = new LinkedHashMap<Integer, Session>();
 	}
 
-	void print(String zone){
-
-		Set<String> centres = centreMap.keySet();
-		for(String centre: centres ){
-			centreMap.get( centre ).print( zone, code );
+	void print(Zone zone, boolean iiscformat){
+		for(Centre centre: centres ){
+			centre.print( zone, cityCode, iiscformat );
 		}
 	}
 } 

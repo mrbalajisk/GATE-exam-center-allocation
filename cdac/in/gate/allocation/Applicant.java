@@ -1,41 +1,99 @@
 package cdac.in.gate.allocation;
+import java.util.Map;
+import java.util.Collections;
+import java.util.Comparator;
+import java.security.MessageDigest;
+import java.util.LinkedHashMap;
 
 public class Applicant{
 
+	Integer zoneId;	
 	String enrollment;
 	String name;
 	String gender;	
 	String paperCode;
+	String hashCode;
+
 	boolean isPwD;
 	boolean isScribeReq;
-	String[] choices;
+	Integer[] choices;
 
 	String registrationId;
+	boolean isAllocated;
 	Centre centre;
+	City city;
 	Session session;
 	int allotedChoice;
 
-	Applicant(String enrollment, String name, String gender, String isPD, String isScribe, String paperCode, String choice1, String choice2, String choice3){
+	Integer firstChoice;
+	boolean forcedChoice;
 
+
+	Applicant(String enrollment, String name, String gender, String isPD, String isScribe, String paperCode, String choice1, String choice2, String choice3, String zoneId){
 		this.enrollment = enrollment;
 		this.name = name;
 		this.gender = gender;
+		this.zoneId = new Integer( zoneId );
+
 		this.paperCode = paperCode;
+
 		if( isPD.equals("t") )
 			this.isPwD = true;
 		if( isScribe.equals("t") )
 			this.isScribeReq = true;
 
-		this.choices = new String[3];
-		this.choices[0] = choice1;
-		this.choices[1] = choice2;
-		this.choices[2] = choice3;
-			
+		this.choices = new Integer[3];
+		this.choices[0] = new Integer( choice1 );
+		this.choices[1] = new Integer( choice2 );
+		this.choices[2] = new Integer( choice3 );
 		
+		this.firstChoice = new Integer( choice1 );	
+
 		this.registrationId = null;
+		this.isAllocated = false;
+		this.forcedChoice = false;
 		this.centre = null;
 		this.session = null;	
+		this.city = null;
 		this.allotedChoice = -1;	
+
+		String code = enrollment.substring( enrollment.length() - 2)+""+name.substring(name.length() - 2) ;
+		this.hashCode = ""+code.hashCode();
+		
+	}
+
+	static void header( boolean flag ){
+		if( flag ){
+			System.out.println("application_id, exam_center_id, registration_id, session, session_date, session_time, exam_city");
+		}else{
+			System.out.println("Zone, Enrollment, Gender, PwD-Status, PaperCode, CenterCode, City, registrationId, City-Choice1, City-Choice2, City-Choice3, Alloted-Session, ChoiceNumber, OriginalFirstChoice, ForcedChoice");
+		}
+	}
+
+
+	void print( boolean flag ){
+
+		if( flag ){
+
+			if( centre != null ){
+				System.out.println(enrollment+", "+centre.centreCode+", "+registrationId+", "+session.sessionId+", "+session.date+", "+session.time+", "+city.cityCode);
+			}		
+
+		}else{
+
+			if( centre != null ){
+				System.out.println("Zone"+zoneId+", "+enrollment+", "+gender+", "+isPwD+", "+paperCode+", "+centre.centreCode+", "+city.cityCode+", "+registrationId+", "+choices[0]+", "+choices[1]+", "+choices[2]+", "+session.sessionId+", "+allotedChoice +", "+firstChoice+", "+forcedChoice);
+			}else{
+				System.out.println("Zone"+zoneId+", "+enrollment+", "+gender+", "+isPwD+", "+paperCode+", null, null, "+registrationId+", "+choices[0]+", "+choices[1]+", "+choices[2]+",  nulll, -1, "+firstChoice+", "+forcedChoice);
+			}	
+		}
 	}
 } 
+
+class ApplicantComp implements Comparator<Applicant>{
+    @Override
+    public int compare(Applicant a1, Applicant a2) {
+		return a1.hashCode.compareTo( a2.hashCode );
+    }
+}
 

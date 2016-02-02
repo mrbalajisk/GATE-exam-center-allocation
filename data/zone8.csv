@@ -1,0 +1,61 @@
+Zone ID,Zone,City Code,TCS ID,Centre code,LISP,Add1,Add2,Add3,Pincode,City,State,Max,S1-ME1,S1-EC1,S2-ME2,"S2-BT, CH, GG, MN, PH",S3-ME3,S3-EC2,S4-EC3,"S4-AR, CY, IN, MA, PE",S5-CS1,S5-CE1,S6-CS2,S6-EE1,S7-CE2,"S7-AG, EY, MT, PI",S8-EE2,"S8-AE, TF, XL, XE",PWD FRIENDLY
+8,IIT Roorkee,11,,8001,Guru Nanak Institute of Technology,Hema Majra Road,Mullana,,133203,Ambala,Haryana,400,190,91,286,79,50,50,220,79,0,175,324,0,110,14,100,20,YES
+8,IIT Roorkee,13,,8002,Global Institute of Management & Emerging Technologies,11th Kms. Stone Amritsar-Jammu Highway NH-54,Sohian Khurd,,143501,Amritsar,Punjab,500,0,0,167,110,30,341,0,120,0,0,433,0,96,5,121,75,NO
+8,IIT Roorkee,13,,8003,Khalsa College of Engineering & Technology,C-Block Ranjit Avenue,,,143001,Amritsar,Punjab,170,0,0,79,52,11,120,0,113,0,0,125,0,80,5,81,51,NO
+8,IIT Roorkee,26,,8004,Baba Farid Group of Institutions,Muktsar Road,Village-Deon,,151001,Bathinda,Punjab,400,0,0,0,0,0,0,0,0,215,84,170,130,134,7,209,31,NO
+8,IIT Roorkee,26,,8005,Guru Kashi University,Sardulgarh Road,Talwandi Sabo,,151302,Bathinda,Punjab,260,79,174,177,65,25,25,13,119,154,61,121,93,117,7,166,25,YES
+8,IIT Roorkee,26,,8006,Malout Institute of Management & Information Technology,Green Field Enclave,Near New Grain Market,District-Muktsar,152107,Malout,Punjab,220,65,144,148,54,25,25,10,98,0,0,0,0,0,0,0,0,NO
+8,IIT Roorkee,39,,8007,Chandigarh University Gharuan,NH-95 Chandigarh-Ludhiana Highway,Gharuan,District-Mohali,140413,Mohali,Punjab,700,208,181,123,152,209,181,82,120,170,229,366,131,0,0,0,0,YES
+8,IIT Roorkee,39,,8008,Chandigarh Group of Colleges,Village-Landran,,,140307,Mohali,Punjab,510,143,124,118,146,143,124,86,126,102,137,196,70,214,43,114,125,YES
+8,IIT Roorkee,39,,8009,Rayat Bahra Skill Development Centre,Sahauran 12Kms. from Chandigarh on Chandigarh Mohali-Ropar Highway,District Mohali,Near Kharar,140104,Mohali,Punjab,430,149,129,123,152,149,129,82,120,122,164,318,114,72,15,157,172,NO
+8,IIT Roorkee,39,,8010,Gian Jyoti Institute of Management & Technology,"Phase II, Mohali",Sector 54,Near Bassi Theatre,160055,Mohali,Punjab,250,119,104,98,122,119,104,82,120,97,131,163,58,72,15,79,86,YES
+8,IIT Roorkee,39,,8011,SAS Institute of IT & Research,C-124 Phase VIII,Industrial Area,Sector-72,160059,Mohali,Punjab,230,121,105,86,106,119,103,74,108,97,131,163,58,72,15,80,87,YES
+8,IIT Roorkee,39,,8012,Institute of Engineering & Technology Bhaddal,Village Bhaddal,PO-Mianpur,,140108,Ropar,Punjab,300,149,129,123,152,149,129,82,120,122,164,204,73,63,13,95,103,NO
+8,IIT Roorkee,48,,8013,Graphic Era University,566/6 Bell Road,Clement Town,,248001,Dehradun,Uttarakhand,600,233,148,110,141,233,148,46,135,109,342,378,124,157,44,263,69,NO
+8,IIT Roorkee,48,,8014,Uttarnachal University,Arcadia Grant,Chandanwari,Prem Nagar,248001,Dehradun,Uttarakhand,500,153,98,110,141,153,98,46,135,85,266,0,0,0,0,0,0,YES
+8,IIT Roorkee,48,,8015,Devbhoomi Group of Institutions,Chakrata Road,Navgaon,Manduwala,248007,Dehradun,Uttarakhand,400,153,98,110,141,153,98,46,135,61,190,302,99,118,33,199,52,YES
+8,IIT Roorkee,48,,8016,JB Institute of Technology,23-Milestone  NH-7,Village-Shankarpur,Chakrata Road,248197,Dehradun,Uttarakhand,310,135,86,97,124,135,86,46,135,49,152,166,55,118,33,175,46,YES
+8,IIT Roorkee,48,,8017,Tulas Institute,Chakrata Road,Dhoolkot,Near Selaqui,248197,Dehradun,Uttarakhand,220,126,80,88,112,126,80,45,135,39,121,156,51,110,31,153,40,YES
+8,IIT Roorkee,59,,8018,ABES Engineering College,19th Kms. Stone,NH-24 Delhi-Hapur Bypass Road,Near Crossings Republik Vijay Nagar,201009,Ghaziabad,Uttar Pradesh,600,11,5,339,43,10,6,124,49,128,239,12,4,15,1,15,1,NO
+8,IIT Roorkee,59,,8019,Ajay Kumar Garg Engineering College,27th Kms. Stone,NH-24 Delhi-Hapur Bypass Road,Adhyatmik Nagar,201009,Ghaziabad,Uttar Pradesh,550,268,133,311,40,230,121,152,59,146,275,271,80,90,4,285,16,NO
+8,IIT Roorkee,59,,8020,Institute of Technology & Science,NH-24 GT Road,Mohan Nagar,,201007,Ghaziabad,Uttar Pradesh,410,151,75,267,34,132,69,152,59,105,196,174,52,0,0,190,11,YES
+8,IIT Roorkee,59,,8021,Babu Banarsi Das Institute of Technology,7th Kms. from Ghaziabad,on NH-58 Delhi-Meerut Road,Duhai,201206,Ghaziabad,Uttar Pradesh,400,151,75,267,34,132,69,152,59,105,196,174,52,0,0,147,9,NO
+8,IIT Roorkee,59,,8022,IDEAL Institute of Technology,Ideal Knowledge Park,Ideal Nagar Near Gaur Homes,Govind Puram,201003,Ghaziabad,Uttar Pradesh,439,268,133,267,34,198,103,144,57,140,261,232,69,0,0,190,11,YES
+8,IIT Roorkee,67,,8023,Amrapali Group of Institutes,Shiksha Nagar Lamachaur,Kaladhungi Road Haldwani,District-Nainital,263139,Haldwani,Uttarakhand,370,150,71,56,145,151,70,50,101,119,83,105,67,108,64,106,65,YES
+8,IIT Roorkee,67,,8024,Graphic Era Hill University,Sattal Road Bhimtal,Bhowali,District-Nainital,263132,Bhimtal,Uttarakhand,240,135,64,49,127,136,64,46,93,86,60,108,68,111,65,110,67,YES
+8,IIT Roorkee,68,,8025,National Institute of Technology Hamirpur,Anu Road,,,177005,Hamirpur,Himachal Pradesh,225,152,73,152,73,152,73,131,95,22,179,145,56,198,4,134,67,YES
+8,IIT Roorkee,68,,8026,KC Group of Institutions,Near Excise Barrier,VPO-Pandoga,Hoshiarpur Road,177207,Una,Himachal Pradesh,140,95,46,95,46,95,46,80,58,14,116,94,36,128,2,86,44,YES
+8,IIT Roorkee,79,,8027,CT Group of Institutions,Shahpur Campus,PO-Udopur,Near Lambra,144020,Jalandhar,Punjab,450,173,178,180,71,0,0,89,62,0,201,261,72,0,68,0,0,YES
+8,IIT Roorkee,79,,8028,Lyallpur Khalsa College of Engineering,Cantt Road,Opp. Old Lyallpur Khalsa College,Defence Colony,144001,Jalandhar,Punjab,300,124,127,180,71,0,0,89,62,0,201,167,47,0,0,63,38,YES
+8,IIT Roorkee,79,,8029,Lovely Professional University - Centre-1 (Blocks 25 - 28),Jalandhar-Delhi G.T. Road NH-1,Chaheru,,144411,Phagwara,Punjab,500,197,203,251,99,0,0,89,62,0,201,134,37,0,0,0,0,YES
+8,IIT Roorkee,79,,8030,Lovely Professional University - Centre-2 (Blocks 33 - 34),Jalandhar-Delhi G.T. Road NH-1,Chaheru,,144411,Phagwara,Punjab,500,189,194,176,69,0,0,82,58,0,131,334,93,0,0,138,84,YES
+8,IIT Roorkee,107,,8031,Geeta Institute of Management & Technology Kanipla,166th Kms. Milestone on G.T. Road,Village-Kanipla,,136119,Kurukshetra,Haryana,470,130,272,143,108,0,0,16,115,34,227,84,32,0,0,0,0,YES
+8,IIT Roorkee,107,,8032,Kurukshetra Institute of Technology & Management,Kurukshetra-Pehowa Road,Bhor Saidan,,136119,Kurukshetra,Haryana,270,72,150,126,95,0,0,12,89,21,142,174,65,10,24,97,25,NO
+8,IIT Roorkee,107,,8033,Modern Institute of Engineering & Technology,12 Kms. from Ambala Cantt on NH-1,Village-Mohri,Tehsil Sahabad,136135,Kurukshetra,Haryana,190,55,114,88,66,0,0,13,93,13,85,122,46,0,0,80,20,NO
+8,IIT Roorkee,110,,8034,Ludhiana College of Engineering & Technology,30 Kms.  from Ludhiana,on Ludhiana-Chandigarh Highway,Katani Kalan,141113,Ludhiana,Punjab,220,82,69,92,59,83,68,42,59,124,47,138,33,116,55,132,39,YES
+8,IIT Roorkee,110,,8035,Gulzar Group of Institutes,"G.T. Road, NH-1",Village Libra,District Ludhiana,141401,Khanna ,Punjab,250,76,63,66,42,75,63,41,58,119,45,133,31,112,52,126,38,YES
+8,IIT Roorkee,117,,8036,Meerut Institute of Engineering and Technology,NH-58 Baghpat Crossing,Bypass Road,,250005,Meerut,Uttar Pradesh,1000,0,0,244,160,270,231,43,108,0,151,343,159,135,17,0,112,YES
+8,IIT Roorkee,117,,8037,IIMT Meerut,O Pocket Ganga Nagar,Defence Colony,Mawana Road,250001,Meerut,Uttar Pradesh,1000,0,0,152,99,246,211,43,108,0,251,343,159,135,17,0,0,YES
+8,IIT Roorkee,117,,8038,Meerut Institute of Technology,NH-58 Baral Partapur,Bypass Road,Opposite Big Bite Restaurant,250103,Meerut,Uttar Pradesh,390,0,0,152,99,135,116,43,108,0,0,0,0,0,0,0,0,NO
+8,IIT Roorkee,117,,8039,JP Institute of Engineering & Technology,Post Rajpura,Mawana Road,,250001,Meerut,Uttar Pradesh,340,0,0,152,99,135,116,49,123,0,128,156,72,66,8,0,0,YES
+8,IIT Roorkee,118,,8040,IFTM University,Lodhipur Rajput,NH-24 Delhi Road,Pakbada,244102,Moradabad,Uttar Pradesh,360,152,60,97,114,151,59,59,62,50,151,177,54,126,13,176,40,YES
+8,IIT Roorkee,118,,8041,Moradabad Institute of Technology,Ram Ganga Vihar Phase-II,MDA Colony,Kanth Road,244001,Moradabad,Uttar Pradesh,195,108,43,52,62,109,43,63,66,27,80,59,18,0,0,0,0,YES
+8,IIT Roorkee,132,,8042,MS Infoline Services,A-33 2nd Floor,Sector-64,,201307,Noida,Uttar Pradesh,310,113,138,163,88,113,138,113,138,125,125,125,125,214,8,193,29,YES
+8,IIT Roorkee,132,,8043,TAI Infotech Pvt Ltd,1st Floor H-159,Sector-63,Behind Haldiram,201301,Noida,Uttar Pradesh,160,73,88,104,57,73,88,72,89,80,80,80,80,0,0,0,0,YES
+8,IIT Roorkee,132,,8044,Institute of Management Studies,A-8B IMS Campus,Sector-62,,201303,Noida,Uttar Pradesh,100,46,55,65,36,46,55,45,56,50,50,50,50,86,4,78,12,NO
+8,IIT Roorkee,138,,8045,NC College of Engineering,Rohtak Panipat Highway,Israna,,132107,Panipat,Haryana,220,96,85,91,50,0,0,35,46,0,108,177,8,0,4,81,18,YES
+8,IIT Roorkee,138,,8046,Samalkha Group of Institutions,Samalkha Hathwala Road NH-1,Samalkha,,132115,Panipat,Haryana,210,72,64,71,39,0,0,24,31,0,0,0,0,0,0,0,0,NO
+8,IIT Roorkee,139,,8047,Sri Sai College of Engineering & Technology,Badhani,Dalhousie Road,,145001,Pathankot,Punjab,330,109,63,89,79,109,63,120,43,26,156,182,0,152,8,90,25,YES
+8,IIT Roorkee,140,,8048,Bhai Gurdas Institute of Engineering & Technology,Village Ghabdan,Main Patiala Road,,148001,Sangrur,Punjab,700,176,325,282,119,0,0,53,148,249,0,183,66,241,10,199,51,YES
+8,IIT Roorkee,140,,8049,Patiala Institute of Engineering & Technology for Women,12 Kms. Stone,Patiala-Sirhind  Road,Village Nandpur Kesho,147001,Patiala,Punjab,330,106,195,165,69,0,0,37,105,233,0,172,62,184,7,174,45,YES
+8,IIT Roorkee,152,,8050,Quantum School of Technology,22 Kms. Milestone Mandawar,Roorkee-Dehradun Highway NH-73,Chhutmalpur,247167,Roorkee,Uttarakhand,290,173,78,43,208,173,78,15,126,63,168,110,120,0,0,0,0,NO
+8,IIT Roorkee,152,,8051,College of Engineering Roorkee,7 Kms. from Roorkee on Roorkee-Haridwar Road NH-58,Post Box No. 27 Vardhmanpuram,District Haridwar,247667,Roorkee,Uttarakhand,180,111,50,28,133,111,50,15,126,39,105,68,74,88,33,100,21,YES
+8,IIT Roorkee,152,,8052,Institute of Management Studies,10 Kms. from Roorkee ,on Roorkee-Dehradun Highway,Village Karundi,247667,Roorkee,Uttarakhand,90,56,25,14,67,56,25,9,72,20,53,34,37,59,22,67,14,NO
+8,IIT Roorkee,152,,8053,Institute of Technology Roorkee,9th Milestone,Roorkee-Dehradun Highway,Village-Kishanpur,247667,Roorkee,Uttarakhand,90,56,25,14,67,56,25,9,72,20,53,34,37,59,22,67,14,NO
+8,IIT Roorkee,152,,8054,Roorkee Institute of Technology,8th Milestone,Roorkee-Dehradun Road,Puhana,247667,Roorkee,Uttarakhand,170,99,44,12,57,99,45,6,45,36,95,65,70,57,22,101,21,NO
+8,IIT Roorkee,166,,8055,Bells Institute of Management & Technology,Knowledge City Mehli,Near Passport Office,Mehli,171013,Shimla,Himachal Pradesh,250,149,72,121,100,149,72,64,57,0,231,220,0,224,7,139,83,YES
+8,IIT Roorkee,166,,8056,IEC University,Plot No. 7&10 Atal Shiksha Nagar,Kalujhanda PO-Mandhala,Barotiwala Baddi,173205,Baddi,Himachal Pradesh,150,91,43,52,44,91,43,65,58,0,136,105,0,132,4,87,52,YES
+8,IIT Roorkee,168,,8057,Royal Institute of Management & Technology,VPO-Chidana,NH-71A Gohana,Panipat-Rohtak Road,131301,Sonepat,Haryana,220,0,0,70,51,48,113,8,53,100,80,56,143,81,2,0,36,YES
+8,IIT Roorkee,168,,8058,Mahavir Swami Institute of Technology,Near O.P. Jindal Global University,Village-Jagdishpur,,131030,Sonepat,Haryana,180,0,0,62,45,39,89,8,55,0,0,0,0,0,0,0,0,YES
+8,IIT Roorkee,194,,8059,Haryana Engineering College,Old Chhachhrauli Road,Jagadhri,,135003,Yamuna Nagar,Haryana,300,0,0,86,33,83,72,26,34,0,88,118,49,1,1,1,8,YES
+8,IIT Roorkee,194,,8060,Yamuna Group of Institutions,Village Gadholi,PO-Gadhola,Jagadhri-Ambala Road,133103,Yamuna Nagar,Haryana,220,0,0,68,27,63,54,24,32,0,70,81,33,1,1,1,7,NO
